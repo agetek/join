@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Inter';
+    src: url(fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+body {
+    font-family: 'Inter';
+}
+
+.contact_design {
+    background-color: #2A3647;
+    color: white;
+    width: 463px;
+    height: 594px;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    font-size: 27px;
+    padding-top: 66px;
+    padding-right: 46px;
+    padding-bottom: 66px;
+    padding-left: 46px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 66px 46px;
+    gap: 12px;
+    isolation: isolate;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+
+}
+
+.add_contact {
+    display: flex;
+    justify-content: center;
+}
+
+.small_logo {
+    position: absolute;
+    top: 154px;
+    left: 46.5px;
+
+}
+
+.slogan_add_contact {
+    width: 366px;
+    height: 73px;
+    font-size: 60px;
+    font-family: 'Inter';
+    font-weight: 700;
+    top: 232.5px;
+    position: absolute;
+}
+
+.design_line {
+    border: 2px solid #29ABE2;
+    width: 90px;
+    margin-top: 6px;
+    position: absolute;
+    top: 361.5px;
+}
+
+.description_contact {
+    position: absolute;
+    top: 317.5px;
+    left: 46px;
+}
+
+.contact_input {
+    width: 749px;
+    height: 594px;
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 30px;
+    top: 0;
+    right: 0;
+    display: flex;
+
+
+}
+
+.contact_second_side {
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar {
+    width: 120px; 
+    height: 120px; 
+    top: 204px;
+    left: 70px;
+    gap: 10px;
+    position: absolute;
+}
+
+.form_conctact {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_buttons {
+    display: flex;
+}
