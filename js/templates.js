@@ -12,14 +12,14 @@ function renderAddContact() {
             <img class="avatar" src="img/icon_profile.svg">
             <div class="contact_second_side">
                 <div class="close"></div>
-                <form class="form_contact" onsubmit="addContact()">
+                <form class="form_contact" onsubmit="addContact()" action="">
                     <input type="text" class="input_name" id="input_name" placeholder="Name" required>
-                    <input type="text" class="input_email" id ="input_email" placeholder="Email" required>
+                    <input type="email" class="input_email" id ="input_email" placeholder="Email" required>
                     <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
                 
                 <div class="form_buttons">
-                    <button class="cancel">Cancel</button>
-                    <input type="submit" value="create contact" class="submit">
+                    <button type="reset" class="cancel">Cancel</button>
+                    <button type="submit" class="submit">Create Contact</button>
                 </div>  
                 </form>   
             <div>
@@ -39,8 +39,8 @@ function renderEditContact() {
                 <input type="text" class="input_email" id ="input_email" placeholder="Email" required>
                 <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
                 <div class="form_buttons">
-                    <button class="cancel">Delete</button>
-                    <input type="submit" value="save" class="submit">
+                    <button class="cancel" onclick="deleteContact()">Delete</button>
+                    <button type="submit" class="submit">Save</button>
                 </div>
             </form>
         </div>

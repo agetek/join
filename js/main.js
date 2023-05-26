@@ -1,9 +1,7 @@
 async function init() {
     document.getElementById('container').innerHTML = renderAddContact();
-    let resultSave = await setItem('users', users);
-    let resultLoaded = await getItem('users');
-    console.log(resultSave);
-    console.log(resultLoaded);
+    users = await getItem('users');
+    console.log(users);
 }
 
 
