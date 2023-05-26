@@ -19,7 +19,7 @@ function renderAddContact() {
                 </form> 
                 <div class="form_buttons">
                     <button class="cancel">Cancel</button>
-                    <button type="submit" class="submit">Create contact</button>
+                    <button onkclick="addData()" type="submit" class="submit">Create contact</button>
                 </div>    
             <div>
         </div>
