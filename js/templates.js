@@ -47,3 +47,12 @@ function renderEditContact() {
     </div>`;
     return render;
 }
+
+
+function renderRegisterForm(){
+    let render = `<form onsubmit="register(); return false;">
+    <input required type="email" id="email"> 
+    <input required type="password" id="password"> 
+    <button id="registerBtn">Registrieren</button></form>`;
+    return render;
+}
