@@ -1,0 +1,101 @@
+.container {
+    display: flex;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 232px;
+    max-width: 232px;
+    background-color: #2A3647;
+    color: #CDCDCD;
+    min-height: 100vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar_menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.sidebar_logo_img {
+    width: 100px;
+    height: 122px;
+    margin-top: 66px;
+    margin-bottom: 103px;
+}
+
+.sidebar_img {
+    display: flex;
+    min-height: 30px;
+    min-width: 30px;
+    max-height: 30px;
+    max-width: 30px;
+    object-fit: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.sidebar_point {
+    display: flex;
+    align-items: center;
+    height: 46px;
+    padding-left: 53px;
+}
+
+.sidebar_point_active {
+    display: flex;
+    align-items: center;
+    background-color: #091931;
+    height: 46px;
+    padding-left: 53px;
+}
+
+.sidebar_summary {
+    background-image: url(img/sidebar_summary.svg);
+}
+
+.sidebar_board {
+    background-image: url(img/sidebar_board.svg);
+}
+
+.sidebar_add_task {
+    background-image: url(img/sidebar_add_task.svg);
+}
+
+.sidebar_contacts_active {
+    background-image: url(img/sidebar_contacts.svg);
+}
+
+.sidebar_text {
+    margin-left: 20px;
+}
+
+.sidebar_legal_notice_img {
+    display: flex;
+    min-height: 30px;
+    min-width: 30px;
+    max-height: 30px;
+    max-width: 30px;
+    object-fit: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(img/information.svg);
+}
+
+.sidebar_legal_notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 46px;
+    margin-bottom: 112px;
+}
+
+.sidebar_menu_logo_img {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}

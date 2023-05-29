@@ -1,3 +1,18 @@
+function openContacts() {
+    let render = renderContacts();
+    document.getElementById('container').innerHTML = render;    
+}
+
+function renderContactsOverview() {
+    let render = `<div class="contacts_overview"></div>`;
+    return render;
+}
+
+function renderContactsDetails() {
+    let render = `<div class="contacts_details"></div>`;
+    return render;
+}
+
 async function addContact() {
     let name = document.getElementById('input_name').value;
     let email = document.getElementById('input_email').value;
