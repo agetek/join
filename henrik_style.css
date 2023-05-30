@@ -100,6 +100,14 @@
     align-items: center;
 }
 
+/* header start */
+
+.header {
+    height: 89px;
+}
+
+/* header end */
+
 /* Contact Overview Start */
 
 .contacts_overview {
@@ -107,7 +115,7 @@
     flex-direction: column;
     align-items: center;
     max-width: 453px;
-    height: calc(100vh-89px);
+    height: calc(100vh - 89px);
     overflow-y: scroll;
 }
 
@@ -127,9 +135,10 @@
     width: 357px;
 }
 
-.line {
-    width: 323px;
-    height: 1px;
+.contact_line {
+    display: flex;
+    min-width: 323px;
+    min-height: 1px;
     background-color: #D1D1D1;
 }
 

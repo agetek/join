@@ -23,7 +23,7 @@ function renderContactsOverview() {
     let render = `<div class="contacts_overview">`;
     for (let i = 0; i < firstLetters.length; i++) {
         render += `<div class="contact_overview_letter">${firstLetters[i]}</div>`;
-        render += `<div class="line"></div>`;
+        render += `<div class="contact_line"></div>`;
         render += renderLetter(i);
     }
     render += `</div>`;
