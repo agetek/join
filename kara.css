@@ -1,0 +1,30 @@
+.sign_up_container {
+  height: 100vh;
+  background-color: rgb(245, 245, 245);
+  display: flex;
+}
+
+.start_page {
+  width: 100px;
+  height: 120px;
+}
+
+.sign_up {
+  position: absolute;
+  width: 652px;
+  height: 559px;
+  left: 394px;
+  top: 274px;
+  background-color: white;
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+  border-radius: 30px;
+}
+
+.input_sign_up {
+  height: 51px;
+  width: 422px;
+  left: 0px;
+  top: 0px;
+  border-radius: 10px;
+  padding: 13px 21px 13px 21px;
+}

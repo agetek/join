@@ -27,7 +27,9 @@ function resetForm(){
 
 
 function renderSignUpForm(){
-    let render = ` <div class="sign_up" id="sign_up">
+    let render = ` <div class="sign_up_container">
+    <img =class="start_page" src="./img/start_page.svg" alt="logo">
+    <div class="sign_up" id="sign_up">
     <div class="sign_up_head">
     <div class="sign_up_title">
     <img onclick="back_to_login" class="arrow_back_blue" src="./img/blue_arrow_back.svg">
@@ -36,9 +38,11 @@ function renderSignUpForm(){
     </div>
     </div>
     <form onsubmit="register(); return false;">
-    <input type="email" id="email" required> 
-    <input type="password" id="password" required> 
-    <button id="registerBtn">Registrieren</button></form>
+    <input type="name" class="sign_up_name input_sign_up" id="name" required> 
+    <input type="email" class="sign_up_email input_sign_up" id="email" required> 
+    <input type="password" class="sign_up_email input_sign_up" id="password" required> 
+    <button id="registerBtn">Sign up</button></form>
+    </div>
     </div>`;
     return render;
 }
