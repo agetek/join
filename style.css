@@ -10,75 +10,56 @@ body {
 .contact_design {
     background-color: #2A3647;
     color: white;
-    width: 463px;
-    height: 594px;
-    display: flex;
-    flex-direction: column;
+    width: 38%;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     font-size: 27px;
-    padding-top: 66px;
-    padding-right: 46px;
-    padding-bottom: 66px;
-    padding-left: 46px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 66px 46px;
     gap: 12px;
-    isolation: isolate;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-
 }
 
 .add_contact {
     display: flex;
     justify-content: center;
+    height: 594px;
+    width: 1212px;
 }
 
 .small_logo {
-    position: absolute;
-    top: 154px;
-    left: 46.5px;
-
+    padding-left: 46px;
+    margin-top: -65px;
 }
 
 .slogan_add_contact {
-    width: 366px;
     height: 73px;
     font-size: 60px;
     font-family: 'Inter';
     font-weight: 700;
-    top: 232.5px;
-    position: absolute;
+    padding-left: 46px;
 }
 
 .design_line {
     border: 2px solid #29ABE2;
     width: 90px;
     margin-top: 6px;
-    position: absolute;
-    top: 361.5px;
+    margin-left: 46px;
+
 }
 
 .description_contact {
-    position: absolute;
-    top: 317.5px;
-    left: 46px;
+    padding-left: 46px;
 }
 
 .contact_input {
-    width: 749px;
-    height: 594px;
-    position: absolute;
     background: #FFFFFF;
-    border-radius: 30px;
-    top: 0;
-    right: 0;
+    border-bottom-right-radius: 15px;   
+    border-top-right-radius: 15px; 
     display: flex;
+    font-family: 'Inter';
+    width: 62%;
 
 
 }
@@ -89,19 +70,130 @@ body {
 }
 
 .avatar {
-    width: 120px; 
-    height: 120px; 
-    top: 204px;
-    left: 70px;
-    gap: 10px;
-    position: absolute;
+    max-width: 120px;
+    max-height: 120px;
+    padding-top: 204px;
+    padding-right: 84px;
+    padding-left: 70px;
 }
 
-.form_conctact {
+.form_contact {
     display: flex;
     flex-direction: column;
+    width: 422px;
+    gap: 49px;
+    padding-top: 79px;
+    padding-bottom: 55px;
+    padding-right: 63px;
 }
 
 .form_buttons {
     display: flex;
+}
+
+.close {
+    height: 21.65px;
+    padding-top: 35px;
+    padding-right: 63px;
+}
+
+.input_name {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 21px;
+    padding-right: 21px;
+    color: #D1D1D1;
+    background: url(img/icon_small_profile.svg);
+    background-repeat: no-repeat;
+    background-position-x: 380px;
+    padding-right: 45px;
+    background-size: 16px;
+    background-position-y: 12px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #D1D1D1;
+    border-style: solid;
+    font-size: 21px;
+
+}
+
+.input_email {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 21px;
+    color: #D1D1D1;
+    background: url(img/icon_message.svg);
+    background-repeat: no-repeat;
+    background-position-x: 380px;
+    padding-right: 45px;
+    background-size: 16px;
+    background-position-y: 17px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #D1D1D1;
+    border-style: solid;
+    font-size: 21px;
+}
+
+.input_phone {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 21px;
+    padding-right: 21px;
+    color: #D1D1D1;
+    background: url(img/icon_small_phone.svg);
+    background-repeat: no-repeat;
+    background-position-x: 380px;
+    padding-right: 45px;
+    background-size: 16px;
+    background-position-y: 15px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #D1D1D1;
+    border-style: solid;
+    font-size: 21px;
+}
+
+.cancel {
+    padding: 15px;
+    border-radius: 10px;
+    height: 55px;
+    font-size: 21px;
+    color: #2A3647;
+    background: url(img/cancel_cross.svg);
+    background-repeat: no-repeat;
+    font-family: 'Inter';
+    background-position: right;
+    margin-right: 30px;
+    border-width: 1px;
+    background-position-x: 100px;
+    padding-right: 45px;
+    border-style: solid;
+
+
+
+
+
+}
+
+.submit {
+    width: 218px;
+    height: 55px;
+    border-radius: 10px;
+    font-size: 21px;
+    font-weight: 700;
+    font-family: 'Inter';
+    background: url(img/create_contact_icon.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    color: white;
+    background-color: #2A3647;
+    border: 1px;
+    background-position-x: 180px;
+    padding-right: 45px;
+}
+
+.close-cross {
+    display: flex;
+    justify-content: right;
 }
