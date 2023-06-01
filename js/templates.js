@@ -74,3 +74,11 @@ function renderHeader() {
         </div>`;
     return render;
 }
+
+function renderContacts() {
+    let render = renderSidebar();
+    render += renderHeader();
+    render += renderContactsOverview();
+    render += renderContactsDetails();
+    return render;
+}
