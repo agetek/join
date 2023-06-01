@@ -1,9 +1,24 @@
 async function openContacts() {
-    users = await getItem('users');
+    users = await getItemLocal('users');
     sortUsersByName();
     makeLetters();
     let render = renderContacts();
     document.getElementById('container').innerHTML = render;
+    if (active_user_id >= 0 ) {
+        document.getElementById('single_contact_' + active_user_id).classList.add('single_contact_active'); 
+    }
+}
+
+function renderContacts() {
+    let render = renderSidebar();
+    render += `<div class="right">`;
+    render += renderHeader();
+    render += `<div class="middle_column">`;
+    render += renderContactsOverview();    
+    render += renderContactsDetails();
+    render += `</div>`;
+    render += `</div>`;
+    return render;
 }
 
 function sortUsersByName() {
@@ -33,7 +48,7 @@ function renderContactsOverview() {
 function renderUser(filteredUsers) {
     let render = '';
     for (let i = 0; i < filteredUsers.length; i++) {
-        render += `<div class="single_contact">`;
+        render += `<div class="single_contact" id="single_contact_${filteredUsers[i]['id']}" onclick="selectContact(${filteredUsers[i]['id']})">`;
         render += `<div class="initials_contact">`;
         render += renderInitials(filteredUsers[i]);
         render += `</div>`;
@@ -62,7 +77,38 @@ function renderLetter(i) {
 }
 
 function renderContactsDetails() {
-    let render = `<div class="contacts_details"></div>`;
+    let render = `<div class="contacts_details_outer">`;
+    render += `<div class="contacts_details">
+                    <div class="contacts_details_contacts">Contacts</div>
+                    <div class="contacts_details_line"></div>
+                    <div class="contacts_details_better">Better with a team</div>
+                </div>
+                <div class="contacts_details_details">`;
+    if (active_user_id >= 0) { render += renderActiveContact(); }
+    render += `</div>
+            </div>`;
+    return render;
+}
+function renderActiveContact() {
+    let filteredUsers = users.filter(user => user.id == active_user_id);
+    let render = `<div class="contacts_details_active">`;
+    render += `<div class="contact_details_heading">`;
+    render += `<div class="contact_details_initials">`;
+    render += renderInitials(filteredUsers[0]);
+    render += `</div>`;
+    render += `<div class="contact_details_name_add_task">`;
+    render += `<div class="contact_details_name">${filteredUsers[0]['name']}</div>`;
+    render += `<div class="contact_details_add_task" onclick="addTask(${filteredUsers[0]['id']})"><div class="contact_details_add_task_icon"></div><div class="contact_details_add_task_name">Add Task</div></div>`;
+    render += `</div>`;
+    render += `</div>`;
+    render += `<div class="contact_details_contact_information_outer"><div class="contact_details_contact_information_inner">Contact Information</div>`;
+    render += `<div class="contact_details_edit" onclick="editContact(${filteredUsers[0]['id']})"><div class="contact_details_edit_icon"></div><div class="contact_details_edit_contact">Edit Contact</div></div>`;
+    render += `</div>`;
+    render += `<div class="contact_details_email_text">Email</div>`;
+    render += `<div class="contact_details_email">${filteredUsers[0]['email']}</div>`;
+    render += `<div class="contact_details_phone_text">Phone</div>`;
+    render += `<div class="contact_details_phone">${filteredUsers[0]['phone']}</div>`;
+    render += `<div class="contact_details_new_contact"><div class="contact_details_new_contact_icon" onclick="addContact"></div></div>`;
     return render;
 }
 
@@ -81,7 +127,11 @@ async function addContact() {
     };
 
     users.push(user);
-    response = await setItem('users', users);
-    console.log(response);
+    response = await setItemLocal('users', users);
+}
+
+function selectContact(id) {
+    active_user_id = id;
+    openContacts();
 }
 

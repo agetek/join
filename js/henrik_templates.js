@@ -2,17 +2,17 @@ function renderAddContact() {
     let render = `
     <div class="add_contact">
         <div class="contact_design">
-             <img class="small_logo" src="img/small_logo_add_contact.svg"> 
+                 <img class="small_logo" src="img/small_logo_add_contact.svg"> 
              <span class="slogan_add_contact">Add contact</span> 
              <span class="description_contact">Tasks are better with a team!</span>
              <div class="design_line">
              </div>
         </div>
         <div class="contact_input">
-            <img class="avatar" src="img/icon_profile.svg">
+                 <img class="avatar" src="img/icon_profile.svg">
             <div class="contact_second_side">
                 <div class="close"></div>
-                <form class="form_contact" onsubmit="addContact()" action="">
+                <form class="form_conctact" onsubmit="addContact()" action="">
                     <input type="text" class="input_name" id="input_name" placeholder="Name" required>
                     <input type="email" class="input_email" id ="input_email" placeholder="Email" required>
                     <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
@@ -20,8 +20,7 @@ function renderAddContact() {
                 <div class="form_buttons">
                     <button type="reset" class="cancel">Cancel</button>
                     <button type="submit" class="submit">Create Contact</button>
-                </div>  
-                </form>   
+                </div>    
             <div>
         </div>
     </div>`;
@@ -49,11 +48,20 @@ function renderEditContact() {
 }
 
 
-function renderRegisterForm(){
-    let render = `<form onsubmit="register(); return false;">
-    <input required type="email" id="email"> 
-    <input required type="password" id="password"> 
-    <button id="registerBtn">Registrieren</button></form>`;
+function renderSignUpForm(){
+    let render = ` <div class="sign_up" id="sign_up">
+    <div class="sign_up_head">
+    <div class="sign_up_title">
+    <img onclick="back_to_login" class="arrow_back_blue" src="./img/blue_arrow_back.svg">
+    <div class="headline_signup">Sign up</div>
+    <img class="underline_blue" src="./img/underline_blue">
+    </div>
+    </div>
+    <form onsubmit="register(); return false;">
+    <input type="email" id="email" required> 
+    <input type="password" id="password" required> 
+    <button id="registerBtn">Registrieren</button></form>
+    </div>`;
     return render;
 }
 
@@ -79,15 +87,5 @@ function renderHeader() {
             <div class="header_help"></div>
             <div class="header_profile_img"></div>
         </div>`;
-    return render;
-}
-
-function renderContacts() {
-    let render = renderSidebar();
-    render += `<div class="middle_column">`;
-    render += renderHeader();
-    render += renderContactsOverview();
-    render += `</div>`;
-    render += renderContactsDetails();
     return render;
 }

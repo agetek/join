@@ -100,6 +100,17 @@
     align-items: center;
 }
 
+.right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.middle_column {
+    display: flex;
+    flex-direction: row;
+}
+
 /* header start */
 
 .header {
@@ -114,7 +125,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 453px;
+    width: 453px;
     height: calc(100vh - 89px);
     overflow-y: scroll;
 }
@@ -133,6 +144,19 @@
 .single_contact {
     display: flex;
     width: 357px;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 75px;
+}
+
+.single_contact:hover {
+
+}
+
+.single_contact_active {
+    background-color: #2A3647;
+    color: white;
 }
 
 .contact_line {
@@ -161,7 +185,7 @@
 }
 
 .single_contact_name_email {
-    
+
     display: flex;
     flex-direction: column;
     margin-top: 15px;
@@ -171,7 +195,6 @@
 
 .single_contact_name {
     font-size: 21px;
-    color: #000000;
 }
 
 .single_contact_email {
@@ -180,3 +203,190 @@
 }
 
 /* Contact Overview End */
+
+/* Contact Details Start */
+
+
+
+.contacts_details_outer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.contacts_details {
+    display: flex;
+    margin-top: 82px;
+    margin-left: 58px;
+    align-items: center;
+}
+
+.contacts_details_contacts {
+    display: flex;
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.contacts_details_line {
+    display: flex;
+    height: 59px;
+    width: 0px;
+    border: 3px solid #29ABE2;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.contacts_details_better {
+    display: flex;
+    font-size: 27px;
+    color: #2A3647;
+}
+
+.contacts_details_details {
+    display: flex;
+    flex: 1;
+}
+
+.contacts_details_active {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+    margin-left: 65px;
+    width: 574px;
+}
+
+.contact_details_heading {
+    display: flex;
+}
+
+.contact_details_initials {
+    display: flex;
+    min-width: 120px;
+    min-height: 120px;
+    font-size: 47px;
+}
+
+.contact_details_name {
+    display: flex;
+    font-size: 47px;
+    font-weight: 500;
+
+}
+
+.contact_details_name_add_task {
+    display: flex;
+    flex-direction: column;
+    margin-left: 54px;
+    justify-content: center;
+}
+
+.contact_details_add_task {
+    display: flex;
+    margin-top: 13px;
+    cursor: pointer;
+}
+
+.contact_details_add_task_icon {
+    display: flex;
+    background-image: url(img/add_task_plus.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    min-width: 15px;
+    min-height: 15px;
+}
+
+.contact_details_add_task_name {
+    display: flex;
+    margin-left: 13px;
+    font-size: 16px;
+    color: #29ABE2;
+}
+
+.contact_details_contact_information_outer {
+    display: flex;
+    margin-top: 21px;
+    width: 207px;
+    height: 74px;
+}
+
+.contact_details_contact_information_inner {
+    display: flex;
+    font-size: 21px;
+    min-width: 207px;
+    min-height: 74px;
+    align-items: center;
+}
+
+.contact_details_edit {
+    display: flex;
+    align-items: center;
+    margin-left: 59px;
+    cursor: pointer;
+}
+
+.contact_details_edit_icon {
+    display: flex;
+    background-image: url(img/edit_contact_pen.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    width: 21px;
+    height: 30px;
+}
+
+.contact_details_edit_contact {
+    display: flex;
+    min-width: 100px;
+    align-items: center;
+    margin-left: 6px;
+}
+
+.contact_details_email_text {
+    display: flex;
+    margin-top: 21px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.contact_details_email { 
+    display: flex;
+    margin-top: 15px;
+    font-size: 16px;
+    color: #007CEE;
+}
+
+.contact_details_phone_text {
+    display: flex;
+    margin-top: 22px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.contact_details_phone {
+    display: flex;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.contact_details_new_contact {
+    display: flex;
+    padding-bottom: 64px;
+    justify-content: flex-end;
+    align-items: end;    
+    flex: 1;
+}
+
+.contact_details_new_contact_icon {
+    display: flex;
+    background-image: url(img/new_contact_button.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    width: 198px;
+    height: 53px;
+    cursor: pointer;
+}
+
+/* Contact Details End */
