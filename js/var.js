@@ -76,3 +76,50 @@ let users =
         'color_id': 'rgb(203,27,207)',
     }
     ];
+
+
+let todos = [{
+    'topic': 'Design',
+    'id': 0,
+    'title': 'Website redesign',
+    'description': 'Modify the contents of the main website...',
+    'category': 'window1'
+},
+{
+    'topic': 'Sales',
+    'topic-color': '#FC71FF',
+    'id': 1,
+    'title': 'In progress',
+    'description': 'Make the product presentation to prospective buyers',
+    'category': 'window2'
+},
+{
+    'topic': 'Backoffice',
+    'id': 2,
+    'title': 'Accounting invoices',
+    'description': 'Make the product presentation to prospective buyers',
+    'category': 'window3'
+},
+{
+    'topic': 'Marketing',
+    'id': 3,
+    'title': 'Call potential clients',
+    'description': 'Make the product presentation to prospective buyers',
+    'category': 'window4'
+},
+{
+    'topic': 'Media',
+    'id': 4,
+    'title': 'Video Cut',
+    'description': 'Edit the new company',
+    'category': 'window4'
+    
+}
+
+
+
+
+
+];
+
+let currentDraggedElement;
