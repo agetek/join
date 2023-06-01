@@ -82,3 +82,10 @@ function renderContacts() {
     render += renderContactsDetails();
     return render;
 }
+
+function renderBoard() {
+    let render = renderSidebar();
+    render += renderHeader();
+    render += board();
+        return render;
+}
