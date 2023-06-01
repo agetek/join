@@ -75,14 +75,6 @@ function renderHeader() {
     return render;
 }
 
-function renderContacts() {
-    let render = renderSidebar();
-    render += renderHeader();
-    render += renderContactsOverview();
-    render += renderContactsDetails();
-    return render;
-}
-
 function renderBoard() {
     let render = renderSidebar();
     render += renderHeader();
