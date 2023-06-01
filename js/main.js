@@ -1,6 +1,6 @@
 async function init() {
     document.getElementById('container').innerHTML = renderAddContact();
-    users = await getItem('users');
+    users = await getItemLocal('users');
     console.log(users);
 }
 
@@ -18,4 +18,13 @@ async function getItem(key) {
     resultReturn = resultReturn.replaceAll("'", '"');
     resultReturn = JSON.parse(resultReturn);
     return resultReturn;
+}
+
+async function setItemLocal(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+async function getItemLocal(key) {
+    let data = await JSON.parse(localStorage.getItem(key));
+    return data
 }
