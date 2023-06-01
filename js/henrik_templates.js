@@ -49,6 +49,13 @@ function renderEditContact() {
 }
 
 
+function renderRegisterForm(){
+    let render = `<form onsubmit="register(); return false;">
+    <input required type="email" id="email"> 
+    <input required type="password" id="password"> 
+    <button id="registerBtn">Registrieren</button></form>`;
+    return render;
+}
 
 function renderSidebar() {
     let render = `<div class="sidebar">
@@ -77,15 +84,10 @@ function renderHeader() {
 
 function renderContacts() {
     let render = renderSidebar();
+    render += `<div class="middle_column">`;
     render += renderHeader();
     render += renderContactsOverview();
+    render += `</div>`;
     render += renderContactsDetails();
     return render;
-}
-
-function renderBoard() {
-    let render = renderSidebar();
-    render += renderHeader();
-    render += board();
-        return render;
 }
