@@ -4,9 +4,6 @@ async function openContacts() {
     makeLetters();
     let render = renderContacts();
     document.getElementById('container').innerHTML = render;
-    if (active_user_id >= 0 ) {
-        document.getElementById('single_contact_' + active_user_id).classList.add('single_contact_active'); 
-    }
 }
 
 function renderContacts() {
@@ -83,7 +80,7 @@ function renderContactsDetails() {
                     <div class="contacts_details_line"></div>
                     <div class="contacts_details_better">Better with a team</div>
                 </div>
-                <div class="contacts_details_details">`;
+                <div class="contacts_details_details" id="render_active_contact">`;
     if (active_user_id >= 0) { render += renderActiveContact(); }
     render += `</div>
             </div>`;
@@ -131,7 +128,27 @@ async function addContact() {
 }
 
 function selectContact(id) {
+    if (active_user_id >= 0) {	document.getElementById('single_contact_' + active_user_id).classList.remove('single_contact_active'); }
     active_user_id = id;
-    openContacts();
+    let render = renderActiveContact();
+    document.getElementById('render_active_contact').innerHTML = render;
+    document.getElementById('single_contact_' + active_user_id).classList.add('single_contact_active'); 
 }
 
+function editContact(id) {
+    let filteredUsers = users.filter(user => user.id == id);
+    oldContent = document.getElementById('container').innerHTML;
+    let newContent = `<div class="popup" onclick="closeEdit()">`;
+    newContent += renderEditContact(id);
+    newContent += `</div>`;
+    document.getElementById('container').innerHTML = oldContent + newContent;
+    document.getElementById('input_name').value = filteredUsers[0]['name'];
+    document.getElementById('input_email').value = filteredUsers[0]['email'];
+    document.getElementById('input_phone').value = filteredUsers[0]['phone'];
+    let avatar = renderInitials(filteredUsers[0]);
+    document.getElementById('avatar').innerHTML = avatar;
+}
+
+function closeEdit() {
+    document.getElementById('container').innerHTML = oldContent;
+}

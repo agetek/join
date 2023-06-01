@@ -11,7 +11,8 @@ body {
 .contact_design {
     background-color: #2A3647;
     color: white;
-    width: 38%;
+    width: 453px;
+    height: 594px;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     font-size: 27px;
@@ -60,9 +61,10 @@ body {
     border-top-right-radius: 15px; 
     display: flex;
     font-family: 'Inter';
-    width: 62%;
-
-
+    width: 759px;
+    height: 594px;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .contact_second_side {
@@ -71,11 +73,10 @@ body {
 }
 
 .avatar {
-    max-width: 120px;
-    max-height: 120px;
-    padding-top: 204px;
-    padding-right: 84px;
-    padding-left: 70px;
+    display: flex;
+    width: 120px;
+    height: 120px;
+    font-size: 47px;
 }
 
 .form_contact {
@@ -90,12 +91,21 @@ body {
 
 .form_buttons {
     display: flex;
+    margin-top: 55px;
+    justify-content: flex-end;
 }
 
 .close {
-    height: 21.65px;
-    padding-top: 35px;
-    padding-right: 63px;
+    background-image: url(img/edit_close.svg);
+    background-position: center;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 19px;
+    position: relative;
+    top: 34px;
+    right: 63px;
+    cursor: pointer;
 }
 
 .input_name {
@@ -103,7 +113,7 @@ body {
     padding-bottom: 13px;
     padding-left: 21px;
     padding-right: 21px;
-    color: #D1D1D1;
+    color: black;
     background: url(img/icon_small_profile.svg);
     background-repeat: no-repeat;
     background-position-x: 380px;
@@ -115,14 +125,15 @@ body {
     border-color: #D1D1D1;
     border-style: solid;
     font-size: 21px;
-
+    width: 422px;
+    box-sizing: border-box;
 }
 
 .input_email {
     padding-top: 13px;
     padding-bottom: 13px;
     padding-left: 21px;
-    color: #D1D1D1;
+    color: black;
     background: url(img/icon_message.svg);
     background-repeat: no-repeat;
     background-position-x: 380px;
@@ -134,6 +145,7 @@ body {
     border-color: #D1D1D1;
     border-style: solid;
     font-size: 21px;
+    box-sizing: border-box;
 }
 
 .input_phone {
@@ -141,7 +153,7 @@ body {
     padding-bottom: 13px;
     padding-left: 21px;
     padding-right: 21px;
-    color: #D1D1D1;
+    color: black;
     background: url(img/icon_small_phone.svg);
     background-repeat: no-repeat;
     background-position-x: 380px;
@@ -153,6 +165,7 @@ body {
     border-color: #D1D1D1;
     border-style: solid;
     font-size: 21px;
+    box-sizing: border-box;
 }
 
 .cancel {
@@ -170,11 +183,32 @@ body {
     background-position-x: 100px;
     padding-right: 45px;
     border-style: solid;
+    cursor: pointer;
+}
 
+.delete {
+    padding: 15px;
+    border-radius: 10px;
+    height: 55px;
+    font-size: 21px;
+    color: #2A3647;
+    font-family: 'Inter';
+    margin-right: 30px;
+    border: 1px solid #2A3647;
+    cursor: pointer;
+}
 
-
-
-
+.save {
+    width: 153px;
+    height: 55px;
+    border-radius: 10px;
+    font-size: 21px;
+    font-weight: 700;
+    font-family: 'Inter';
+    color: white;
+    background-color: #2A3647;
+    border: 1px;
+    cursor: pointer;
 }
 
 .submit {
@@ -192,6 +226,7 @@ body {
     border: 1px;
     background-position-x: 180px;
     padding-right: 45px;
+    cursor: pointer;
 }
 
 .close-cross {

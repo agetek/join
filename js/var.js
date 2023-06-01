@@ -4,6 +4,8 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 const firstLetters = [];
 
+let oldContent = "";
+
 let active_user_id = -1;
 
 
