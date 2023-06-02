@@ -29,21 +29,26 @@ function renderAddContact() {
 }
 
 function renderEditContact() {
-    let render = `<div class="edit_contact">
-        <div class="contact_design"><img class="logo" src=""><div class="design_line"></div></div>
+    let render = `<div class="edit_contact" onclick="event.stopPropagation()">
+        
+        <div class="contact_design"><div class="edit_contact_img"></div></div>
         <div class="contact_input">
-            <div class="close"></div>
-            <img class="avatar" src="">
-            <form onsubmit="editContact()">
-                <input type="text" class="input_name" id="input_name" placeholder="Name" required>
-                <input type="text" class="input_email" id ="input_email" placeholder="Email" required>
-                <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
+        <div class="avatar" id="avatar"></div>
+            <form onsubmit="updateContact()">
+                <div class="edit_form">
+                    <input type="text" class="input_name" id="input_name" placeholder="Name" required>
+                    <input type="text" class="input_email" id ="input_email" placeholder="Email" required>
+                    <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
+                </div>
                 <div class="form_buttons">
-                    <button class="cancel" onclick="deleteContact()">Delete</button>
-                    <button type="submit" class="submit">Save</button>
+                    <button class="delete" onclick="deleteContact()">Delete</button>
+                    <button type="submit" class="save">Save</button>
                 </div>
             </form>
+        
         </div>
+        
+        <div class="close" onclick="closeEdit()"></div>
     </div>`;
     return render;
 }
