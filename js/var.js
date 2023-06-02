@@ -91,7 +91,7 @@ let todos = [{
     'title': 'Website redesign',
     'description': 'Modify the contents of the main website...',
     'category': 'window1',
-    'users': ''
+    'users': 'MB'
 },
 {
     'topic': 'Sales',

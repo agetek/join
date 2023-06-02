@@ -112,7 +112,7 @@ function generateToDoHTML(element) {
         </div>
         <div class="description">${element['description']}
         </div>
-        <div class="board_users">
+        <div class="board_users">${element['users']}
         </div>
     </div>`;
 }
