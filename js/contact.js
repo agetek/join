@@ -152,3 +152,36 @@ function editContact(id) {
 function closeEdit() {
     document.getElementById('container').innerHTML = oldContent;
 }
+
+function getPosition() {
+    let position = -1;
+    for (let i = 0; i < users.length; i++) {
+        if (users[i]['id'] == active_user_id) {
+            position = i;
+        }
+    }
+    return position;
+}
+
+async function updateContact() {
+    let position = getPosition();
+    users[position]['name'] = document.getElementById('input_name').value;
+    users[position]['email'] = document.getElementById('input_email').value;
+    users[position]['phone'] = document.getElementById('input_phone').value;
+    await setItemLocal('users', users);
+    await openContacts();
+}
+
+async function deleteContact() {
+    let position = getPosition();
+    users.splice(position, 1);
+    await setItemLocal('users', users);
+    active_user_id = -1;
+    firstLetters = [];
+    await openContacts();
+}
+
+function loadOldContacts() {
+    let users = usersOld;
+    setItemLocal('users', users);
+}
