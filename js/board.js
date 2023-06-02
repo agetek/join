@@ -10,8 +10,8 @@ function board() {
         <div class="board_header">
             <h2 id="h2_headline">Board</h2>
             <div>
-            <input id="find_task" placeholder="Find Task"></input>
-            <button id="add_task" onclick"searchTask()" <img src="img/plus.svg">Add task</button>
+            <input type="text" onkeyup="search_animal()" name="search" id="find_task" placeholder="Find Task"></input>
+            <button id="add_task">Add task <img id="board_plus" src="img/plus.svg"</button>
             </div>
         </div>
         <div class="board-main-container">
@@ -112,6 +112,8 @@ function generateToDoHTML(element) {
         </div>
         <div class="description">${element['description']}
         </div>
+        <div class="board_users">
+        </div>
     </div>`;
 }
 
@@ -128,3 +130,18 @@ function moveTo(category) {
     todos[currentDraggedElement]['category'] = category; 
     updateHTML();
 }
+
+// Suchfunktion auf der Board Seite
+function search_animal() {
+    let input = document.getElementById('find_task').value;
+    input = input.toLowerCase();
+    let x = document.getElementsByClassName('todo');
+      
+    for (let i = 0; i < x.length; i++) { 
+        if (!x[i].textContent.toLowerCase().includes(input)) {
+            x[i].style.display = "none";
+        } else {
+            x[i].style.display = "block";                 
+        }
+    }
+} 

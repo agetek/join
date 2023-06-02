@@ -88,7 +88,8 @@ let todos = [{
     'id': 0,
     'title': 'Website redesign',
     'description': 'Modify the contents of the main website...',
-    'category': 'window1'
+    'category': 'window1',
+    'users': ''
 },
 {
     'topic': 'Sales',

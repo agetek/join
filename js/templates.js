@@ -77,7 +77,11 @@ function renderHeader() {
 
 function renderBoard() {
     let render = renderSidebar();
+    render += `<div class="right">`;
     render += renderHeader();
+    render += `<div class="middle_column">`;
     render += board();
+    render += `</div>`;
+    render += `</div>`;
         return render;
 }
