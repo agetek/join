@@ -53,7 +53,7 @@ function renderSignUpForm() {
             <form onsubmit="register()">
                     <input type="text" class="input_name" id="input_field" placeholder="Name" required>
                     <input type="email" class="input_email" id ="input_field" placeholder="Email" required>
-                    <input type="number" class="input_phone" id ="input_field" placeholder="Phone" required>
+                    <input type="text" class="input_phone" id ="input_field" placeholder="Phone" required>
                     <button class="input_button" id="input_field">Sign up</button>
             </form>
         </div>
