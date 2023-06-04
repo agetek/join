@@ -2,12 +2,23 @@ const STORAGE_TOKEN = 'MUN5KNFTRVLKWHRYHI4AWBPGV0QPFN644A67VODV';
 
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
-const firstLetters = [];
+let firstLetters = [];
 
 let oldContent = "";
 
-let active_user_id = -1;
+let activeUserId = -1;
 
+const colors = [
+    'rgb(254,122,0)',
+    'rgb(147,39,255)',
+    'rgb(41,171,226)',
+    'rgb(252,113,255)',
+    'rgb(25,207,48)',
+    'rgb(175,22,22)',
+    'rgb(70,47,138)',
+    'rgb(147,39,255)',
+    'rgb(203,27,207)'
+];
 
 let users =
     [{

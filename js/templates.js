@@ -1,54 +1,47 @@
 function renderAddContact() {
     let render = `
-    <div class="add_contact">
-        <div class="contact_design">
-             <img class="small_logo" src="img/small_logo_add_contact.svg"> 
-             <span class="slogan_add_contact">Add contact</span> 
-             <span class="description_contact">Tasks are better with a team!</span>
-             <div class="design_line">
-             </div>
-        </div>
+    <div class="add_contact" onclick="event.stopPropagation()" id="popup_content">
+        <div class="contact_design"><div class="add_contact_img"></div></div>
         <div class="contact_input">
-            <img class="avatar" src="img/icon_profile.svg">
-            <div class="contact_second_side">
-                <div class="close"></div>
-                <form class="form_contact" onsubmit="addContact()" action="">
-                    <input type="text" class="input_name" id="input_name" placeholder="Name" required>
-                    <input type="email" class="input_email" id ="input_email" placeholder="Email" required>
-                    <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
-                
-                <div class="form_buttons">
-                    <button type="reset" class="cancel">Cancel</button>
-                    <button type="submit" class="submit">Create Contact</button>
-                </div>  
-                </form>   
-            <div>
+            <div class="avatar_add"></div>
+                <form action="javascript:addContact()">
+                    <div class="edit_form">
+                        <input type="text" class="input_name" id="input_name" placeholder="Name" pattern="[a-zA-Z]{2,}[\\s]{1}[a-zA-Z]{2,}" required>
+                        <input type="email" class="input_email" id ="input_email" placeholder="Email" required>
+                        <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
+                    </div>
+                    <div class="form_buttons">
+                        <button type="reset" class="cancel">Cancel</button>
+                        <button type="submit" class="submit">Create contact</button>
+                    </div>
+                </form>
+            </div>
+            <div class="close" onclick="closeEdit()"></div>
         </div>
     </div>`;
     return render;
 }
 
 function renderEditContact() {
-    let render = `<div class="edit_contact" onclick="event.stopPropagation()">
-        
+    let render = `
+    <div class="edit_contact" onclick="event.stopPropagation()" id="popup_content">  
         <div class="contact_design"><div class="edit_contact_img"></div></div>
         <div class="contact_input">
-        <div class="avatar" id="avatar"></div>
-            <form onsubmit="updateContact()">
-                <div class="edit_form">
-                    <input type="text" class="input_name" id="input_name" placeholder="Name" required>
-                    <input type="text" class="input_email" id ="input_email" placeholder="Email" required>
-                    <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
-                </div>
-                <div class="form_buttons">
-                    <button class="delete" onclick="deleteContact()">Delete</button>
-                    <button type="submit" class="save">Save</button>
-                </div>
-            </form>
-        
+            <div class="avatar" id="avatar"></div>
+                <form>
+                    <div class="edit_form">
+                        <input type="text" class="input_name" id="input_name" placeholder="Name" required>
+                        <input type="email" class="input_email" id ="input_email" placeholder="Email" required>
+                        <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
+                    </div>
+                    <div class="form_buttons">
+                        <button type="submit" class="delete" formaction="javascript:deleteContact()">Delete</button>
+                        <button type="submit" class="save"  formaction="javascript:updateContact()">Save</button>
+                    </div>
+                </form>
+            </div>
+            <div class="close" onclick="closeEdit()"></div>
         </div>
-        
-        <div class="close" onclick="closeEdit()"></div>
     </div>`;
     return render;
 }

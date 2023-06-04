@@ -5,7 +5,7 @@
 .sidebar {
     display: flex;
     flex-direction: column;
-    width: 232px;
+    min-width: 232px;
     max-width: 232px;
     background-color: #2A3647;
     color: #CDCDCD;
@@ -246,6 +246,8 @@
 .contacts_details_details {
     display: flex;
     flex: 1;
+    max-width: 639px;
+    overflow-x: hidden;
 }
 
 .contacts_details_active {
@@ -253,7 +255,7 @@
     flex-direction: column;
     margin-top: 48px;
     margin-left: 65px;
-    width: 574px;
+    min-width: 574px;
 }
 
 .contact_details_heading {
@@ -264,6 +266,8 @@
     display: flex;
     min-width: 120px;
     min-height: 120px;
+    max-width: 120px;
+    max-height: 120px;
     font-size: 47px;
 }
 
@@ -394,13 +398,48 @@
 /* Edit Contact Start */
 
 .popup {
-    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 250ms ease-out;
+    background-color: rgba(0, 0, 0, 0);
     display: flex;
     position: fixed;
     width: 100%;
     height: 100vh;
+    max-width: 100%;
+    max-height: 100vh;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+}
+
+#popup_content {
+    position: relative;
+    transition: all 250ms ease-out;
+    right: -100%;
+}
+
+.shift_message_outer {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+#shift_message {
+    transition: all 0.25s ease-in-out;
+    position: relative;
+    bottom: -200px;
+    height: max-content;
+    width: max-content;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 21px;
+    font-family: 'Inter';
+    color: white;
+    background-color: #2A3647;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .edit_contact {
@@ -413,6 +452,17 @@
     width: 453px;
     height: 594px;
     background-image: url(img/logo_edit_contact.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.add_contact_img {
+    width: 453px;
+    height: 594px;
+    background-image: url(img/logo_add_contact_neu.svg);
     background-position: center;
     background-repeat: no-repeat;
     object-fit: cover;

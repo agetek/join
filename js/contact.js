@@ -61,7 +61,7 @@ function renderUser(filteredUsers) {
 function renderInitials(user) {
     let nameSplit = user.name.split(' ');
     let firstLetter = nameSplit[0].charAt(0).toUpperCase();
-    let secondLetter = nameSplit[1].charAt(0) .toUpperCase();
+    let secondLetter = nameSplit[1].charAt(0).toUpperCase();
     let bgColor = user.color_id;
     let render = `<div class="initials" style="background-color: ${bgColor}">${firstLetter}${secondLetter}</div>`;
     return render;
@@ -81,14 +81,15 @@ function renderContactsDetails() {
                     <div class="contacts_details_better">Better with a team</div>
                 </div>
                 <div class="contacts_details_details" id="render_active_contact">`;
-    if (active_user_id >= 0) { render += renderActiveContact(); }
+    if (activeUserId >= 0) { render += renderActiveContact(); }
     render += `</div>
             </div>`;
     return render;
 }
+
 function renderActiveContact() {
-    let filteredUsers = users.filter(user => user.id == active_user_id);
-    let render = `<div class="contacts_details_active">`;
+    let filteredUsers = users.filter(user => user.id == activeUserId);
+    let render = `<div class="contacts_details_active" id="render_contact_shift">`;
     render += `<div class="contact_details_heading">`;
     render += `<div class="contact_details_initials">`;
     render += renderInitials(filteredUsers[0]);
@@ -105,40 +106,73 @@ function renderActiveContact() {
     render += `<div class="contact_details_email">${filteredUsers[0]['email']}</div>`;
     render += `<div class="contact_details_phone_text">Phone</div>`;
     render += `<div class="contact_details_phone">${filteredUsers[0]['phone']}</div>`;
-    render += `<div class="contact_details_new_contact"><div class="contact_details_new_contact_icon" onclick="addContact"></div></div>`;
+    render += `<div class="contact_details_new_contact"><div class="contact_details_new_contact_icon" onclick="openAddContact()"></div></div>`;
     return render;
 }
 
 async function addContact() {
-    let name = document.getElementById('input_name').value;
-    let email = document.getElementById('input_email').value;
-    let phone = document.getElementById('input_phone').value;
+    shiftPopupOut();
+    setTimeout(async function() {
+        let name = document.getElementById('input_name').value;
+        name = formatName(name);
+        let email = document.getElementById('input_email').value;
+        let phone = document.getElementById('input_phone').value;
+        let color = getRandomColor();
+        let id = getMaxId();
+        let user = {
+            'id': id,
+            'name': name,
+            'email': email,
+            'phone': phone,
+            'password': '',
+            'color_id': color
+        };
+        users.push(user);
+        await setItemLocal('users', users);
+        await openContacts();
+        shiftMessage('Contact successfully created');
+    }, 250);
+}
 
-    let user = {
-        'id': 10,
-        'name': name,
-        'email': email,
-        'phone': phone,
-        'password': '',
-        'color_id': 'rgb(147,39,255)',
-    };
+function formatName(name) {
+    let nameSplit = name.split(' ');
+    let firstLetter = nameSplit[0].charAt(0).toUpperCase();
+    let secondLetter = nameSplit[1].charAt(0).toUpperCase();
+    let firstRest = nameSplit[0].substring(1).toLowerCase();
+    let secondRest = nameSplit[1].substring(1).toLowerCase();
+    let output = firstLetter + firstRest + " " + secondLetter + secondRest;
+    console.log(firstLetter + firstRest + " " + secondLetter + secondRest);
+    return output;
+}
 
-    users.push(user);
-    response = await setItemLocal('users', users);
+function getRandomColor() {
+    let color = colors[Math.round(Math.random()*colors.length)];
+    return color
+}
+
+function getMaxId() {
+    let max = null;
+    for (let i=0 ; i<users.length ; i++) {
+        if (max == null || users[i]['id'] > max)
+            max = users[i]['id'];
+    }
+    return max + 1;
 }
 
 function selectContact(id) {
-    if (active_user_id >= 0) {	document.getElementById('single_contact_' + active_user_id).classList.remove('single_contact_active'); }
-    active_user_id = id;
+    if (activeUserId >= 0) {	document.getElementById('single_contact_' + activeUserId).classList.remove('single_contact_active'); }
+    activeUserId = id;
     let render = renderActiveContact();
     document.getElementById('render_active_contact').innerHTML = render;
-    document.getElementById('single_contact_' + active_user_id).classList.add('single_contact_active'); 
+    document.getElementById('single_contact_' + activeUserId).classList.add('single_contact_active');
+    document.getElementById('render_contact_shift').style.cssText = 'margin-left: 1000px';
+    setTimeout(()=>{document.getElementById('render_contact_shift').style.cssText = 'transition: all 250ms ease-out; margin-left: 65px';}, 1);
 }
 
 function editContact(id) {
     let filteredUsers = users.filter(user => user.id == id);
     oldContent = document.getElementById('container').innerHTML;
-    let newContent = `<div class="popup" onclick="closeEdit()">`;
+    let newContent = `<div class="popup" id="popup" onclick="closeEdit()">`;
     newContent += renderEditContact(id);
     newContent += `</div>`;
     document.getElementById('container').innerHTML = oldContent + newContent;
@@ -147,16 +181,27 @@ function editContact(id) {
     document.getElementById('input_phone').value = filteredUsers[0]['phone'];
     let avatar = renderInitials(filteredUsers[0]);
     document.getElementById('avatar').innerHTML = avatar;
+    setTimeout(() => {shiftPopupIn()}, 1);
+}
+
+function openAddContact() {
+    oldContent = document.getElementById('container').innerHTML;
+    let newContent = `<div class="popup" id="popup" onclick="closeEdit()">`;
+    newContent += renderAddContact();
+    newContent += `</div>`;
+    document.getElementById('container').innerHTML = oldContent + newContent;
+    setTimeout(() => {shiftPopupIn()}, 1);
 }
 
 function closeEdit() {
-    document.getElementById('container').innerHTML = oldContent;
+    shiftPopupOut();
+    setTimeout(()=>{document.getElementById('container').innerHTML = oldContent;}, 250);
 }
 
 function getPosition() {
     let position = -1;
     for (let i = 0; i < users.length; i++) {
-        if (users[i]['id'] == active_user_id) {
+        if (users[i]['id'] == activeUserId) {
             position = i;
         }
     }
@@ -164,24 +209,60 @@ function getPosition() {
 }
 
 async function updateContact() {
-    let position = getPosition();
-    users[position]['name'] = document.getElementById('input_name').value;
-    users[position]['email'] = document.getElementById('input_email').value;
-    users[position]['phone'] = document.getElementById('input_phone').value;
-    await setItemLocal('users', users);
-    await openContacts();
+    shiftPopupOut();
+    setTimeout(async function() {
+        let position = getPosition();
+        users[position]['name'] = document.getElementById('input_name').value;
+        users[position]['email'] = document.getElementById('input_email').value;
+        users[position]['phone'] = document.getElementById('input_phone').value;
+        await setItemLocal('users', users);
+        await openContacts();
+        shiftMessage('Contact successfully updated');
+    }, 250);
 }
 
 async function deleteContact() {
-    let position = getPosition();
-    users.splice(position, 1);
-    await setItemLocal('users', users);
-    active_user_id = -1;
-    firstLetters = [];
-    await openContacts();
+    shiftPopupOut();
+    setTimeout(async function() {
+        let position = getPosition();
+        users.splice(position, 1);
+        await setItemLocal('users', users);
+        activeUserId = -1;
+        firstLetters = [];
+        await openContacts();
+        shiftMessage('Contact deleted');
+    }, 250);
 }
 
 function loadOldContacts() {
     let users = usersOld;
     setItemLocal('users', users);
+}
+
+async function shiftPopupIn() {
+        document.getElementById('popup_content').style.cssText = 'right: 0';
+        document.getElementById('popup').style.cssText = 'background-color: rgba(0, 0, 0, 0.5)';
+}
+
+async function shiftPopupOut() {
+        document.getElementById('popup_content').style.cssText = 'right: -100%';
+        document.getElementById('popup').style.cssText = 'background-color: rgba(0, 0, 0, 0)';
+}
+
+
+function shiftMessage(message) {
+    oldContent = document.getElementById('container').innerHTML;
+    let newContent = `<div class="shift_message_outer"><div id="shift_message">${message}</div></div>`;
+    document.getElementById('container').innerHTML = oldContent + newContent;
+    setTimeout(()=>{shiftMessageHold()}, 250);
+}
+
+function shiftMessageHold() {
+    document.getElementById('shift_message').style.cssText = 'bottom: 200px;';
+    setTimeout(()=>{shiftMessageDown()}, 1000);
+}
+
+function shiftMessageDown() {
+    document.getElementById('shift_message').style.cssText = 'bottom: -50px;';
+    setTimeout(() => {document.getElementById('container').innerHTML = oldContent;}, 250);
 }

@@ -79,6 +79,16 @@ body {
     font-size: 47px;
 }
 
+.avatar_add {
+    display: flex;
+    width: 120px;
+    height: 120px;
+    background-image: url(img/icon_profile.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
+
 .form_contact {
     display: flex;
     flex-direction: column;

@@ -21,7 +21,11 @@ async function getItem(key) {
 }
 
 async function setItemLocal(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
+    try {
+        await localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 async function getItemLocal(key) {
