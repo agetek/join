@@ -481,6 +481,7 @@
 .add_task {
     display: flex;
     flex-direction: column;
+    margin-left: 123px;
 }
 
 .add_task_header {
@@ -510,6 +511,107 @@
 
 .add_task_form {
     display: flex;
+    padding: 0;
+}
+
+.add_task_headline {
+    display: flex;
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.add_task_label_title {
+    display: flex;
+    font-size: 21px;
+    margin-top: 41px;
+    margin-bottom: 8px;
+}
+
+.add_task_label_description {
+    display: flex;
+    font-size: 21px;
+    margin-top: 34px;
+    margin-bottom: 8px;
+}
+
+.add_task_textarea_description {
+    display: flex;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 21px;
+    padding-right: 21px;
+    color: black;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #D1D1D1;
+    border-style: solid;
+    font-size: 21px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.add_task_category_outer {
+    display: flex;
+    color: black;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #D1D1D1;
+    border-style: solid;
+    font-size: 21px;
+    flex: 1;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+.add_task_category_inner {
+    display: flex;
+    flex: 1;
+}
+
+.add_task_category_between {
+    display: flex;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 21px;
+    padding-right: 21px;
+    align-items: center;
+    cursor: pointer;
+    flex: 1;
+}
+
+.add_task_category_below {
+    display: flex;
+    flex-direction: column;
+    max-height: 153px;
+    overflow-y: scroll;
+}
+
+.add_task_drop_down {
+    display: flex;
+    background-image: url(img/add_task_drop_down.svg);
+    width: 14px;
+    height: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.add_task_category_name {
+    display: flex;
+    align-items: center;
+    font-size: 21px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    margin-left: 21px;
+    cursor: pointer;
+}
+
+.add_task_category_circle {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+    margin-left: 10px;
 }
 
 /* Add Task End */

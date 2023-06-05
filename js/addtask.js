@@ -2,17 +2,52 @@ function renderAddTask() {
     let render = `
     <div class="add_task">
         <div class="add_task_header">
-            <h2 id="h2_headline">Add Task</h2>
+            <div class="add_task_headline">Add Task</div>
         </div>
         <form class="add_task_form">
             <div class="add_task_left_column">
-                <label class="add_task_label" for="input_title">Title</label>
+                <label class="add_task_label_title" for="input_title">Title</label>
                 <input type="text" class="input_title" id="input_title" placeholder="Enter a title" required>
-                <label class="add_task_label" for="input_description">Description</label>
-                <textarea placeholder="Enter a description"></textarea>
+                <label class="add_task_label_description" for="input_description">Description</label>
+                <textarea class="add_task_textarea_description" placeholder="Enter a description"></textarea>
+                <label class="add_task_label_description" for="input_catogory">Category</label>`
+    render += renderAddTaskCategory();
+    render += `
             </div>
         </form>
     </div>
     `;
+    return render
+}
+
+function renderAddTaskCategory() {
+    let render = `<div class="add_task_category_outer">
+                    <div class="add_task_category_between" onclick="openTaskCategoryDropdown()">
+                        <div class="add_task_category_inner">Select task category</div>
+                        <div class="add_task_drop_down"></div>
+                    </div>
+                    <div class="add_task_category_below">`;
+    render += renderOpenTaskCategory();
+    render += `</div>
+                </div>`;
+    return render
+}
+
+function openTaskCategoryDropdown() {
+    if (categoryOpen) { categoryOpen = false; } else { categoryOpen = true; }
+    let render = renderAddTask();
+    document.getElementById('update_task').innerHTML = render;
+}
+
+function renderOpenTaskCategory() {
+    let render = '';
+    if (categoryOpen) {
+        render += `<div class="add_task_category_name" onclick="addNewCategory()">New category</div>`;
+        for (let i = 0; i < category.length; i++) {
+            render += `<div class="add_task_category_name">${category[i]['name']}`;
+            render += `<div class="add_task_category_circle" style="background-color: ${taskColors[category[i]['color_id']]}"></div>`;
+            render += `</div>`;
+        }
+    }
     return render
 }

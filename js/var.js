@@ -8,6 +8,8 @@ let oldContent = "";
 
 let activeUserId = -1;
 
+let categoryOpen = false;
+
 const colors = [
     'rgb(254,122,0)',
     'rgb(147,39,255)',
@@ -18,6 +20,15 @@ const colors = [
     'rgb(70,47,138)',
     'rgb(147,39,255)',
     'rgb(203,27,207)'
+];
+
+const taskColors = [
+    '#8AA4FF',
+    '#FF0000',
+    '#2AD300',
+    '#FF8A00',
+    '#E200BE',
+    '#0038FF',
 ];
 
 let users =
@@ -221,3 +232,61 @@ let todos = [{
 ];
 
 let currentDraggedElement;
+
+let category = [
+    {
+        'id': 0,
+        'name': 'Design',
+        'color_id': 0,
+    },
+    {
+        'id': 1,
+        'name': 'Sales',
+        'color_id': 1,
+    },
+    {
+        'id': 2,
+        'name': 'Backoffice',
+        'color_id': 2,
+    },
+    {
+        'id': 3,
+        'name': 'Marketing',
+        'color_id': 3,
+    },
+    {
+        'id': 4,
+        'name': 'Media',
+        'color_id': 4,
+    },
+    {
+        'id': 5,
+        'name': 'Other',
+        'color_id': 5,
+    }
+];
+
+let todos_suggested = [
+    {
+        'id': 0,
+        'bucket': 0,
+        'title': 'Beispiel Task',
+        'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
+        'category_id': 2,
+        'user_ids': [0, 1, 2],
+        'due_date': 123134346, // Unix timestamp
+        'prio' : 0,
+        'subtasks' : [
+            {
+                'id': 0,
+                'title': 'Lorem ipsum dolor',
+                'checked': true
+            },
+            {
+                'id': 1,
+                'title': 'sit amet consectetur',
+                'checked': false
+            }
+        ]
+    }
+];

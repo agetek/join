@@ -265,5 +265,5 @@ function shiftMessageHold() {
 
 function shiftMessageDown() {
     document.getElementById('shift_message').style.cssText = 'bottom: -50px;';
-    setTimeout(() => {document.getElementById('container').innerHTML = oldContent;}, 250);
+    setTimeout(()=>{document.getElementById('container').innerHTML = oldContent;}, 250);
 }

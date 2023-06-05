@@ -88,7 +88,7 @@ function addTask() {
     let render = renderSidebar();
     render += `<div class="right">`;
     render += renderHeader();
-    render += `<div class="middle_column">`;
+    render += `<div class="middle_column" id="update_task">`;
     render += renderAddTask();
     render += `</div>`;
     render += `</div>`;
