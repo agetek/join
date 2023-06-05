@@ -53,10 +53,10 @@ function renderSidebar() {
                     <div class="sidebar_menu_logo_img">
                         <img class="sidebar_logo_img" src="img/logo.svg" alt=""> 
                         <div class="sidebar_menu">      
-                            <div class="sidebar_point" onclick="openSummary()"><div class="sidebar_img sidebar_summary"></div><div class="sidebar_text">Summary</div></div>
-                            <div class="sidebar_point" onclick="openBoard()"><div class="sidebar_img sidebar_board"></div><div class="sidebar_text">Board</div></div>
-                            <div class="sidebar_point" onclick="addTask()"><div class="sidebar_img sidebar_add_task"></div><div class="sidebar_text">Add Task</div></div>
-                            <div class="sidebar_point_active" onclick="openContacts()"><div class="sidebar_img sidebar_contacts_active"></div><div class="sidebar_text">Contacts</div></div>
+                            <div class="sidebar_point" onclick="openSummary()" id="open_summary"><div class="sidebar_img sidebar_summary"></div><div class="sidebar_text">Summary</div></div>
+                            <div class="sidebar_point" onclick="openBoard()" id="open_board"><div class="sidebar_img sidebar_board"></div><div class="sidebar_text">Board</div></div>
+                            <div class="sidebar_point" onclick="openAddTask()" id="open_add_task"><div class="sidebar_img sidebar_add_task"></div><div class="sidebar_text">Add Task</div></div>
+                            <div class="sidebar_point" onclick="openContacts()" id="open_contacts"><div class="sidebar_img sidebar_contacts_active"></div><div class="sidebar_text">Contacts</div></div>
                         </div>
                     </div>
                     <div class="sidebar_legal_notice" onclick="openLegalNotice()"><div class="sidebar_legal_notice_img"></div><div class="sidebar_text">Legal notice</div></div>
@@ -81,5 +81,39 @@ function renderBoard() {
     render += board();
     render += `</div>`;
     render += `</div>`;
-        return render;
+    return render;
+}
+
+function addTask() {
+    let render = renderSidebar();
+    render += `<div class="right">`;
+    render += renderHeader();
+    render += `<div class="middle_column">`;
+    render += renderAddTask();
+    render += `</div>`;
+    render += `</div>`;
+    return render;
+}
+
+function summary() {
+    let render = renderSidebar();
+    render += `<div class="right">`;
+    render += renderHeader();
+    render += `<div class="middle_column">`;
+    render += renderSummary();
+    render += `</div>`;
+    render += `</div>`;
+    return render;
+}
+
+function openAddTask() {
+    let render = addTask();
+    document.getElementById('container').innerHTML = render;
+    document.getElementById('open_add_task').classList.add('sidebar_point_active');
+}
+
+function openSummary() {
+    let render = summary();
+    document.getElementById('container').innerHTML = render;
+    document.getElementById('open_summary').classList.add('sidebar_point_active');
 }

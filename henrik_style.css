@@ -43,14 +43,11 @@
     align-items: center;
     height: 46px;
     padding-left: 53px;
+    cursor: pointer;
 }
 
 .sidebar_point_active {
-    display: flex;
-    align-items: center;
     background-color: #091931;
-    height: 46px;
-    padding-left: 53px;
 }
 
 .sidebar_summary {
@@ -478,3 +475,41 @@
 }
 
 /* Edit Contact End */
+
+/* Add Task Start*/
+
+.add_task {
+    display: flex;
+    flex-direction: column;
+}
+
+.add_task_header {
+    display: flex;
+}
+
+.add_task_left_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_title {
+    display: flex;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 21px;
+    padding-right: 21px;
+    color: black;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #D1D1D1;
+    border-style: solid;
+    font-size: 21px;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.add_task_form {
+    display: flex;
+}
+
+/* Add Task End */

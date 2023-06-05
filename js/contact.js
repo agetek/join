@@ -5,6 +5,7 @@ async function openContacts() {
     makeLetters();
     let render = renderContacts();
     document.getElementById('container').innerHTML = render;
+    document.getElementById('open_contacts').classList.add('sidebar_point_active');
 }
 
 function renderContacts() {

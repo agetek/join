@@ -1,6 +1,7 @@
 function openBoard() {
     let render = renderBoard();
     document.getElementById('container').innerHTML = render;
+    document.getElementById('open_board').classList.add('sidebar_point_active');
     updateHTML();
 }
 
