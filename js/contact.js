@@ -1,4 +1,5 @@
 async function openContacts() {
+    firstLetters = [];
     users = await getItemLocal('users');
     sortUsersByName();
     makeLetters();
@@ -141,7 +142,6 @@ function formatName(name) {
     let firstRest = nameSplit[0].substring(1).toLowerCase();
     let secondRest = nameSplit[1].substring(1).toLowerCase();
     let output = firstLetter + firstRest + " " + secondLetter + secondRest;
-    console.log(firstLetter + firstRest + " " + secondLetter + secondRest);
     return output;
 }
 
