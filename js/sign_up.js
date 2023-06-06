@@ -115,3 +115,87 @@ function renderLogin() {
   let render = renderLogInForm();
   document.getElementById("login").innerHTML = render;
 }
+
+
+function renderForgotPassword() {
+  let render = ` 
+    <div class="sign_up_container">
+        <div class="login_head">
+        <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
+       
+  
+
+    </div>
+        <div class="sign_up" id="sign_up">
+            <div class="login_title">
+            <img onclick="back_to_login" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
+                <div class="signup_head">
+                    <img class="logo_signup forgot_password" src="./img/forgot_password.svg">
+                    <img class="vector_5" src="./img/vector_5.svg">
+                </div>
+          </div>
+
+            <form action="javascript:login()">
+           <div class="text_enterprocess">Don't worry! We will send you an email with instructions to reset your password.</div>
+                    
+                    <input type="email" class="input_email" id ="input_field" placeholder="Email" required>
+            
+            
+            
+            <div class="login_buttons">
+                    <button class="send_email_button" >Send me an email</button>
+                   
+            </div>        
+            </form>
+        </div>
+        `;
+  return render;
+}
+
+function renderForgot() {
+  let render = renderForgotPassword();
+  document.getElementById("forgot_pw").innerHTML = render;
+}
+
+function renderResetPassword() {
+  let render = ` 
+    <div class="sign_up_container">
+        <div class="login_head">
+        <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
+       
+  
+
+    </div>
+        <div class="sign_up" id="sign_up">
+            <div class="login_title">
+            <img onclick="back_to_login" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
+                <div class="signup_head">
+                    <img class="logo_signup forgot_password" src="./img/reset_password.svg">
+                    <img class="vector_5" src="./img/vector_5.svg">
+                </div>
+          </div>
+
+            <form action="javascript:login()">
+           <div class="text_enterprocess">Change your account password</div>
+                    
+                    <input type="text" class="input_password" id ="input_field" placeholder="New password" required>
+                    <input type="text" class="input_password" id ="input_field" placeholder="Confirm password" required>
+            
+            
+            <div class="login_buttons">
+                    <button class="continue_button" >Continue</button>
+                   
+            </div>        
+            </form>
+        </div>
+        `;
+  return render;
+}
+
+function renderReset() {
+  let render = renderResetPassword();
+  document.getElementById("reset_pw").innerHTML = render;
+}
+
+
+
