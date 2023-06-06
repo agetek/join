@@ -1,6 +1,6 @@
 async function openContacts() {
     firstLetters = [];
-    users = await getItemLocal('users');
+    users = await getItem('users');
     sortUsersByName();
     makeLetters();
     let render = renderContacts();
@@ -130,7 +130,7 @@ async function addContact() {
             'color_id': color
         };
         users.push(user);
-        await setItemLocal('users', users);
+        await setItem('users', users);
         await openContacts();
         shiftMessage('Contact successfully created');
     }, 250);
@@ -216,7 +216,7 @@ async function updateContact() {
         users[position]['name'] = document.getElementById('input_name').value;
         users[position]['email'] = document.getElementById('input_email').value;
         users[position]['phone'] = document.getElementById('input_phone').value;
-        await setItemLocal('users', users);
+        await setItem('users', users);
         await openContacts();
         shiftMessage('Contact successfully updated');
     }, 250);
@@ -227,7 +227,7 @@ async function deleteContact() {
     setTimeout(async function() {
         let position = getPosition();
         users.splice(position, 1);
-        await setItemLocal('users', users);
+        await setItem('users', users);
         activeUserId = -1;
         firstLetters = [];
         await openContacts();
@@ -235,9 +235,10 @@ async function deleteContact() {
     }, 250);
 }
 
-function loadOldContacts() {
+async function loadOldContacts() {
     let users = usersOld;
-    setItemLocal('users', users);
+    await setItem('users', users);
+    return users
 }
 
 async function shiftPopupIn() {

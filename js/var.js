@@ -10,6 +10,8 @@ let activeUserId = -1;
 
 let categoryOpen = false;
 
+let categorySelected = -1;
+
 const colors = [
     'rgb(254,122,0)',
     'rgb(147,39,255)',
@@ -234,6 +236,39 @@ let todos = [{
 let currentDraggedElement;
 
 let category = [
+    {
+        'id': 0,
+        'name': 'Design',
+        'color_id': 0,
+    },
+    {
+        'id': 1,
+        'name': 'Sales',
+        'color_id': 1,
+    },
+    {
+        'id': 2,
+        'name': 'Backoffice',
+        'color_id': 2,
+    },
+    {
+        'id': 3,
+        'name': 'Marketing',
+        'color_id': 3,
+    },
+    {
+        'id': 4,
+        'name': 'Media',
+        'color_id': 4,
+    },
+    {
+        'id': 5,
+        'name': 'Other',
+        'color_id': 5,
+    }
+];
+
+let categoryOld = [
     {
         'id': 0,
         'name': 'Design',
