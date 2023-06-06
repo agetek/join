@@ -10,9 +10,11 @@ function renderAddTask() {
                 <input type="text" class="input_title" id="input_title" placeholder="Enter a title" required>
                 <label class="add_task_label_description" for="input_description">Description</label>
                 <textarea class="add_task_textarea_description" placeholder="Enter a description" id="input_description"></textarea>
-                <div class="add_task_label_description">Category</div>`
+                <div class="add_task_label_description">Category</div>
+                <div id="update_category" class="update_category">`
     render += renderAddTaskCategory();
     render += `
+                </div>
             </div>
         </form>
     </div>
@@ -34,9 +36,9 @@ function renderAddTaskCategory() {
 }
 
 async function openTaskCategoryDropdown() {
-    if (categoryOpen) { categoryOpen = false} else { categoryOpen = true }
-    let render = renderAddTask();
-    document.getElementById('update_task').innerHTML = render;
+    if (categoryOpen) { categoryOpen = false } else { categoryOpen = true }
+    let render = renderAddTaskCategory();
+    document.getElementById('update_category').innerHTML = render;
 }
 
 function renderOpenTaskCategory() {
@@ -61,8 +63,8 @@ async function loadOldCategories() {
 function selectCategory(id) {
     categorySelected = id;
     categoryOpen = false;
-    let render = renderAddTask();
-    document.getElementById('update_task').innerHTML = render;
+    let render = renderAddTaskCategory();
+    document.getElementById('update_category').innerHTML = render;
 }
 
 function renderActiveCategory() {
@@ -79,9 +81,60 @@ function renderActiveCategory() {
 }
 
 function getCat(catId) {
-    return catId['id'] == categorySelected
+    return catId['id'] == categorySelected;
 }
 
 function addNewCategory() {
-    return true
+    let render = `<div class="add_task_category_outer">
+                    <div class="add_task_category_inner">
+                        <input type="text" class="add_task_category_input" id="add_task_category_input" minlength="2">
+                        <div class="add_task_category_cross" onclick="exitNewCategory()"></div>
+                        <div class="add_task_category_divider"></div>
+                        <div class="add_task_category_hook" onclick="chooseCategoryColor()"></div>
+                    </div>
+                </div>
+                <div class="error_message" id="error_message_category"></div>
+                <div class="category_colors_outer" id="category_colors_outer"></div>`;
+    document.getElementById('update_category').innerHTML = render;
+}
+
+function exitNewCategory() {
+    categorySelected = -1;
+    categoryOpen = false;
+    let render = renderAddTaskCategory();
+    document.getElementById('update_category').innerHTML = render;
+}
+
+function chooseCategoryColor() {
+    let check = document.getElementById('add_task_category_input').value;
+    if (check.length < 2) {
+        document.getElementById('error_message_category').innerHTML = 'Category name too short. Must be at least 2 characters long';
+    } else {
+        let render = '';
+        for (let i = 0; i < taskColors.length; i++) {
+            render += `<div class="category_colors_inner" style="background-color: ${taskColors[i]}" onclick="saveNewCategory(${i})"></div>`;
+        }
+        document.getElementById('category_colors_outer').innerHTML = render;
+    }
+}
+
+async function saveNewCategory(i) {
+    let id = getMaxCategoryId();
+    let name = document.getElementById('add_task_category_input').value;
+    let color_id = i;
+    category.push({ 'id': id, 'name': name, 'color_id': color_id });
+    await setItem('category', category);
+    categorySelected  = id;
+    categoryOpen = false;
+    let render = renderAddTaskCategory();
+    document.getElementById('update_category').innerHTML = render;
+}
+
+function getMaxCategoryId() {
+    let max = null;
+    for (let i=0 ; i < category.length ; i++) {
+        if (max == null || category[i]['id'] > max)
+            max = category[i]['id'];
+    }
+    return max + 1;
 }

@@ -30,7 +30,7 @@ const taskColors = [
     '#2AD300',
     '#FF8A00',
     '#E200BE',
-    '#0038FF',
+    '#0038FF'
 ];
 
 let users =
