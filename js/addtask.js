@@ -138,3 +138,17 @@ function getMaxCategoryId() {
     }
     return max + 1;
 }
+
+async function addTaskPopup() {
+    categoryOpen = false;
+    categorySelected = -1;
+    category = await getItem('category');
+    oldContent = document.getElementById('container').innerHTML;
+    let newContent = `<div class="popup" id="popup" onclick="closeEdit()">
+                        <div class="add_task_popup" onclick="event.stopPropagation()" id="popup_content">`;
+    newContent += renderAddTask();
+    newContent += `</div>
+                </div>`;
+    document.getElementById('container').innerHTML = oldContent + newContent;
+    setTimeout(() => {shiftPopupIn()}, 1);
+}

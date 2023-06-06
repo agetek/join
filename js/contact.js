@@ -98,7 +98,7 @@ function renderActiveContact() {
     render += `</div>`;
     render += `<div class="contact_details_name_add_task">`;
     render += `<div class="contact_details_name">${filteredUsers[0]['name']}</div>`;
-    render += `<div class="contact_details_add_task" onclick="addTask(${filteredUsers[0]['id']})"><div class="contact_details_add_task_icon"></div><div class="contact_details_add_task_name">Add Task</div></div>`;
+    render += `<div class="contact_details_add_task" onclick="addTask(${filteredUsers[0]['id']})"><div class="contact_details_add_task_icon"></div><div class="contact_details_add_task_name" onclick="addTaskPopup()">Add Task</div></div>`;
     render += `</div>`;
     render += `</div>`;
     render += `<div class="contact_details_contact_information_outer"><div class="contact_details_contact_information_inner">Contact Information</div>`;

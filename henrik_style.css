@@ -303,6 +303,7 @@
     margin-left: 13px;
     font-size: 16px;
     color: #29ABE2;
+    cursor: pointer;
 }
 
 .contact_details_contact_information_outer {
@@ -477,6 +478,14 @@
 /* Edit Contact End */
 
 /* Add Task Start*/
+
+.add_task_popup {
+    display: flex;
+    width: 1212px;
+    height: 694px;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+}
 
 .add_task {
     display: flex;

@@ -108,6 +108,7 @@ function summary() {
 
 async function openAddTask() {
     categoryOpen = false;
+    categorySelected = -1;
     category = await getItem('category');
     let render = addTask();
     document.getElementById('container').innerHTML = render;

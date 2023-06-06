@@ -12,7 +12,7 @@ function board() {
             <h2 id="h2_headline">Board</h2>
             <div>
             <input type="text" onkeyup="search_animal()" name="search" id="find_task" placeholder="Find Task"></input>
-            <button id="add_task">Add task <img id="board_plus" src="img/plus.svg"</button>
+            <button id="add_task" onclick="addTaskPopup()">Add task <img id="board_plus" src="img/plus.svg"</button>
             </div>
         </div>
         <div class="board-main-container">
