@@ -407,6 +407,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    z-index: 3;
 }
 
 #popup_content {
@@ -610,10 +611,15 @@
     display: flex;
     align-items: center;
     font-size: 21px;
-    margin-top: 13px;
-    margin-bottom: 13px;
-    margin-left: 21px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 21px;
+    background-color: white;
     cursor: pointer;
+}
+
+.add_task_category_name:hover {
+    background-color: #D1D1D1;
 }
 
 .add_task_category_circle {
@@ -718,10 +724,15 @@
     justify-content: space-between;
     align-items: center;
     font-size: 21px;
-    margin-top: 13px;
-    margin-bottom: 13px;
-    margin-left: 21px;
-    margin-right: 21px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 21px;
+    padding-right: 21px;
+    background-color: white;
+}
+
+.add_task_contact_outer:hover {
+    background-color: #D1D1D1;
 }
 
 .add_task_contacts_checkbox {
@@ -740,14 +751,31 @@
 }
 
 .add_task_selected_contacts {
-    display: flex;;
+    display: flex;
+    margin-top: 22px;
 }
 
 .add_task_selected_contact {
     display: flex;
     width: 45px;
     height: 45px;
-    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.add_task_contact_invite {
+    display: flex;
+    background-image: url(img/invite_image.svg);
+    background-position: center;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.update_assigned {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Add Task End */

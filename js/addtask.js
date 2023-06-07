@@ -15,9 +15,10 @@ function renderAddTask() {
     render += renderAddTaskCategory();
     render += `
                 </div>
-                <div class="add_task_label_description">Assigned to</div>`
+                <div class="add_task_label_description">Assigned to</div>
+                <div class="update_assigned" id="update_assigned">`
     render += renderAddTaskContacts();
-    render += `
+    render += `</div>
             </div>
         </form>
     </div>
@@ -174,11 +175,15 @@ function renderOpenTaskContacts() {
     let render = '';
     if (contactsOpen) {
         let check = getCheck(userSelfId);
-        render += `<div class="add_task_contact_outer">
+        render += `<div class="add_task_contact_outer" onclick="toggleContactId(${userSelfId})">
                     <div class="add_task_contact_text">You</div>
-                    <input class="add_task_contacts_checkbox" type="checkbox" id="addtask_contact_${userSelfId}" onclick="toggleContactId(${userSelfId})"${check}>
+                    <input class="add_task_contacts_checkbox" type="checkbox" id="addtask_contact_${userSelfId}"${check}>
                 </div>`;
         render += renderContactsLoop();
+        render += `<div class="add_task_contact_outer">
+        <div class="add_task_contact_text">Invite new contact</div>
+        <div class="add_task_contact_invite" onclick="inviteContact()"></div>
+    </div>`;
     }
     return render
 }
@@ -247,4 +252,62 @@ function renderSelectedContacts() {
         render += `</div>`
     }
     return render;
+}
+
+function inviteContact() {
+    let render = `<div class="add_task_category_outer">
+        <div class="add_task_category_inner">
+            <input type="text" class="add_task_category_input" id="add_task_contact_email" minlength="2" maxlength="60">
+            <div class="add_task_category_cross" onclick="exitInviteContact()"></div>
+            <div class="add_task_category_divider"></div>
+            <div class="add_task_category_hook" onclick="processInviteContact()"></div>
+        </div>
+    </div>
+    <div class="error_message" id="error_message_category"></div>`;
+    document.getElementById('update_assigned').innerHTML = render;
+}
+
+function exitInviteContact() {
+    contactsOpen = false;
+    let render = renderAddTaskContacts();
+    document.getElementById('update_assigned').innerHTML = render;
+    render = renderSelectedContacts();
+    document.getElementById('add_task_selected_contacts').innerHTML = render;
+}
+
+async function processInviteContact() {
+    document.getElementById('error_message_category').innerHTML = '';
+    let email = document.getElementById('add_task_contact_email').value;
+    if (validateEmail(email)) {
+        let id = await addUser(email);
+        addTaskContactsSelected.push(id);
+        exitInviteContact();
+    } else {
+        document.getElementById('add_task_contact_email').value = '';
+        document.getElementById('error_message_category').innerHTML = 'No valid email address';
+    }
+}
+
+function validateEmail(email) {
+    return /^.{2,}@\w+\.\w+$/.test(email);
+}
+
+async function addUser(email) {
+    let firstLetter = email.charAt(0).toUpperCase();
+    let secondLetter = email.charAt(1).toUpperCase();
+    let name = firstLetter + ' ' + secondLetter;
+    let phone = '';
+    let color = getRandomColor();
+    let id = getMaxId();
+    let user = {
+        'id': id,
+        'name': name,
+        'email': email,
+        'phone': phone,
+        'password': '',
+        'color_id': color
+    };
+    users.push(user);
+    await setItem('users', users);
+    return id
 }
