@@ -15,6 +15,9 @@ function renderAddTask() {
     render += renderAddTaskCategory();
     render += `
                 </div>
+                <div class="add_task_label_description">Assigned to</div>`
+    render += renderAddTaskContacts();
+    render += `
             </div>
         </form>
     </div>
@@ -124,7 +127,7 @@ async function saveNewCategory(i) {
     let color_id = i;
     category.push({ 'id': id, 'name': name, 'color_id': color_id });
     await setItem('category', category);
-    categorySelected  = id;
+    categorySelected = id;
     categoryOpen = false;
     let render = renderAddTaskCategory();
     document.getElementById('update_category').innerHTML = render;
@@ -132,7 +135,7 @@ async function saveNewCategory(i) {
 
 function getMaxCategoryId() {
     let max = null;
-    for (let i=0 ; i < category.length ; i++) {
+    for (let i = 0; i < category.length; i++) {
         if (max == null || category[i]['id'] > max)
             max = category[i]['id'];
     }
@@ -150,5 +153,98 @@ async function addTaskPopup() {
     newContent += `</div>
                 </div>`;
     document.getElementById('container').innerHTML = oldContent + newContent;
-    setTimeout(() => {shiftPopupIn()}, 1);
+    setTimeout(() => { shiftPopupIn() }, 1);
+}
+
+function renderAddTaskContacts() {
+    let render = `<div class="add_task_category_outer">
+                    <div class="add_task_category_between" onclick="openTaskContactsDropdown()">
+                        <div class="add_task_category_inner">Select contacts to assign</div>
+                        <div class="add_task_drop_down"></div>
+                    </div>
+                    <div class="add_task_category_below" id="update_contacts">`;
+    render += renderOpenTaskContacts();
+    render += `     </div>
+                </div>
+                <div class="add_task_selected_contacts" id="add_task_selected_contacts"></div>`;
+    return render
+}
+
+function renderOpenTaskContacts() {
+    let render = '';
+    if (contactsOpen) {
+        render += `<div class="add_task_contact_outer">
+                    <div class="add_task_contact_text">You</div>
+                    <input class="add_task_contacts_checkbox" type="checkbox" id="addtask_contact_${userSelfId}" onclick="toggleContactId(${userSelfId})">
+                </div>`;
+        render += renderContactsLoop();
+    }
+    return render
+}
+
+function renderContactsLoop() {
+    sortUsersByName();
+    let render = '';
+    for (let i = 0; i < users.length; i++) {
+        if (!(users[i]['id'] == userSelfId)) {
+            let check = getCheck(users[i]['id']);
+            render += `
+                    <div class="add_task_contact_outer">
+                        <div class="add_task_contact_text">${users[i]['name']}</div>
+                        <input class="add_task_contacts_checkbox" type="checkbox" id="addtask_contact_${users[i]['id']}" onclick="toggleContactId(${users[i]['id']})"${check}>
+                    </div>`;
+        }
+    }
+    return render
+}
+
+function getCheck(id) {
+    let render = '';
+    for (let i = 0; i < addTaskContactsSelected.length; i++) {
+        if (addTaskContactsSelected[i] == id) {
+            render = ' checked';
+        }
+    }
+    return render;
+}
+
+async function openTaskContactsDropdown() {
+    if (!contactsOpen) { contactsOpen = true } else { contactsOpen = false }
+    let render = renderOpenTaskContacts();
+    document.getElementById('update_contacts').innerHTML = render;
+    if (!contactsOpen) {
+        let render = renderSelectedContacts();
+        document.getElementById('add_task_selected_contacts').innerHTML = render;
+    } else {
+        let render = '';
+        document.getElementById('add_task_selected_contacts').innerHTML = render;
+    }
+}
+
+function toggleContactId(id) {
+    let contained = false;
+    let index = -1;
+    for (let i = 0; i < addTaskContactsSelected.length; i++) {
+        if (addTaskContactsSelected[i] == id) {
+            contained = true;
+            index = i;
+        }
+    }
+    if (!contained) {
+        addTaskContactsSelected.push(id);
+    } else {
+        addTaskContactsSelected.splice(index, 1);
+    }
+}
+
+function renderSelectedContacts() {
+    let render = '';
+    console.log(addTaskContactsSelected);
+    for (let i = 0; i < addTaskContactsSelected.length; i++) {
+        let filteredUsers = users.filter(user => user.id == addTaskContactsSelected[i]);
+        render += `<div class="add_task_selected_contact">`
+        render += renderInitials(filteredUsers[0]);
+        render += `</div>`
+    }
+    return render;
 }

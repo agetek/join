@@ -713,4 +713,41 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.add_task_contact_outer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 21px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    margin-left: 21px;
+    margin-right: 21px;
+}
+
+.add_task_contacts_checkbox {
+    width: 11px;
+    height: 11px;
+    cursor: pointer;
+    appearance: none;
+    border: 1px solid #000;
+    border-radius: 3px;
+	background-clip: content-box;
+	padding: 2px;
+}
+
+.add_task_contacts_checkbox:checked {
+    background-color: #000;
+}
+
+.add_task_selected_contacts {
+    display: flex;;
+}
+
+.add_task_selected_contact {
+    display: flex;
+    width: 45px;
+    height: 45px;
+    margin-left: 8px;
+}
+
 /* Add Task End */

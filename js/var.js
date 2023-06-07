@@ -10,7 +10,13 @@ let activeUserId = -1;
 
 let categoryOpen = false;
 
+let contactsOpen = false;
+
 let categorySelected = -1;
+
+let userSelfId = 0;
+
+let addTaskContactsSelected = [];
 
 const colors = [
     'rgb(254,122,0)',
