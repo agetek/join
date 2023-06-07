@@ -1,6 +1,6 @@
 async function init() {
     document.getElementById('container').innerHTML = renderAddContact();
-    users = await getItemLocal('users');
+    users = await getItem('users');
     console.log(users);
 }
 

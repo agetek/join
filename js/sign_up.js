@@ -36,15 +36,16 @@ function renderStartPage() {
 function renderSignUpForm() {
   let render = ` 
     <div class="sign_up_container">
-
+    
         <div class="sign_up_head">
         <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
         
         </div>
     
-        <div class="sign_up" id="sign_up">
+        <div class="cont_sign_up" id="cont_sign_up">
+        <img onclick="back_to_login()" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
             <div class="sign_up_title">
-                <img onclick="back_to_login" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
+               
                 <div class="signup_head">
                     <img class="logo_signup" src="./img/signup.svg">
                     <img class="vector_5" src="./img/vector_5.svg">
@@ -75,12 +76,12 @@ function renderLogInForm() {
         <div class="login_header_right">
        
         <span class="not_user">Not a Join user?</span> 
-        <button onclick="to_signup_form" class="signup_button_short" id="input_field">Sign up</button>
+        <button onclick="to_signup_form())" class="signup_button_short" id="input_field">Sign up</button>
         </div>
   
 
     </div>
-        <div class="sign_up" id="sign_up">
+        <div class="cont_log_in" id="cont_log_in">
             <div class="login_title">
                 <div class="signup_head">
                     <img class="logo_signup" src="./img/login.svg">
@@ -115,3 +116,83 @@ function renderLogin() {
   let render = renderLogInForm();
   document.getElementById("login").innerHTML = render;
 }
+
+
+function renderForgotPassword() {
+  let render = ` 
+    <div class="sign_up_container">
+        <div class="login_head">
+        <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
+    </div>
+        <div class="cont_forgot_pw" id="cont_forgot_pw">
+        <img onclick="back_to_login" class="forgot_blue_arrow_back" src="./img/arrow_back_blue.svg">
+            <div class="login_title">
+            
+                <div class="signup_head">
+                    <img class="logo_signup forgot_password" src="./img/forgot_password.svg">
+                    <img class="vector_5" src="./img/vector_5.svg">
+                </div>
+          <div class="text_forgot_pw">Don't worry! We will send you an email with the instructions to reset your password.</div>
+
+          </div>
+            <form action="javascript:login()">
+          
+          <input type="email" class="input_email" id ="input_field" placeholder="Email" required>
+            <div class="login_buttons">
+                    <button class="send_email_button" >Send me an email</button>
+                   
+            </div>        
+            </form>
+        </div>
+        `;
+  return render;
+}
+
+function renderForgot() {
+  let render = renderForgotPassword();
+  document.getElementById("forgot_pw").innerHTML = render;
+}
+
+function renderResetPassword() {
+  let render = ` 
+    <div class="sign_up_container">
+        <div class="login_head">
+        <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
+       
+  
+
+    </div>
+        <div class="cont_reset_pw" id="cont_reset_pw">
+        <img onclick="back_to_login()" class="reset_blue_arrow_back" src="./img/arrow_back_blue.svg">
+            <div class="login_title">
+            
+                <div class="signup_head">
+                    <img class="logo_signup forgot_password" src="./img/reset_password.svg">
+                    <img class="vector_5" src="./img/vector_5.svg">
+                </div>
+          </div>
+
+            <form class="form" action="javascript:login()">
+           <div class="text_reset_pw">Change your account password</div>
+                    
+                    <input type="text" class="input_password" id ="input_field_sign" placeholder="New password" required>
+                    <input type="text" class="input_password" id ="input_field_" placeholder="Confirm password" required>
+            
+            
+            <div class="login_buttons">
+                    <button class="continue_button" >Continue</button>
+                   
+            </div>        
+            </form>
+        </div>
+        `;
+  return render;
+}
+
+function renderReset() {
+  let render = renderResetPassword();
+  document.getElementById("reset_pw").innerHTML = render;
+}
+
+
+

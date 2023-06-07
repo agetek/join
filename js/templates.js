@@ -108,7 +108,10 @@ function summary() {
     return render;
 }
 
-function openAddTask() {
+async function openAddTask() {
+    categoryOpen = false;
+    categorySelected = -1;
+    category = await getItem('category');
     let render = addTask();
     document.getElementById('container').innerHTML = render;
     document.getElementById('open_add_task').classList.add('sidebar_point_active');
