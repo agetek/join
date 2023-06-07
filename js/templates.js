@@ -67,8 +67,10 @@ function renderSidebar() {
 function renderHeader() {
     let render = `<div class="header">
             <div class="header_text">Kanban Project Management Tool</div>
-            <div class="header_help"></div>
-            <div class="header_profile_img"></div>
+            <div class="question_and_avatar">
+                <img src="img/question_mark.svg" class="header_help">
+                <img src="img/avatar_profile.png" class="header_profile_img">
+            </div>
         </div>`;
     return render;
 }

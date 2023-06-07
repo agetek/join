@@ -186,50 +186,119 @@ let users =
 
 
 
-let todos = [{
-    'topic': 'Design',
-    'id': 0,
-    'title': 'Website redesign',
-    'description': 'Modify the contents of the main website...',
-    'category': 'window1',
-    'users': 'MB'
-},
-{
-    'topic': 'Sales',
-    'topic-color': '#FC71FF',
-    'id': 1,
-    'title': 'In progress',
-    'description': 'Make the product presentation to prospective buyers',
-    'category': 'window2'
-},
-{
-    'topic': 'Backoffice',
-    'id': 2,
-    'title': 'Accounting invoices',
-    'description': 'Make the product presentation to prospective buyers',
-    'category': 'window3'
-},
-{
-    'topic': 'Marketing',
-    'id': 3,
-    'title': 'Call potential clients',
-    'description': 'Make the product presentation to prospective buyers',
-    'category': 'window4'
-},
-{
-    'topic': 'Media',
-    'id': 4,
-    'title': 'Video Cut',
-    'description': 'Edit the new company',
-    'category': 'window4'
-    
-}
-
-
-
-
-
+let todos = [
+    {
+        'id': 0,
+        'bucket': 'window1',
+        'title': 'Beispiel Task',
+        'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
+        'category_id': 2,
+        'user_ids': [0, 1, 2],
+        'due_date': 123134346, // Unix timestamp
+        'prio' : 0,
+        'subtasks' : [
+            {
+                'id': 0,
+                'title': 'Lorem ipsum dolor',
+                'checked': true
+            },
+            {
+                'id': 1,
+                'title': 'sit amet consectetur',
+                'checked': false
+            }
+        ]
+    },
+    {
+        'id': 1,
+        'bucket': 'window2',
+        'title': 'Beispiel Task',
+        'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
+        'category_id': 2,
+        'user_ids': [0, 1, 2],
+        'due_date': 123134346, // Unix timestamp
+        'prio' : 0,
+        'subtasks' : [
+            {
+                'id': 0,
+                'title': 'Lorem ipsum dolor',
+                'checked': true
+            },
+            {
+                'id': 1,
+                'title': 'sit amet consectetur',
+                'checked': false
+            }
+        ]
+    },
+    {
+        'id': 2,
+        'bucket': 'window3',
+        'title': 'Beispiel Task',
+        'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
+        'category_id': 2,
+        'user_ids': [0, 1, 2],
+        'due_date': 123134346, // Unix timestamp
+        'prio' : 0,
+        'subtasks' : [
+            {
+                'id': 0,
+                'title': 'Lorem ipsum dolor',
+                'checked': true
+            },
+            {
+                'id': 1,
+                'title': 'sit amet consectetur',
+                'checked': false
+            }
+        ]
+    }
 ];
+
+
+// let todos = [{
+//     'topic': 'Design',
+//     'id': 0,
+//     'title': 'Website redesign',
+//     'description': 'Modify the contents of the main website...',
+//     'category': 'window1',
+//     'users': 'MB'
+// },
+// {
+//     'topic': 'Sales',
+//     'topic-color': '#FC71FF',
+//     'id': 1,
+//     'title': 'In progress',
+//     'description': 'Make the product presentation to prospective buyers',
+//     'category': 'window2'
+// },
+// {
+//     'topic': 'Backoffice',
+//     'id': 2,
+//     'title': 'Accounting invoices',
+//     'description': 'Make the product presentation to prospective buyers',
+//     'category': 'window3'
+// },
+// {
+//     'topic': 'Marketing',
+//     'id': 3,
+//     'title': 'Call potential clients',
+//     'description': 'Make the product presentation to prospective buyers',
+//     'category': 'window4'
+// },
+// {
+//     'topic': 'Media',
+//     'id': 4,
+//     'title': 'Video Cut',
+//     'description': 'Edit the new company',
+//     'category': 'window4'
+    
+// }
+
+// ];
+
+
+
 
 let currentDraggedElement;
 

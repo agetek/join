@@ -19,7 +19,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; 
+    align-items: flex-start;
     gap: 12px;
 }
 
@@ -57,8 +57,8 @@ body {
 
 .contact_input {
     background: #FFFFFF;
-    border-bottom-right-radius: 15px;   
-    border-top-right-radius: 15px; 
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
     display: flex;
     font-family: 'Inter';
     width: 759px;
@@ -242,4 +242,37 @@ body {
 .close-cross {
     display: flex;
     justify-content: right;
+}
+
+.header_text {
+    font-size: 21px;
+    margin-left: 116px;
+    margin-top: 32px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    z-index: 1;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.header_profile_img {
+    height: 46px;
+    width: 46px;
+    border-radius: 62%;
+    border: solid;
+    border-color: white;
+    margin-left: 22px;
+    margin-right: 36px;
+    outline: solid;
+    outline-color: #2A3647;
+
+
+}
+
+.question_and_avatar {
+    display: flex;
+    align-items: center;
 }
