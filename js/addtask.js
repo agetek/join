@@ -23,6 +23,14 @@ function renderAddTask() {
             </div>
             <div class="add_task_divider"></div>
             <div class="add_task_right_column">
+            <label class="add_task_label_date" for="input_date">Due date</label>
+            <input type="date" class="input_date" id="input_date" placeholder="dd/mm/yyyy" required>
+            <label class="add_task_label_prio">Prio</label>
+            <div class="add_task_prio">
+                <div class="add_task_prio_outer" id="prio_urgent" onclick="setPriority(2)"><div class="add_task_prio_inner">Urgent <div class="add_task_prio_urgent_img"></div></div></div>
+                <div class="add_task_prio_outer" id="prio_medium" onclick="setPriority(1)"><div class="add_task_prio_inner">Medium <div class="add_task_prio_medium_img"></div></div></div>
+                <div class="add_task_prio_outer" id="prio_low" onclick="setPriority(0)"><div class="add_task_prio_inner">Low <div class="add_task_prio_low_img"></div></div></div>
+            </div>
             </div>
         </div>
         </form>
@@ -316,4 +324,26 @@ async function addUser(email) {
     users.push(user);
     await setItem('users', users);
     return id
+}
+
+function setPriority(prio) {
+    priority = prio;
+    document.getElementById('prio_urgent').innerHTML = `<div class="add_task_prio_inner">Urgent <div class="add_task_prio_urgent_img"></div></div>`;
+    document.getElementById('prio_medium').innerHTML = `<div class="add_task_prio_inner">Medium <div class="add_task_prio_medium_img"></div></div>`;
+    document.getElementById('prio_low').innerHTML = `<div class="add_task_prio_inner">Low <div class="add_task_prio_low_img"></div></div>`;
+    document.getElementById('prio_urgent').style.backgroundColor = `#FFFFFF`;
+    document.getElementById('prio_medium').style.backgroundColor = `#FFFFFF`;
+    document.getElementById('prio_low').style.backgroundColor = `#FFFFFF`;
+    if (prio == 0) {
+        document.getElementById('prio_low').innerHTML = `<div class="add_task_prio_inner_active">Low <div class="add_task_prio_low_img_white"></div></div>`;
+        document.getElementById('prio_low').style.backgroundColor = `#7AE229`;
+    }
+    else if (prio == 1) {
+        document.getElementById('prio_medium').innerHTML = `<div class="add_task_prio_inner_active">Medium <div class="add_task_prio_medium_img_white"></div></div>`;
+        document.getElementById('prio_medium').style.backgroundColor = `#FFA800`;
+    }
+    else if (prio == 2) {
+        document.getElementById('prio_urgent').innerHTML = `<div class="add_task_prio_inner_active">Urgent <div class="add_task_prio_urgent_img_white"></div></div>`;
+        document.getElementById('prio_urgent').style.backgroundColor = `#FF3D00`;
+    }
 }

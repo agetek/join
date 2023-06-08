@@ -122,7 +122,6 @@ body {
     padding-top: 13px;
     padding-bottom: 13px;
     padding-left: 21px;
-    padding-right: 21px;
     color: black;
     background: url(img/icon_small_profile.svg);
     background-repeat: no-repeat;
@@ -135,7 +134,7 @@ body {
     border-color: #D1D1D1;
     border-style: solid;
     font-size: 21px;
-    width: 422px;
+    flex: 1;
     box-sizing: border-box;
 }
 

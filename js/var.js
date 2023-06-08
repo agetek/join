@@ -18,6 +18,8 @@ let userSelfId = 0;
 
 let addTaskContactsSelected = [];
 
+let priority = -1;
+
 const colors = [
     'rgb(254,122,0)',
     'rgb(147,39,255)',
