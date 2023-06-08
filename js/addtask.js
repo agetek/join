@@ -5,6 +5,7 @@ function renderAddTask() {
             <div class="add_task_headline">Add Task</div>
         </div>
         <form class="add_task_form">
+        <div class="add_task_body">
             <div class="add_task_left_column">
                 <label class="add_task_label_title" for="input_title">Title</label>
                 <input type="text" class="input_title" id="input_title" placeholder="Enter a title" required>
@@ -20,7 +21,12 @@ function renderAddTask() {
     render += renderAddTaskContacts();
     render += `</div>
             </div>
+            <div class="add_task_divider"></div>
+            <div class="add_task_right_column">
+            </div>
+        </div>
         </form>
+        
     </div>
     `;
     return render
