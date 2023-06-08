@@ -31,6 +31,10 @@ function renderAddTask() {
                 <div class="add_task_prio_outer" id="prio_medium" onclick="setPriority(1)"><div class="add_task_prio_inner">Medium <div class="add_task_prio_medium_img"></div></div></div>
                 <div class="add_task_prio_outer" id="prio_low" onclick="setPriority(0)"><div class="add_task_prio_inner">Low <div class="add_task_prio_low_img"></div></div></div>
             </div>
+            <label class="add_task_label_subtasks">Subtasks</label>
+            <div class="update_subtasks" id="update_subtasks">`
+    render += renderAddTaskSubtasks();
+            `</div>
             </div>
         </div>
         </form>
@@ -346,4 +350,29 @@ function setPriority(prio) {
         document.getElementById('prio_urgent').innerHTML = `<div class="add_task_prio_inner_active">Urgent <div class="add_task_prio_urgent_img_white"></div></div>`;
         document.getElementById('prio_urgent').style.backgroundColor = `#FF3D00`;
     }
+}
+
+function renderAddTaskSubtasks() {
+    let render = `<div class="add_task_subtasks_outer" onclick="enterSubtask()">
+                    <div class="add_task_subtasks_inner">Add new subtask</div>
+                    <div class="add_task_subtasks_plus"></div>
+                </div>`;
+    return render
+}
+
+function enterSubtask() {
+    let render = `<div class="add_task_subtasks_outer">
+                    <input type="text" class="add_task_subtasks_input" id="add_task_subtasks_input" minlength="2">
+                    <div class="add_task_category_cross" onclick="exitEnterSubtask()"></div>
+                    <div class="add_task_category_divider"></div>
+                    <div class="add_task_category_hook" onclick="processSubtask()"></div>
+            </div>
+            <div class="error_message" id="error_message_subtask"></div>
+            <div class="add_task_subtask_listing" id="add_task_subtask_listing"></div>`;
+    document.getElementById('update_subtasks').innerHTML = render;
+}
+
+function exitEnterSubtask() {
+    let render = renderAddTaskSubtasks();
+    document.getElementById('update_subtasks').innerHTML = render;
 }
