@@ -23,6 +23,7 @@ body {
   position: fixed;
   left: 77px;
   top: 80px;
+  display: none;
 }
 
 .vector_5 {
@@ -182,12 +183,15 @@ form {
   cursor: pointer;
 }
 
-.signup_button:hover, .login_button:hover, .signup_button_short:hover, 
-.send_email_button:hover, .continue_button:hover {
-border: none;
-background-color: #29ABE2;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-transition: background-color 0.125s ease;
+.signup_button:hover,
+.login_button:hover,
+.signup_button_short:hover,
+.send_email_button:hover,
+.continue_button:hover {
+  border: none;
+  background-color: #29abe2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.125s ease;
 }
 
 .login_button {
@@ -224,11 +228,10 @@ transition: background-color 0.125s ease;
 
 .guest_login_button:hover {
   cursor: pointer;
-  border: 2px solid #29ABE2;
+  border: 2px solid #29abe2;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  color: #29ABE2;
+  color: #29abe2;
 }
-
 
 .signup_button_short {
   height: 51px;
@@ -247,8 +250,8 @@ transition: background-color 0.125s ease;
   cursor: pointer;
 }
 
-
-.send_email_button, .continue_button {
+.send_email_button,
+.continue_button {
   height: 51px;
   width: 264px;
   left: 253.5px;
@@ -264,7 +267,6 @@ transition: background-color 0.125s ease;
   border: 0px;
   cursor: pointer;
 }
-
 
 .text_reset_pw {
   font-size: 21px;
@@ -384,21 +386,53 @@ transition: background-color 0.125s ease;
 }
 
 
-
-  /*  @keyframes animate  {
-    0% {
-      transform: scale(2);
-      transform-origin: 50% 100%;
-    }
-  
-    100% {
-      transform: scale(1);
-      transform-origin: 50% 100%;
-    }
-  }
-
-.logo_start_page{
-  animation: animate  1s ease 0s 1 normal backwards;
+.animation_background {
+  background-color: #642c2c;
+  animation: bg-transparency 1000ms ease-in-out;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
 }
 
-*/
+@keyframes bg-transparency {
+  from {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  to {
+    opacity: 1;
+    z-index: 0;
+  }
+}
+
+
+.move_logo {
+  position: absolute;
+  z-index: 8;
+  left: calc(100vw - 50% - 101px);
+  top: calc(100vh - 50% - 122px);
+  width: 202px;
+  height: 244px;
+}
+
+.logo_animation {
+  animation: moveLogo 500ms ease-in-out;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveLogo {
+  from {
+    left: calc(100vw - 50% - 101px);
+    top: calc(100vh - 50% - 122px);
+    width: 202px;
+    height: 244px;
+  }
+
+  to {
+    left: 50px;
+    top: 50px;
+    width: 101px;
+    height: 122px;
+  }
+}
