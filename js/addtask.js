@@ -37,6 +37,7 @@ function renderAddTask() {
             `</div>
             </div>
         </div>
+        <div class="add_task_submit_outer"></div>
         </form>
         
     </div>
