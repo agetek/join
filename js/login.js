@@ -22,28 +22,20 @@ function resetForm() {
   registerBtn.disabled = false;
 }
 
-function renderStartPage() {
-  let render = `<div class="sign_up_container">
 
-<img class="start_page" id="start_page_img" src="./img/start_page.svg" alt="logo">
-
-
-</div>`;
-
-  return render;
-}
-
-function renderSignUpForm() {
-  let render = ` 
-    <div class="sign_up_container">
-    
+function renderSign() {
+  document.getElementById("not_user").classList.toggle("display-none");
+  document.getElementById("start_container").innerHTML = ``;
+  document.getElementById("start_container").innerHTML = ` 
+    <div class="sign_up_container" id="sign_up_container">
+    <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
         <div class="sign_up_head">
-        <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
+        
         
         </div>
     
         <div class="cont_sign_up" id="cont_sign_up">
-        <img onclick="back_to_login()" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="renderLogin()" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
             <div class="sign_up_title">
                
                 <div class="signup_head">
@@ -60,23 +52,19 @@ function renderSignUpForm() {
             </form>
         </div>
         `;
-  return render;
 }
 
-function renderSign() {
-  let render = renderSignUpForm();
-  document.getElementById("signup").innerHTML = render;
-}
 
-function renderLogInForm() {
-  let render = ` 
-    <div class="sign_up_container">
+
+function renderLogin() {
+  document.getElementById("login").innerHTML = ` 
+    <div class="start_container" id="start_container">
         <div class="login_head">
-        <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
+        <img class="logo_start_page" src="./img/start_page.svg" alt="logo">
         <div class="login_header_right">
        
         <span class="not_user">Not a Join user?</span> 
-        <button onclick="to_signup_form())" class="signup_button_short" id="input_field">Sign up</button>
+        <button onclick="renderSign()" class="signup_button_short" id="not_user">Sign up</button>
         </div>
   
 
@@ -99,7 +87,7 @@ function renderLogInForm() {
             <input type="checkbox" id="checkbox"></input>
             <label class="not-markable" for="checkbox">Remember Me</label>
         </div>
-        <div onclick="openForgotPasswort()" class="forgot-passwort">Forgot my password</div>
+        <div onclick="renderForgotPassword()" class="forgot-password">Forgot my password</div>
           </div>
             
             <div class="login_buttons">
@@ -109,23 +97,22 @@ function renderLogInForm() {
             </form>
         </div>
         `;
-  return render;
+ 
 }
 
-function renderLogin() {
-  let render = renderLogInForm();
-  document.getElementById("login").innerHTML = render;
-}
+
 
 
 function renderForgotPassword() {
-  let render = ` 
+  document.getElementById("not_user").classList.toggle("display-none");
+  document.getElementById("login").innerHTML = ``;
+  document.getElementById("login").innerHTML = `  
     <div class="sign_up_container">
         <div class="login_head">
         <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
     </div>
         <div class="cont_forgot_pw" id="cont_forgot_pw">
-        <img onclick="back_to_login" class="forgot_blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="renderResetPassword()" class="forgot_blue_arrow_back" src="./img/arrow_back_blue.svg">
             <div class="login_title">
             
                 <div class="signup_head">
@@ -145,16 +132,12 @@ function renderForgotPassword() {
             </form>
         </div>
         `;
-  return render;
+ 
 }
 
-function renderForgot() {
-  let render = renderForgotPassword();
-  document.getElementById("forgot_pw").innerHTML = render;
-}
 
 function renderResetPassword() {
-  let render = ` 
+  document.getElementById("login").innerHTML =` 
     <div class="sign_up_container">
         <div class="login_head">
         <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
@@ -163,7 +146,7 @@ function renderResetPassword() {
 
     </div>
         <div class="cont_reset_pw" id="cont_reset_pw">
-        <img onclick="back_to_login()" class="reset_blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="renderForgotPassword()" class="reset_blue_arrow_back" src="./img/arrow_back_blue.svg">
             <div class="login_title">
             
                 <div class="signup_head">
@@ -186,12 +169,7 @@ function renderResetPassword() {
             </form>
         </div>
         `;
-  return render;
-}
-
-function renderReset() {
-  let render = renderResetPassword();
-  document.getElementById("reset_pw").innerHTML = render;
+  
 }
 
 
