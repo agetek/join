@@ -99,14 +99,12 @@
 .date_summary {
     font-size: 21px;
     font-weight: 700;
-    color: #2A3647;
 
 }
 
 
 .date_description_summary {
     font-size: 16px;
-    color: #2A3647;
 }
 
 .date_and_welcome {
@@ -164,7 +162,6 @@
 }
 
 .span_todo_done {
-    color: #2A3647;
     font: 21px;
 
 }
@@ -173,7 +170,51 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 24px;
-    padding-left: 32px;
+    justify-content: center;
+    padding-left: 87px;
+
+}
+
+.optic_overview:hover {
+    color: white;
+    background-color: #2A3647;
+}
+
+.upcoming_tasks_summary:hover {
+    color: white;
+    background-color: #2A3647;
+}
+
+.summary_todo_done:hover {
+    color: white;
+    background-color: #2A3647;
+}
+
+#todo_done_part_right {
+    background-image: url(img/check_button.svg);
+    height: 70px;
+    width: 70px;
+    background-repeat: no-repeat;
+    margin-left: 63px;
+    margin-top: 40px;
+
+}
+
+#todo_done_part_right:hover {
+    background-image: url(img/check_pencil_new_color.png);
+}
+
+#todo_done_part_left:hover {
+    background-image: url(img/edit_pencil_new_color.png);
+}
+
+
+#todo_done_part_left {
+    background-image: url(img/edit_pencil.svg);
+    height: 70px;
+    width: 70px;
+    background-repeat: no-repeat;
+    margin-left: 63px;
+    margin-top: 40px;
 
 }

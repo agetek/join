@@ -41,15 +41,13 @@ function renderSummary() {
         </div>
         <div class="summary_done_container">
             <div class="summary_todo_done">
-                <img class="img_todo_done" src="img/edit_pencil.svg">
-                <div class="todo_done_part">
+                <div id="todo_done_part_left" class="todo_done_part">
                     <span class="number_todo_done">1</span>
                     <span class="span_todo_done">To-do</span>
                 </div>
             </div>
             <div class="summary_todo_done">
-                <img class="img_todo_done" src="img/check_button.svg">
-                <div class="todo_done_part">
+                <div id="todo_done_part_right" class="todo_done_part">
                     <span class="number_todo_done">1</span>
                     <span class="span_todo_done">Done</span>
                 </div>
