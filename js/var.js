@@ -20,6 +20,8 @@ let addTaskContactsSelected = [];
 
 let priority = -1;
 
+let activeSubtasks = [];
+
 const colors = [
     'rgb(254,122,0)',
     'rgb(147,39,255)',

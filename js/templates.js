@@ -88,6 +88,7 @@ function renderBoard() {
 
 function addTask() {
     let render = renderSidebar();
+    activeSubtasks = [];
     render += `<div class="right">`;
     render += renderHeader();
     render += `<div class="middle_column" id="update_task">`;

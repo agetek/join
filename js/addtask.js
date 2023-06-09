@@ -164,6 +164,7 @@ function getMaxCategoryId() {
 async function addTaskPopup() {
     categoryOpen = false;
     categorySelected = -1;
+    activeSubtasks = [];
     category = await getItem('category');
     oldContent = document.getElementById('container').innerHTML;
     let newContent = `<div class="popup" id="popup" onclick="closeEdit()">
@@ -356,7 +357,9 @@ function renderAddTaskSubtasks() {
     let render = `<div class="add_task_subtasks_outer" onclick="enterSubtask()">
                     <div class="add_task_subtasks_inner">Add new subtask</div>
                     <div class="add_task_subtasks_plus"></div>
-                </div>`;
+                </div>
+                <div class="error_message" id="error_message_subtask"></div>
+                <div class="add_task_subtask_listing" id="add_task_subtask_listing"></div>`;
     return render
 }
 
@@ -370,9 +373,94 @@ function enterSubtask() {
             <div class="error_message" id="error_message_subtask"></div>
             <div class="add_task_subtask_listing" id="add_task_subtask_listing"></div>`;
     document.getElementById('update_subtasks').innerHTML = render;
+    renderSubtasksListing();
 }
 
-function exitEnterSubtask() {
+function exitEnterSubtask() {    
     let render = renderAddTaskSubtasks();
     document.getElementById('update_subtasks').innerHTML = render;
+    renderSubtasksListing();
+}
+
+function processSubtask() {
+    let check = validateSubtask();
+    if (check) {
+        addTasksubtasks(); 
+        let render = renderAddTaskSubtasks();
+        document.getElementById('update_subtasks').innerHTML = render;
+        renderSubtasksListing();
+    } else {
+        document.get('add_task_subtasks_input').value = '';
+    }
+}
+
+function validateSubtask() {
+    let check = document.getElementById('add_task_subtasks_input').value;
+    let check_1 = check.search('"');
+    let check_2 = check.search("'");
+    let check_3 = check.search('`');
+    let check_4 = check.length;
+    let reply = true;
+    if (check_1 >= 0 || check_2 >= 0 || check_3 >= 0) {
+        reply = false;
+        document.getElementById('error_message_subtask').innerHTML = 'The subtask contains invalid characters';
+    }
+    if (check_4 < 3) {
+        reply = false;
+        document.getElementById('error_message_subtask').innerHTML = 'The subtask is too short';
+    }
+    if (check_4 > 60) {
+        reply = false;
+        document.getElementById('error_message_subtask').innerHTML = 'The subtask is too long';
+    }
+    return reply
+}
+
+function addTasksubtasks() {
+    let id = getMaxSubtaskId();
+    let title = document.getElementById('add_task_subtasks_input').value;
+    let checked = false;
+    let subtask = {
+        'id': id,
+        'title': title,
+        'checked': false
+    }
+    activeSubtasks.push(subtask);
+}
+
+function getMaxSubtaskId() {
+    let max = null;
+    for (let i = 0; i < activeSubtasks.length; i++) {
+        if (max == null || activeSubtasks[i]['id'] > max)
+            max = activeSubtasks[i]['id'];
+    }
+    return max + 1;
+}
+
+function renderSubtasksListing() {
+    document.getElementById('error_message_subtask').innerHTML = '';
+    // document.getElementById('add_task_subtasks_input').value = '';
+    let render = '';
+    for (let i = 0; i < activeSubtasks.length; i++) {
+        let id = activeSubtasks[i]['id'];
+        let check = '';
+        if (activeSubtasks[i]['checked']) { check = 'checked'; }
+        render += `<div class="subtasks_listing_outer">
+                    <input class="add_task_contacts_checkbox" type="checkbox" onclick="toggleSubtaskCheck(${i})" id="subtask_listing_${id}"${check}>
+                    <div class="subtasks_listing_inner">${activeSubtasks[i]['title']}</div>
+                    <div class="subtask_listing_trash" onclick="deleteSubtask(${i})"></div>
+                </div>`;
+    }
+    document.getElementById('add_task_subtask_listing').innerHTML = render;
+}
+
+function deleteSubtask(id) {
+    // let subtask = activeSubtasks.filter(activeSubtask => activeSubtask.id == id);
+    activeSubtasks.splice(id, 1);
+    renderSubtasksListing();
+}
+
+function toggleSubtaskCheck(i) {
+    if (activeSubtasks[i]['checked'] == false) { activeSubtasks[i]['checked'] = true }
+    else { activeSubtasks[i]['checked'] = false }
 }
