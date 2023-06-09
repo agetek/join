@@ -45,9 +45,9 @@ function renderSign() {
           </div>
 
             <form action="javascript:register()">
-                    <input type="text" class="input_name" id="input_field" placeholder="Name" pattern="[A-Za-z]{2, 8}[\\s]{1}[A-Za-z]{2, 8}" required>
-                    <input type="email" class="input_email" id ="input_field" placeholder="Email" required>
-                    <input type="text" class="input_phone" id ="input_field" placeholder="Phone" required>
+                    <input type="text" class="input_name_l" id="input_field" placeholder="Name" pattern="[A-Za-z]{2, 8}[\\s]{1}[A-Za-z]{2, 8}" required>
+                    <input type="email" class="input_email_l" id ="input_field" placeholder="Email" required>
+                    <input type="text" class="input_phone_l" id ="input_field" placeholder="Phone" required>
                     <button type="submit" class="signup_button" id="input_field">Sign up</button>
             </form>
         </div>
@@ -59,7 +59,9 @@ function renderSign() {
 function renderLogin() {
   document.getElementById("login").innerHTML = ` 
     <div class="start_container" id="start_container">
-    <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
+    <div class="background animation_background"></div>
+    <img class="logo_animation move_logo" src="./img/join_logo.png">
+
         <div class="login_head">
         
         <div class="login_header_right">
@@ -80,8 +82,8 @@ function renderLogin() {
 
             <form action="javascript:login()">
            
-                    <input type="text" class="input_name" id="input_field" placeholder="Name" pattern="[A-Za-z]{2, 8}[\\s]{1}[A-Za-z]{2, 8}" required>
-                    <input type="email" class="input_email" id ="input_field" placeholder="Email" required>
+                    <input type="text" class="input_name_l" id="input_field" placeholder="Name" pattern="[A-Za-z]{2, 8}[\\s]{1}[A-Za-z]{2, 8}" required>
+                    <input type="email" class="input_email_l" id ="input_field" placeholder="Email" required>
             
             <div class="forgot">
             <div class="remember-passwort">
@@ -123,7 +125,7 @@ function renderForgotPassword() {
           </div>
             <form action="javascript:login()">
           
-          <input type="email" class="input_email" id ="input_field" placeholder="Email" required>
+          <input type="email" class="input_email_l" id ="input_field" placeholder="Email" required>
             <div class="login_buttons">
                     <button class="send_email_button" >Send me an email</button>
                    
@@ -157,8 +159,8 @@ function renderResetPassword() {
             <form class="form" action="javascript:login()">
            <div class="text_reset_pw">Change your account password</div>
                     
-                    <input type="text" class="input_password" id ="input_field_sign" placeholder="New password" required>
-                    <input type="text" class="input_password" id ="input_field_" placeholder="Confirm password" required>
+                    <input type="text" class="input_password_l" id ="input_field_sign" placeholder="New password" required>
+                    <input type="text" class="input_password_l" id ="input_field_" placeholder="Confirm password" required>
             
             
             <div class="login_buttons">

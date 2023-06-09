@@ -9,6 +9,7 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #f6f7f8;
+  z-index: 1;
 }
 
 .start_container {
@@ -17,13 +18,14 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #f6f7f8;
+  z-index: 1;
 }
 
 .capa_sign_up {
   position: fixed;
   left: 77px;
   top: 80px;
-  display: none;
+  
 }
 
 .vector_5 {
@@ -283,7 +285,7 @@ form {
   padding-top: 30px;
 }
 
-.input_name {
+.input_name_l {
   padding-top: 13px;
   padding-bottom: 13px;
   padding-left: 21px;
@@ -304,7 +306,7 @@ form {
   box-sizing: border-box;
 }
 
-.input_email {
+.input_email_l {
   padding-top: 13px;
   padding-bottom: 13px;
   padding-left: 21px;
@@ -323,7 +325,7 @@ form {
   box-sizing: border-box;
 }
 
-.input_phone {
+.input_phone_l {
   padding-top: 13px;
   padding-bottom: 13px;
   padding-left: 21px;
@@ -343,7 +345,7 @@ form {
   box-sizing: border-box;
 }
 
-.input_password {
+.input_password_l {
   padding-top: 13px;
   padding-bottom: 13px;
   padding-left: 21px;
@@ -394,7 +396,6 @@ form {
   background-color: #F6F7F8;
 }
 
-
 .animation_background {
   animation: bg-transparency 1000ms ease-in-out;
   animation-delay: 1s;
@@ -404,7 +405,7 @@ form {
 @keyframes bg-transparency {
   from {
     opacity: 1;
-    z-index: 1;
+    z-index: 0;
   }
 
   to {
@@ -416,11 +417,11 @@ form {
 
 .move_logo {
   position: absolute;
-  z-index: 8;
+  z-index: 2;
   left: calc(100vw - 50% - 101px);
   top: calc(100vh - 50% - 122px);
-  width: 202px;
-  height: 244px;
+  width: 352px;
+  height: 394px;
 }
 
 .logo_animation {
@@ -433,8 +434,8 @@ form {
   from {
     left: calc(100vw - 50% - 101px);
     top: calc(100vh - 50% - 122px);
-    width: 202px;
-    height: 244px;
+    width: 352px;
+    height: 394px;
   }
 
   to {
