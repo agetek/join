@@ -47,7 +47,7 @@ function renderSign() {
             <form action="javascript:register()">
                     <input type="text" class="input_name" id="input_field" placeholder="Name" pattern="[A-Za-z]{2, 8}[\\s]{1}[A-Za-z]{2, 8}" required>
                     <input type="email" class="input_email" id ="input_field" placeholder="Email" required>
-                    <input type="text" class="input_phone" id ="input_field" placeholder="Phone" pattern="[0-9]" required>
+                    <input type="text" class="input_phone" id ="input_field" placeholder="Phone" required>
                     <button type="submit" class="signup_button" id="input_field">Sign up</button>
             </form>
         </div>
@@ -88,7 +88,7 @@ function renderLogin() {
             <input type="checkbox" id="checkbox"></input>
             <label class="not-markable" for="checkbox">Remember Me</label>
         </div>
-        <div onclick="renderForgotPassword()" class="forgot-password">Forgot my password</div>
+        <div onclick="renderForgotPassword()" class="text-forgot-password">Forgot my password</div>
           </div>
             
             <div class="login_buttons">
@@ -115,7 +115,7 @@ function renderForgotPassword() {
             <div class="login_title">
             
                 <div class="signup_head">
-                    <img class="logo_signup forgot_password" src="./img/forgot_password.svg">
+                    <img class="logo_signup img_forgot_password" src="./img/forgot_password.svg">
                     <img class="vector_5" src="./img/vector_5.svg">
                 </div>
           <div class="text_forgot_pw">Don't worry! We will send you an email with the instructions to reset your password.</div>

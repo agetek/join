@@ -19,60 +19,17 @@ body {
   background-color: #f6f7f8;
 }
 
-
-  /*  @keyframes animate  {
-    0% {
-      transform: scale(2);
-      transform-origin: 50% 100%;
-    }
-  
-    100% {
-      transform: scale(1);
-      transform-origin: 50% 100%;
-    }
-  }
-
-.logo_start_page{
-  animation: animate  1s ease 0s 1 normal backwards;
-}
-
-*/
-
 .capa_sign_up {
   position: fixed;
   left: 77px;
   top: 80px;
 }
 
-/*
-.login_head {
-  display: flex;
-  text-align: center;
-  padding-top: 70px;
-  padding-left: 70px;
-}*/
-
 .vector_5 {
   margin-top: 20px;
 }
 
 .cont_sign_up {
-  /*display: flex;
-flex-direction: column;
-align-items: center;
-padding: 35px 0px;
-gap: 35px;
-isolation: isolate;
-
-position: absolute;
-width: 652px;
-height: 559px;
-left: 394px;
-top: 274px;
-background: #FFFFFF;
-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
-border-radius: 30px;*/
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -225,6 +182,14 @@ form {
   cursor: pointer;
 }
 
+.signup_button:hover, .login_button:hover, .signup_button_short:hover, 
+.send_email_button:hover, .continue_button:hover {
+border: none;
+background-color: #29ABE2;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+transition: background-color 0.125s ease;
+}
+
 .login_button {
   height: 51px;
   width: 145px;
@@ -257,6 +222,14 @@ form {
   cursor: pointer;
 }
 
+.guest_login_button:hover {
+  cursor: pointer;
+  border: 2px solid #29ABE2;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  color: #29ABE2;
+}
+
+
 .signup_button_short {
   height: 51px;
   width: 120px;
@@ -274,7 +247,8 @@ form {
   cursor: pointer;
 }
 
-.send_email_button {
+
+.send_email_button, .continue_button {
   height: 51px;
   width: 264px;
   left: 253.5px;
@@ -291,21 +265,6 @@ form {
   cursor: pointer;
 }
 
-.continue_button {
-  height: 51px;
-  width: 264px;
-  left: 253.5px;
-  top: 473px;
-  border-radius: 8px;
-  padding: 4px 0px 4px 0px;
-  background: #2a3647;
-  border-radius: 10px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  border: solid;
-  cursor: pointer;
-}
 
 .text_reset_pw {
   font-size: 21px;
@@ -416,11 +375,30 @@ form {
   font-size: 16px;
 }
 
-.forgot-password {
+.text-forgot-password {
   color: #29abe2;
 }
 
-.forgot_password {
+.img_forgot_password {
   width: 600px;
 }
 
+
+
+  /*  @keyframes animate  {
+    0% {
+      transform: scale(2);
+      transform-origin: 50% 100%;
+    }
+  
+    100% {
+      transform: scale(1);
+      transform-origin: 50% 100%;
+    }
+  }
+
+.logo_start_page{
+  animation: animate  1s ease 0s 1 normal backwards;
+}
+
+*/
