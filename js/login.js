@@ -102,8 +102,6 @@ function renderLogin() {
 }
 
 
-
-
 function renderForgotPassword() {
   document.getElementById("not_user").classList.toggle("display-none");
   document.getElementById("login").innerHTML = ``;
@@ -147,7 +145,7 @@ function renderResetPassword() {
 
     </div>
         <div class="cont_reset_pw" id="cont_reset_pw">
-        <img onclick="renderForgotPassword()" class="reset_blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="renderLogin()" class="reset_blue_arrow_back" src="./img/arrow_back_blue.svg">
             <div class="login_title">
             
                 <div class="signup_head">
