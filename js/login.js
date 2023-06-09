@@ -59,8 +59,9 @@ function renderSign() {
 function renderLogin() {
   document.getElementById("login").innerHTML = ` 
     <div class="start_container" id="start_container">
+    <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
         <div class="login_head">
-        <img class="logo_start_page" src="./img/start_page.svg" alt="logo">
+        
         <div class="login_header_right">
        
         <span class="not_user">Not a Join user?</span> 
