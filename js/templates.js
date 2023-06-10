@@ -111,7 +111,14 @@ function summary() {
 
 async function openAddTask() {
     categoryOpen = false;
+    contactsOpen = false;
     categorySelected = -1;
+    userSelfId = 0;
+    addTaskContactsSelected = [];
+    priority = -1;
+    activeSubtasks = [];
+
+    
     category = await getItem('category');
     let render = addTask();
     document.getElementById('container').innerHTML = render;

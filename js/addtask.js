@@ -8,38 +8,49 @@ function renderAddTask() {
         <div class="add_task_body">
             <div class="add_task_left_column">
                 <label class="add_task_label_title" for="input_title">Title</label>
-                <input type="text" class="input_title" id="input_title" placeholder="Enter a title" required>
+                <input type="text" class="input_title" id="input_title" placeholder="Enter a title">
+                <div class="error_message" id="error_message_title"></div>
                 <label class="add_task_label_description" for="input_description">Description</label>
                 <textarea class="add_task_textarea_description" placeholder="Enter a description" id="input_description"></textarea>
+                <div class="error_message" id="error_message_description"></div>
                 <div class="add_task_label_description">Category</div>
                 <div id="update_category" class="update_category">`
     render += renderAddTaskCategory();
-    render += `
-                </div>
+    render += `</div>
+                <div class="error_message" id="error_message_category"></div>
                 <div class="add_task_label_description">Assigned to</div>
                 <div class="update_assigned" id="update_assigned">`
     render += renderAddTaskContacts();
     render += `</div>
+            <div class="error_message" id="error_message_assigned"></div>
             </div>
             <div class="add_task_divider"></div>
             <div class="add_task_right_column">
             <label class="add_task_label_date" for="input_date">Due date</label>
-            <input type="date" class="input_date" id="input_date" placeholder="dd/mm/yyyy" required>
+            <input type="date" class="input_date" id="input_date" placeholder="dd/mm/yyyy">
+            <div class="error_message" id="error_message_date"></div>
             <label class="add_task_label_prio">Prio</label>
             <div class="add_task_prio">
                 <div class="add_task_prio_outer" id="prio_urgent" onclick="setPriority(2)"><div class="add_task_prio_inner">Urgent <div class="add_task_prio_urgent_img"></div></div></div>
                 <div class="add_task_prio_outer" id="prio_medium" onclick="setPriority(1)"><div class="add_task_prio_inner">Medium <div class="add_task_prio_medium_img"></div></div></div>
                 <div class="add_task_prio_outer" id="prio_low" onclick="setPriority(0)"><div class="add_task_prio_inner">Low <div class="add_task_prio_low_img"></div></div></div>
             </div>
+            <div class="error_message" id="error_message_prio"></div>
             <label class="add_task_label_subtasks">Subtasks</label>
             <div class="update_subtasks" id="update_subtasks">`
     render += renderAddTaskSubtasks();
-            `</div>
+    render += `</div>
+        <div class="error_message" id="error_message_subtasks"></div> 
+        </div>
+        </div>
+        <div class="add_task_submit_outer">
+            <div class="form_buttons">
+                        <button type="reset" class="add_task_cancel" onclick="resetAddTask()">Clear</button>
+                        <button type="button" class="add_task_submit" onclick="processAddTask()">Create Task</button>
             </div>
         </div>
-        <div class="add_task_submit_outer"></div>
-        </form>
         
+        </form>
     </div>
     `;
     return render
@@ -83,7 +94,14 @@ async function loadOldCategories() {
     return category
 }
 
+async function loadOldTodos() {
+    let todos = oldTodos;
+    await setItem('todos', todos);
+    return todos
+}
+
 function selectCategory(id) {
+    document.getElementById("error_message_category").innerHTML = '';
     categorySelected = id;
     categoryOpen = false;
     let render = renderAddTaskCategory();
@@ -108,6 +126,7 @@ function getCat(catId) {
 }
 
 function addNewCategory() {
+    document.getElementById("error_message_category").innerHTML = '';
     let render = `<div class="add_task_category_outer">
                     <div class="add_task_category_inner">
                         <input type="text" class="add_task_category_input" id="add_task_category_input" minlength="2">
@@ -116,7 +135,6 @@ function addNewCategory() {
                         <div class="add_task_category_hook" onclick="chooseCategoryColor()"></div>
                     </div>
                 </div>
-                <div class="error_message" id="error_message_category"></div>
                 <div class="category_colors_outer" id="category_colors_outer"></div>`;
     document.getElementById('update_category').innerHTML = render;
 }
@@ -126,9 +144,11 @@ function exitNewCategory() {
     categoryOpen = false;
     let render = renderAddTaskCategory();
     document.getElementById('update_category').innerHTML = render;
+    document.getElementById('error_message_category').innerHTML = '';
 }
 
 function chooseCategoryColor() {
+    document.getElementById('error_message_category').innerHTML = '';
     let check = document.getElementById('add_task_category_input').value;
     if (check.length < 2) {
         document.getElementById('error_message_category').innerHTML = 'Category name too short. Must be at least 2 characters long';
@@ -248,6 +268,7 @@ async function openTaskContactsDropdown() {
 }
 
 function toggleContactId(id) {
+    document.getElementById("error_message_assigned").innerHTML = '';
     let contained = false;
     let index = -1;
     for (let i = 0; i < addTaskContactsSelected.length; i++) {
@@ -275,6 +296,7 @@ function renderSelectedContacts() {
 }
 
 function inviteContact() {
+    document.getElementById("error_message_assigned").innerHTML = '';
     let render = `<div class="add_task_category_outer">
         <div class="add_task_category_inner">
             <input type="text" class="add_task_category_input" id="add_task_contact_email" minlength="2" maxlength="60">
@@ -282,12 +304,12 @@ function inviteContact() {
             <div class="add_task_category_divider"></div>
             <div class="add_task_category_hook" onclick="processInviteContact()"></div>
         </div>
-    </div>
-    <div class="error_message" id="error_message_category"></div>`;
+    </div>`;
     document.getElementById('update_assigned').innerHTML = render;
 }
 
 function exitInviteContact() {
+    document.getElementById('error_message_assigned').innerHTML = '';
     contactsOpen = false;
     let render = renderAddTaskContacts();
     document.getElementById('update_assigned').innerHTML = render;
@@ -296,7 +318,7 @@ function exitInviteContact() {
 }
 
 async function processInviteContact() {
-    document.getElementById('error_message_category').innerHTML = '';
+    document.getElementById('error_message_assigned').innerHTML = '';
     let email = document.getElementById('add_task_contact_email').value;
     if (validateEmail(email)) {
         let id = await addUser(email);
@@ -304,7 +326,7 @@ async function processInviteContact() {
         exitInviteContact();
     } else {
         document.getElementById('add_task_contact_email').value = '';
-        document.getElementById('error_message_category').innerHTML = 'No valid email address';
+        document.getElementById('error_message_assigned').innerHTML = 'No valid email address';
     }
 }
 
@@ -359,7 +381,6 @@ function renderAddTaskSubtasks() {
                     <div class="add_task_subtasks_inner">Add new subtask</div>
                     <div class="add_task_subtasks_plus"></div>
                 </div>
-                <div class="error_message" id="error_message_subtask"></div>
                 <div class="add_task_subtask_listing" id="add_task_subtask_listing"></div>`;
     return render
 }
@@ -371,13 +392,12 @@ function enterSubtask() {
                     <div class="add_task_category_divider"></div>
                     <div class="add_task_category_hook" onclick="processSubtask()"></div>
             </div>
-            <div class="error_message" id="error_message_subtask"></div>
             <div class="add_task_subtask_listing" id="add_task_subtask_listing"></div>`;
     document.getElementById('update_subtasks').innerHTML = render;
     renderSubtasksListing();
 }
 
-function exitEnterSubtask() {    
+function exitEnterSubtask() {
     let render = renderAddTaskSubtasks();
     document.getElementById('update_subtasks').innerHTML = render;
     renderSubtasksListing();
@@ -386,7 +406,7 @@ function exitEnterSubtask() {
 function processSubtask() {
     let check = validateSubtask();
     if (check) {
-        addTasksubtasks(); 
+        addTasksubtasks();
         let render = renderAddTaskSubtasks();
         document.getElementById('update_subtasks').innerHTML = render;
         renderSubtasksListing();
@@ -404,15 +424,15 @@ function validateSubtask() {
     let reply = true;
     if (check_1 >= 0 || check_2 >= 0 || check_3 >= 0) {
         reply = false;
-        document.getElementById('error_message_subtask').innerHTML = 'The subtask contains invalid characters';
+        document.getElementById('error_message_subtasks').innerHTML = 'The subtask contains invalid characters';
     }
     if (check_4 < 3) {
         reply = false;
-        document.getElementById('error_message_subtask').innerHTML = 'The subtask is too short';
+        document.getElementById('error_message_subtasks').innerHTML = 'The subtask is too short';
     }
     if (check_4 > 60) {
         reply = false;
-        document.getElementById('error_message_subtask').innerHTML = 'The subtask is too long';
+        document.getElementById('error_message_subtasks').innerHTML = 'The subtask is too long';
     }
     return reply
 }
@@ -439,7 +459,7 @@ function getMaxSubtaskId() {
 }
 
 function renderSubtasksListing() {
-    document.getElementById('error_message_subtask').innerHTML = '';
+    document.getElementById('error_message_subtasks').innerHTML = '';
     // document.getElementById('add_task_subtasks_input').value = '';
     let render = '';
     for (let i = 0; i < activeSubtasks.length; i++) {
@@ -464,4 +484,167 @@ function deleteSubtask(id) {
 function toggleSubtaskCheck(i) {
     if (activeSubtasks[i]['checked'] == false) { activeSubtasks[i]['checked'] = true }
     else { activeSubtasks[i]['checked'] = false }
+}
+
+function resetAddTask() {
+    openAddTask();
+}
+
+async function processAddTask() {
+    document.getElementById("error_message_title").innerHTML = '';
+    document.getElementById("error_message_description").innerHTML = '';
+    document.getElementById("error_message_category").innerHTML = '';
+    document.getElementById("error_message_assigned").innerHTML = '';
+    document.getElementById("error_message_date").innerHTML = '';
+    document.getElementById("error_message_prio").innerHTML = '';
+    document.getElementById("error_message_subtasks").innerHTML = '';
+    let check = validateAddTask();
+    if (check) {
+        await saveAddTask();
+    }
+}
+
+async function saveAddTask() {
+    let title = document.getElementById('input_title').value;
+    let description = document.getElementById('input_description').value;
+    let category = categorySelected;
+    let assigned = addTaskContactsSelected;
+    let date = document.getElementById('input_date').value;
+    let prio = priority;
+    let subtasks = activeSubtasks;
+    let id = getMaxTodoId();
+    let todo = {
+        'id': id,
+        'bucket': 'window1',
+        'title': title,
+        'description': description,
+        'category_id': category,
+        'user_ids': assigned,
+        'due_date': date,
+        'prio': prio,
+        'subtasks': subtasks
+    };
+    todos.push(todo);
+    await setItem('todos', todos);
+    openBoard();
+    shiftMessage('Task successfully added');
+}
+
+function getMaxTodoId() {
+    let max = null;
+    for (let i = 0; i < todos.length; i++) {
+        if (max == null || todos[i]['id'] > max)
+            max = todos[i]['id'];
+    }
+    return max + 1;
+}
+
+function validateAddTask() {
+    let reply = false;
+    let title = document.getElementById('input_title').value;
+    let description = document.getElementById('input_description').value;
+    let category = categorySelected;
+    let assigned = addTaskContactsSelected;
+    let date = document.getElementById('input_date').value;
+    let prio = priority;
+    let subtasks = activeSubtasks;
+    let check_title = validateTitle(title);
+    let check_description = validateDescription(description);
+    let check_category = validateCategory(category);
+    let check_assigned = validateAssigned(assigned);
+    let check_date = validateDate(date);
+    let check_prio = validatePrio(prio);
+    if (check_title && check_description && check_category && check_assigned && check_date && check_prio) {
+        reply = true;
+    }
+    return reply
+}
+
+function validatePrio(prio) {
+    let reply = true;
+    if (prio == -1) {
+        document.getElementById("error_message_prio").innerHTML = "Please select a Priority";
+        reply = false;
+    }
+    return reply
+}
+
+function validateDate(date) {
+    let now = Date.now();
+    let days = Math.floor(now / 86400000);
+    let newNow = days * 24 * 60 * 60 * 1000;
+    let givenDate = new Date(date).getTime();
+    let reply = true;
+    if (!date) {
+        document.getElementById("error_message_date").innerHTML = "Please select a date";
+        reply = false;
+    } else {
+        if (givenDate - newNow < 0) {
+            document.getElementById("error_message_date").innerHTML = "The date has to be in the future";
+            reply = false;
+        }
+    }
+    return reply
+}
+
+function validateAssigned(assigned) {
+    let reply = true;
+    if (assigned[0] == undefined) {
+        document.getElementById("error_message_assigned").innerHTML = "Please select a contact";
+        reply = false;
+    }
+    return reply
+}
+
+function validateCategory(category) {
+    let reply = true;
+    if (category == -1) {
+        document.getElementById("error_message_category").innerHTML = "Please select a category";
+        reply = false;
+    }
+    return reply
+}
+
+function validateTitle(title) {
+    let check = title;
+    let check_1 = check.search('"');
+    let check_2 = check.search("'");
+    let check_3 = check.search('`');
+    let check_4 = check.length;
+    let reply = true;
+    if (check_1 >= 0 || check_2 >= 0 || check_3 >= 0) {
+        reply = false;
+        document.getElementById('error_message_title').innerHTML = 'The title contains invalid characters';
+    }
+    if (check_4 < 3) {
+        reply = false;
+        document.getElementById('error_message_title').innerHTML = 'The title is too short';
+    }
+    if (check_4 > 60) {
+        reply = false;
+        document.getElementById('error_message_title').innerHTML = 'The title is too long';
+    }
+    return reply
+}
+
+function validateDescription(description) {
+    let check = description;
+    let check_1 = check.search('"');
+    let check_2 = check.search("'");
+    let check_3 = check.search('`');
+    let check_4 = check.length;
+    let reply = true;
+    if (check_1 >= 0 || check_2 >= 0 || check_3 >= 0) {
+        reply = false;
+        document.getElementById('error_message_description').innerHTML = 'The description contains invalid characters';
+    }
+    if (check_4 < 3) {
+        reply = false;
+        document.getElementById('error_message_description').innerHTML = 'The description is too short';
+    }
+    if (check_4 > 400) {
+        reply = false;
+        document.getElementById('error_message_description').innerHTML = 'The description is too long';
+    }
+    return reply
 }
