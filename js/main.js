@@ -16,6 +16,8 @@ async function getItem(key) {
     let result = await fetch(url).then(res => res.json());
     let resultReturn = result['data']['value'];
     resultReturn = resultReturn.replaceAll("'", '"');
+    resultReturn = resultReturn.replaceAll('True', 'true');
+    resultReturn = resultReturn.replaceAll('False', 'false');
     resultReturn = JSON.parse(resultReturn);
     return resultReturn;
 }

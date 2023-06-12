@@ -1,4 +1,5 @@
-function openBoard() {
+async function openBoard() {
+    todos = await getItem('todos');
     let render = renderBoard();
     document.getElementById('container').innerHTML = render;
     document.getElementById('open_board').classList.add('sidebar_point_active');
@@ -62,7 +63,7 @@ function board() {
 
 };
 
-function updateHTML() {
+function updateHTML() {  
     let first = todos.filter(t => t['bucket'] == 'window1');
 
     document.getElementById('window1').innerHTML = ``;
@@ -105,30 +106,102 @@ function updateHTML() {
 }
 
 function generateToDoHTML(element) {
-    return `
+    let cat = getCategory(element['category_id']);
+    let render = `
     <div id="moveable_container" draggable="true" ondragstart="startDragging(${element['id']})" class="todo">
-        <div class="topic">${element['topic']}
+        <div class="topic" style="background-color: ${cat[1]}">${cat[0]}
         </div>
         <div class="title">${element['title']}
         </div>
         <div class="description">${element['description']}
         </div>
-        <div class="task_and_progress">
-            <div class="progress_tasks"></div>
-            <span class="tasks_board">0/3 Done</span>
-        </div>
+        <div class="task_and_progress">`
+    render += getTaskAndProgress(element['subtasks']);
+    render += `</div>
         <div class="user_elements">
-            <div class="user_icons_board" >
-                <div class="board_users">${element['users']}
-                </div>
-                <div id="second_user" class="board_users">${element['users']}
-                </div>
-                <div id="third_user" class="board_users">${element['users']}
-                </div>
-            </div>
-        <img src="img/red_arrows.svg" class="arrows_board">
-    </div>`;
+            <div class="user_icons_board" id="user_icons_board">`
+    render += getUsersBoard(element['user_ids']);
+    render += `</div>`
+    render += getPrioBoard(element['prio']);
+    render += `</div>`;
+    return render
 }
+
+function getTaskAndProgress(subtasks) {
+    let render = '';
+    if (subtasks.length > 0) {
+        let checked = filteredsubtasks = subtasks.filter(subtask => subtask.checked == true);
+        let progress = Math.round((checked.length / subtasks.length) * 100);
+        render += `<div class="progress_tasks"><div class="bd_progress" style="width: ${progress}%"></div></div>`
+        render += `<span class="tasks_board">${checked.length}/${subtasks.length} Done</span>`;
+    }
+    return render
+}
+
+function getPrioBoard(prio) {
+    let render = '';
+    if(prio == 0) {
+        render += `<img src="img/prio_low.svg" alt="Prio Low">`;
+    }
+    else if (prio == 1) {
+        render += `<img src="img/prio_medium.svg" alt="Prio Medium">`;
+    }
+    else if (prio == 2) {
+        render += `<img src="img/prio_urgent.svg" alt="Prio High">`;
+    }
+    return render;
+}
+
+function getCategory(id) {
+    let filteredCategory = category.filter(cat => cat.id == id);
+    let name = filteredCategory[0]['name'];
+    let color = taskColors[filteredCategory[0]['color_id']];
+    return [name, color];
+}
+
+function getUsersBoard(ids) {
+    let render = '';
+    if (ids.length < 4) {
+        render += getUsersBoardBelow(ids);
+    } else {
+        render += getUsersBoardAbove(ids);
+    }
+    return render
+}
+
+function getUsersBoardBelow(ids) {
+    let render = '';
+    for (let i = 0; i < ids.length; i++) {
+        let filteredUsers = users.filter(user => user.id == ids[i]);
+        render += `<div class="bd_task_user">${renderInitials(filteredUsers[0])}</div>`;
+    }
+    return render
+}
+
+function getUsersBoardAbove(ids) {
+    let render = '';
+    for (let i = 0; i < 2; i++) {
+        let filteredUsers = users.filter(user => user.id == ids[i]);
+        render += `<div class="bd_task_user">${renderInitials(filteredUsers[0])}</div>`;
+    }
+    render += `<div class="bd_initials_overflow">+${ids.length - 2}</div>`;
+    return render
+}
+
+// <div class="progress_tasks"></div>
+// <span class="tasks_board">0/3 Done</span>
+
+// <img src="img/red_arrows.svg" class="arrows_board">
+
+
+// {/* <div class="board_users">${element['users']}
+//                 </div>
+//                 <div id="second_user" class="board_users">${element['users']}
+//                 </div>
+//                 <div id="third_user" class="board_users">${element['users']}
+//                 </div> */}
+
+
 
 // function updateHTML() {
 //     let first = todos.filter(t => t['category'] == 'window1');
@@ -194,8 +267,9 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(category) {
+async function moveTo(category) {
     todos[currentDraggedElement]['bucket'] = category; 
+    await setItem('todos', todos);
     updateHTML();
 }
 
@@ -212,4 +286,4 @@ function search_container() {
             x[i].style.display = "block";                 
         }
     }
-} 
+}                                     

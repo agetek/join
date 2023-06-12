@@ -1063,3 +1063,36 @@
 
 
 /* Add Task End */
+
+.bd_task_user {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    font-weight: normal;
+    font-size: 12px;
+    margin-left: -8px;
+}
+
+.bd_initials_overflow {
+    display: flex;
+    border: 1px solid white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    width: 35px;
+    height: 35px;
+    font-weight: normal;
+    font-size: 12px;
+    margin-left: -8px;
+    background-color: #2A3647;
+}
+
+.bd_progress {
+    display: flex;
+    background-color: #29ABE2;
+    border-radius: 2px;
+    height: 100%;
+}
+
+/* Board End */

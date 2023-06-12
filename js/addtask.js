@@ -525,9 +525,11 @@ async function saveAddTask() {
         'subtasks': subtasks
     };
     todos.push(todo);
-    await setItem('todos', todos);
+    
+    await setItem('todos', todos); 
+    setTimeout(function() {
+    shiftMessage('Task successfully added');}, 250);
     openBoard();
-    shiftMessage('Task successfully added');
 }
 
 function getMaxTodoId() {

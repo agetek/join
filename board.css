@@ -65,21 +65,21 @@ h2 {
 
 .to_do_container {
     margin-right: 26px;
-    width: 267px;
+    width: 300px;
 }
 
 .in_progress_container {
     margin-right: 26px;
-    width: 267px;
+    width: 300px;
 }
 
 .Awaiting_Feedback_container {
     margin-right: 60px;
-    width: 267px;
+    width: 300px;
 }
 
 .done_container {
-    width: 267px;
+    width: 300px;
 }
 
 .placeholder_drag_drop {
@@ -170,19 +170,13 @@ h2 {
 .board_users {
     font-size: 12px;
     font-weight: 400;
-    background-color: #0190E0;
     border-radius: 50%;
     width: 35px;
     height: 35px;
-    margin-left: 20px;
+    margin-left: -10px;
     color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 18px;
-    box-shadow: 0 0 0 3px rgb(255, 255, 255);
-
-
+    background-color: #2A3647;
 }
 
 .fixContainers {
@@ -234,4 +228,5 @@ h2 {
 
 .user_icons_board {
     display: flex;
+    margin-left: 28px;
 }
