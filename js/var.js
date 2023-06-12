@@ -22,6 +22,8 @@ let priority = -1;
 
 let activeSubtasks = [];
 
+let addTaskSlider = -1;
+
 const colors = [
     'rgb(254,122,0)',
     'rgb(147,39,255)',
@@ -199,6 +201,75 @@ let users =
 
 
 let todos = [
+    {
+        'id': 0,
+        'bucket': 'window1',
+        'title': 'Beispiel Task',
+        'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
+        'category_id': 2,
+        'user_ids': [0, 1, 2],
+        'due_date': 123134346, // Unix timestamp
+        'prio' : 0,
+        'subtasks' : [
+            {
+                'id': 0,
+                'title': 'Lorem ipsum dolor',
+                'checked': true
+            },
+            {
+                'id': 1,
+                'title': 'sit amet consectetur',
+                'checked': false
+            }
+        ]
+    },
+    {
+        'id': 1,
+        'bucket': 'window2',
+        'title': 'Beispiel Task',
+        'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
+        'category_id': 2,
+        'user_ids': [0, 1, 2],
+        'due_date': 123134346, // Unix timestamp
+        'prio' : 0,
+        'subtasks' : [
+            {
+                'id': 0,
+                'title': 'Lorem ipsum dolor',
+                'checked': true
+            },
+            {
+                'id': 1,
+                'title': 'sit amet consectetur',
+                'checked': false
+            }
+        ]
+    },
+    {
+        'id': 2,
+        'bucket': 'window3',
+        'title': 'Beispiel Task',
+        'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
+        'category_id': 2,
+        'user_ids': [0, 1, 2],
+        'due_date': 123134346, // Unix timestamp
+        'prio' : 0,
+        'subtasks' : [
+            {
+                'id': 0,
+                'title': 'Lorem ipsum dolor',
+                'checked': true
+            },
+            {
+                'id': 1,
+                'title': 'sit amet consectetur',
+                'checked': false
+            }
+        ]
+    }
+];
+
+let oldTodos = [
     {
         'id': 0,
         'bucket': 'window1',
