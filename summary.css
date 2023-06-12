@@ -1,7 +1,6 @@
 .summary {
     background-color: #F5F5F5;
     height: calc(100vh - 89px);
-    width: 100%;
 }
 
 
@@ -93,7 +92,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
 .date_summary {
@@ -217,4 +216,347 @@
     margin-left: 63px;
     margin-top: 40px;
 
+}
+
+@media(max-width: 1380px) {
+    .welcome_container {
+        display: none;
+    }
+
+}
+
+@media(max-width: 1000px) {
+    .welcome_container {
+        display: none;
+    }
+
+    .seperator_summary {
+        display: none;
+    }
+
+    .headline_summary {
+        flex-direction: column;
+        align-items: baseline;
+        margin-left: 30px;
+    }
+
+    .upcoming_tasks_summary {
+        margin-left: 30px;
+    }
+
+    h2 {
+        font-size: 47px;
+        margin-bottom: 20px;
+        margin-top: 19px;
+    }
+
+    .small_headline_summary {
+        font-size: 21px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .overview_summary {
+
+        margin-top: 41px;
+        margin-left: 30px;
+    }
+
+    .summary_mobile_headline {
+        display: flex !important;
+        margin-top: 35px;
+    }
+
+    .divider_summary_mobile {
+        display: flex;
+        height: 3px;
+        background-color: #29ABE2;
+        width: 90px;
+        margin-top: 32px;
+    }
+
+    .summary_done_container {
+        margin-left: 30px;
+    }
+
+    .upcoming_tasks_summary {
+        margin-top: 15px;
+    }
+
+    .summary_done_container {
+        margin-top: 15px;
+    }
+
+    .middle_column {
+        overflow-y: scroll;
+    }
+
+    .summary {
+        height: calc(100vh - 169px);
+
+    }
+
+    /* header css mobile */
+    .header_text {
+        display: none;
+    }
+
+    .header_help {
+        display: none;
+    }
+
+    .logo_header {
+        display: flex !important;
+        margin-left: 30px;
+    }
+
+    .footer_mobile {
+        display: flex !important;
+        background-color: #2A3647;
+        height: 80px;
+        color: white;
+        font-size: 16px;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .footer_buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 90px;
+    }
+
+    #footer_summary {
+        height: 80px;
+        width: 80px;
+    }
+
+    #footer_summary:hover {
+        height: 80px;
+        max-width: 90px;
+        background-color: #091931;
+    }
+
+    #footer_buttons {
+        height: 80px;
+        width: 80px;
+    }
+
+    #footer_buttons:hover {
+        height: 80px;
+        max-width: 90px;
+        background-color: #091931;
+    }
+
+    #footer_add_task {
+        height: 80px;
+        width: 80px;
+    }
+
+    #footer_add_task:hover {
+        height: 80px;
+        max-width: 90px;
+        background-color: #091931;
+    }
+
+    #footer_contacts {
+        height: 80px;
+        width: 80px;
+    }
+
+    #footer_contacts:hover {
+        height: 80px;
+        max-width: 90px;
+        background-color: #091931;
+    }
+}
+
+@media(max-width: 800px) {
+    .welcome_container {
+        display: none;
+    }
+
+    .optic_overview {
+        max-width: 110px;
+        max-height: 110px;
+        margin-right: 15px;
+        margin-bottom: 25px;
+    }
+
+    .overview_numbers {
+        font-size: 47px;
+    }
+
+    .overview_description {
+        Font-size: 14px;
+    }
+
+    .upcoming_tasks_summary {
+        width: 360px;
+        height: 110px;
+    }
+
+    .red_arrow_top {
+        height: 40px;
+        width: 40px;
+        margin-left: 38px;
+
+    }
+
+    .urgent_font {
+        font-size: 12px;
+    }
+
+    .grey_seperator_summary {
+        height: 68px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .date_summary {
+        font-size: 16px;
+    }
+
+    .date_description_summary {
+        font-size: 14px;
+    }
+
+    .summary_todo_done {
+        width: 177px;
+        height: 110px;
+        margin-right: 15px;
+    }
+
+    #todo_done_part_left {
+        background-size: 40px;
+        margin-left: 44px;
+        margin-top: 35px;
+    }
+
+    #todo_done_part_right {
+        background-size: 40px;
+        margin-left: 44px;
+        margin-top: 35px;
+    }
+
+    .number_todo_done {
+        font-size: 47px;
+        margin-top: -30px;
+    }
+
+    .span_todo_done {
+        font-size: 14px;
+    }
+
+    .todo_done_part {
+        padding-left: 45px;
+
+    }
+
+    .summary_mobile_headline {
+        display: flex;
+    }
+
+}
+
+@media(max-width: 500px) {
+    .welcome_container {
+        display: none;
+    }
+
+    .optic_overview {
+        max-width: 70px;
+        max-height: 70px;
+        border-radius: 10px;
+    }
+
+    .overview_numbers {
+        font-size: 28px;
+
+    }
+
+    .overview_description {
+        font-size: 10px;
+    }
+
+    .summary_todo_done {
+        max-width: 110px;
+        height: 70px;
+        border-radius: 17px;
+    }
+
+    #todo_done_part_left {
+
+        margin-left: 15px;
+        margin-top: 22px;
+        background-size: 25px;
+    }
+
+    #todo_done_part_right {
+
+        margin-left: 15px;
+        margin-top: 22px;
+        background-size: 25px;
+
+    }
+
+    .number_todo_done {
+        font-size: 25px;
+        margin-top: -45px;
+        margin-left: -15px;
+    }
+
+    .span_todo_done {
+        margin-left: -15px;
+    }
+
+    .upcoming_tasks_summary {
+        width: 240px;
+        border-radius: 20px;
+    }
+
+    .red_arrow_top {
+        margin-left: 15px;
+        height: 30px;
+        width: 30px;
+    }
+
+    .urgent_number {
+        font-size: 28px;
+    }
+
+    .date_summary {
+        font-size: 12px;
+    }
+
+    .date_description_summary {
+        font-size: 12px;
+    }
+}
+
+@media(max-width: 500px) {
+    .welcome_container {
+        display: none;
+    }
+    .summary_footer_img {
+        height: 20px;
+        width: 20px;
+    }
+    .summary_footer {
+        font-size: 10px;
+        text-align: center;
+        margin-top: 5px;
+        white-space: nowrap;
+
+    }
+    .footer_buttons {
+        width: 60px !important;
+    }
+    .footer_buttons:hover {
+        width: 70px;
+    }
 }

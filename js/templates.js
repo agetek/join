@@ -66,12 +66,44 @@ function renderSidebar() {
 
 function renderHeader() {
     let render = `<div class="header">
+            <img class="logo_header" style="display:none" src="img/header_logo.svg">
             <div class="header_text">Kanban Project Management Tool</div>
             <div class="question_and_avatar">
-                <img src="img/question_mark.svg" class="header_help">
+                <div onclick="openHelp()">
+                <img src="img/question_mark.svg" class="header_help"> 
+                </div>
                 <img src="img/avatar_profile.png" class="header_profile_img">
             </div>
         </div>`;
+    return render;
+}
+
+function renderFooter() {
+    let render = `
+    <div class="footer_mobile" style="display:none">
+        <div id="footer_summary" class="footer_buttons">
+            <img class="summary_footer_img"  src="img/summary_icon.svg">
+            <div class="summary_footer">Summary
+            </div>
+        </div>
+        <div id="footer_buttons" class="footer_buttons">
+            <img class="summary_footer_img"  src="img/board_icon.svg"> 
+            <div class="summary_footer">Board
+            </div>
+        </div>
+        <div id="footer_add_task" class="footer_buttons">
+            <img class="summary_footer_img"  src="img/add_task_icon.svg">
+            <div class="summary_footer">Add Task
+            </div>
+        </div>
+        <div id="footer_contacts" class="footer_buttons">
+            <img class="summary_footer_img" src="img/contacts_icon.svg">
+            <div class="summary_footer">Contacts
+            </div>
+        </div>
+    </div>
+    
+    `
     return render;
 }
 
@@ -83,6 +115,7 @@ function renderBoard() {
     render += board();
     render += `</div>`;
     render += `</div>`;
+    render += renderFooter();
     return render;
 }
 
@@ -105,6 +138,7 @@ function summary() {
     render += `<div class="middle_column">`;
     render += renderSummary();
     render += `</div>`;
+    render += renderFooter();
     render += `</div>`;
     return render;
 }
@@ -129,4 +163,16 @@ function openSummary() {
     let render = summary();
     document.getElementById('container').innerHTML = render;
     document.getElementById('open_summary').classList.add('sidebar_point_active');
+}
+
+function openHelp() {
+    let render = renderSidebar();
+    render += `<div class="right">`;
+    render += renderHeader();
+    render += `<div class="middle_column">`;
+    render += renderHelp();
+    render += `</div>`;
+    render += renderFooter();
+    render += `</div>`;
+    return render;
 }

@@ -278,12 +278,12 @@ function search_container() {
     let input = document.getElementById('find_task').value;
     input = input.toLowerCase();
     let x = document.getElementsByClassName('todo');
-      
-    for (let i = 0; i < x.length; i++) { 
+
+    for (let i = 0; i < x.length; i++) {
         if (!x[i].textContent.toLowerCase().includes(input)) {
             x[i].style.display = "none";
         } else {
-            x[i].style.display = "block";                 
+            x[i].style.display = "block";
         }
     }
 }                                     

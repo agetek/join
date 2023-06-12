@@ -2,9 +2,11 @@ function renderSummary() {
     let render = `
     <div class="summary">
         <div class="headline_summary">
+            <span class="summary_mobile_headline" style="display:none" >Kanban Project Management Tool</span>
             <h2>Summary</h2>
             <div class="seperator_summary"></div>
             <span class="small_headline_summary">Everthing in a nutshell!</span>
+            <div style="display:hide" class="divider_summary_mobile"></div>
         </div>
         <div class="overview_summary">
             <div class="optic_overview">
