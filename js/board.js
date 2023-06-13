@@ -205,8 +205,26 @@ function renderEditTask(id) {
     render += `<div class="bd_title">${filteredTodos[0]['title']}</div>`;
     render += `<div class="bd_description">${filteredTodos[0]['description']}</div>`;
     render += `<div class="bd_date_outer">Due date:<div class="bd_date_inner">${filteredTodos[0]['due_date']}</div></div>`;
+    render += `<div class="bd_priority_outer">Priority:`;
+    render += getPrioBoadEditTask(filteredTodos[0]['prio']);
     render += `</div>`;
+    render += `</div>`;
+    console.log(filteredTodos[0]['prio']);
     return render
+}
+
+function getPrioBoadEditTask(prio) {
+    let render = '';
+    if(prio == 0) {
+        render += `<div class="bd_priority_inner_low">Low <div class="add_task_prio_low_img_white"></div></div>`;
+    }
+    else if (prio == 1) {
+        render += `<div class="bd_priority_inner_medium">Medium <div class="add_task_prio_medium_img_white"></div></div>`;
+    }
+    else if (prio == 2) {
+        render += `<div class="bd_priority_inner_urgent">Urgent <div class="add_task_prio_urgent_img_white"></div></div>`;
+    }
+    return render;
 }
 
 function closeTask() {
