@@ -108,7 +108,7 @@ function updateHTML() {
 function generateToDoHTML(element) {
     let cat = getCategory(element['category_id']);
     let render = `
-    <div id="moveable_container" draggable="true" ondragstart="startDragging(${element['id']})" class="todo">
+    <div id="moveable_container" draggable="true" ondragstart="startDragging(${element['id']})" class="todo" onclick="OpenShowTask(${element['id']})">
         <div class="topic" style="background-color: ${cat[1]}">${cat[0]}
         </div>
         <div class="title">${element['title']}
@@ -186,6 +186,31 @@ function getUsersBoardAbove(ids) {
     }
     render += `<div class="bd_initials_overflow">+${ids.length - 2}</div>`;
     return render
+}
+
+function OpenShowTask(id) {
+    oldContent = document.getElementById('container').innerHTML;
+    let newContent = `<div class="popup" id="popup" onclick="closeTask()">`;
+    newContent += renderEditTask(id);
+    newContent += `</div>`;
+    document.getElementById('container').innerHTML = oldContent + newContent;
+    document.getElementById('popup').style.cssText = 'background-color: rgba(0, 0, 0, 0.5)';
+}
+
+function renderEditTask(id) {
+    let filteredTodos = todos.filter(todo => todo.id == id);
+    let cat = getCategory(filteredTodos[0]['category_id']);
+    let render = `<div id="popup_content_task" onclick="event.stopPropagation()">`
+    render += `<div class="bd_topic" style="background-color: ${cat[1]}">${cat[0]}</div>`;
+    render += `<div class="bd_title">${filteredTodos[0]['title']}</div>`;
+    render += `<div class="bd_description">${filteredTodos[0]['description']}</div>`;
+    render += `<div class="bd_date_outer">Due date:<div class="bd_date_inner">${filteredTodos[0]['due_date']}</div></div>`;
+    render += `</div>`;
+    return render
+}
+
+function closeTask() {
+    document.getElementById('container').innerHTML = oldContent;
 }
 
 // <div class="progress_tasks"></div>

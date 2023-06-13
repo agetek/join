@@ -159,6 +159,7 @@ h2 {
 .todo {
     display: block;
     width: 250px;
+    cursor: pointer;
 }
 
 #board_plus {

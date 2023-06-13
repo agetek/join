@@ -418,6 +418,17 @@
     right: -100%;
 }
 
+#popup_content_task {
+    position: flex;
+    width: 623px;
+    height: 90vh;
+    background-color: white;
+    border-radius: 15px;
+    flex-direction: column;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
 .shift_message_outer {
     position: fixed;
     width: 100%;
@@ -1094,5 +1105,60 @@
     border-radius: 2px;
     height: 100%;
 }
+
+.bd_topic {
+    display: flex;
+    font-size: 27px;
+    color: white;
+    border-radius: 8px;
+    width: fit-content;
+    padding: 4px 37px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.bd_title {
+    display: flex;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 73px;
+    color: #2A3647;
+    margin-top: 25px;
+}
+
+.bd_description {
+    display: flex;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: #000000;
+    margin-top: 25px;
+}
+
+.bd_date_outer {
+    display: flex;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 25px;
+    color: #000000;
+    margin-top: 25px;
+}
+
+.bd_date_inner {
+    display: flex;
+    font-weight: 400;
+    margin-left: 25px;
+}
+
+.bd_priority_outer {
+    display: flex;
+}
+
+.bd_priority_inner {
+    display: flex;
+}
+
+
 
 /* Board End */

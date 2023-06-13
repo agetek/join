@@ -174,5 +174,5 @@ function openHelp() {
     render += `</div>`;
     render += renderFooter();
     render += `</div>`;
-    return render;
+    document.getElementById('container').innerHTML = render;
 }
