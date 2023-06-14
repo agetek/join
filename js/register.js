@@ -29,3 +29,4 @@ function resetForm() {
   password.value = "";
   registerBtn.disabled = false;
 }
+

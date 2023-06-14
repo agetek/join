@@ -87,8 +87,8 @@ function renderLogin() {
           </div>
             
             <div class="login_buttons">
-                    <button class="login_button">Log in</button>
-                    <button class="guest_login_button" onclick="guestLogin()">Guest Log in</button>
+                    <button onclick="login()" class="login_button">Log in</button>
+                    <button onclick="guestLogin()" class="guest_login_button">Guest Log in</button>
             </div>        
             </form>
         </div>
