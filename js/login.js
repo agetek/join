@@ -7,7 +7,7 @@ function renderSign() {
         <div class="sign_up_head">
         </div>
         <div class="cont_sign_up" id="cont_sign_up">
-        <img onclick="renderLogin()" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="openLoginFromSignup()" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
             <div class="sign_up_title">
                
                 <div class="signup_head">
@@ -35,13 +35,28 @@ function initAnimation() {
   }, 2222);
 }
 
+async function openLogin() {
+  users = await getItem('users');
+  try { activeUserId = await getItemLocal('activeUserId'); } catch (e) { activeUserId = -1; }
+  if (activeUserId == null) {
+    document.getElementById("container").innerHTML = renderLogin();
+  } else if (activeUserId == -2 || activeUserId >= 0) {
+    openSummary();
+  } else {
+  document.getElementById("container").innerHTML = renderLogin();
+  // initAnimation();
+  }
+}
+
+function openLoginFromSignup() {
+  document.getElementById("container").innerHTML = renderLogin();
+}
+
 
 function renderLogin() {
-  document.getElementById("login").innerHTML = ` 
+  let render = `
     <div class="start_container" id="start_container">
-    <div class="background animation_background" id="animation_background"></div>
-    <img class="logo_animation move_logo" src="./img/join_logo.png">
-
+    <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
         <div class="login_head">
         
         <div class="login_header_right">
@@ -49,8 +64,6 @@ function renderLogin() {
         <span class="not_user" id="not_user">Not a Join user?</span> 
         <button onclick="renderSign()" class="signup_button_short" id="not_user">Sign up</button>
         </div>
-  
-
     </div>
         <div class="cont_log_in" id="cont_log_in">
             <div class="login_title">
@@ -62,9 +75,9 @@ function renderLogin() {
 
             <form action="javascript:login()">
   
-                    <input type="email" class="input_email_l" id ="email" placeholder="Email" required>
-                    <input type="text" class="input_password_l" id ="password" placeholder="Password" required>
-            
+                    <input type="email" class="input_email_l" id="email" placeholder="Email" required>
+                    <input type="password" class="input_password_l" id="password" placeholder="Password" required>
+            <div class="error_message" id="wrong_login"></div>
                     <div class="forgot">
             <div class="remember-passwort">
             <input type="checkbox" id="checkbox"></input>
@@ -74,14 +87,17 @@ function renderLogin() {
           </div>
             
             <div class="login_buttons">
-                    <button class="login_button" >Log in</button>
-                    <button class="guest_login_button" >Guest Log in</button>
+                    <button class="login_button">Log in</button>
+                    <button class="guest_login_button" onclick="guestLogin()">Guest Log in</button>
             </div>        
             </form>
         </div>
         `;
- 
+        return render
 }
+
+{/* <div class="background animation_background" id="animation_background"></div>
+    <img class="logo_animation move_logo" src="./img/join_logo.png"> */}
 
 
 function renderForgotPassword() {
@@ -139,8 +155,8 @@ function renderResetPassword() {
             <form class="form" action="javascript:login()">
            <div class="text_reset_pw">Change your account password</div>
                     
-                    <input type="text" class="input_password_l" id ="password" placeholder="New password" required>
-                    <input type="text" class="input_password_l" id ="password" placeholder="Confirm password" required>
+                    <input type="password" class="input_password_l" id ="password" placeholder="New password" required>
+                    <input type="password" class="input_password_l" id ="password" placeholder="Confirm password" required>
             
             
             <div class="login_buttons">

@@ -63,7 +63,7 @@ function board() {
 
 };
 
-function updateHTML() {  
+function updateHTML() {
     let first = todos.filter(t => t['bucket'] == 'window1');
 
     document.getElementById('window1').innerHTML = ``;
@@ -140,7 +140,7 @@ function getTaskAndProgress(subtasks) {
 
 function getPrioBoard(prio) {
     let render = '';
-    if(prio == 0) {
+    if (prio == 0) {
         render += `<img src="img/prio_low.svg" alt="Prio Low">`;
     }
     else if (prio == 1) {
@@ -201,21 +201,43 @@ function renderEditTask(id) {
     let filteredTodos = todos.filter(todo => todo.id == id);
     let cat = getCategory(filteredTodos[0]['category_id']);
     let render = `<div id="popup_content_task" onclick="event.stopPropagation()">`
+    render += `<div class="bd_contain" bd_delete_edit><div class="bd_delete_edit"><div class="bd_delete"></div><div class="bd_edit"></div></div>`;
     render += `<div class="bd_topic" style="background-color: ${cat[1]}">${cat[0]}</div>`;
     render += `<div class="bd_title">${filteredTodos[0]['title']}</div>`;
     render += `<div class="bd_description">${filteredTodos[0]['description']}</div>`;
     render += `<div class="bd_date_outer">Due date:<div class="bd_date_inner">${filteredTodos[0]['due_date']}</div></div>`;
     render += `<div class="bd_priority_outer">Priority:`;
-    render += getPrioBoadEditTask(filteredTodos[0]['prio']);
+    render += getPrioBoardEditTask(filteredTodos[0]['prio']);
     render += `</div>`;
-    render += `</div>`;
-    console.log(filteredTodos[0]['prio']);
+    render += getSubtasksEditTask(filteredTodos[0]['subtasks']);
+    render += getAssignedEditTask(filteredTodos[0]['user_ids']);
+    render += `</div>
+            </div>`;
     return render
 }
 
-function getPrioBoadEditTask(prio) {
+function getAssignedEditTask() {
+    let render = `<div class="bd_assigned_above">Assigned To:</div>`;
+    render += `<div class="bd_assigned_below">`;
+    render += `</div>`;
+    return render
+}
+
+function getSubtasksEditTask(subtasks) {
+    let render = '<div class="bd_subtask_title">Subtasks: </div><div class="bd_subtask">';
+    for (let i = 0; i < subtasks.length; i++) {
+        let check = '';
+        if (subtasks[i]['checked'] == true) { check = 'checked' } else { check = '' };
+        console.log(check);
+        render += `<div class="bd_subtask_task"><input class="bd_task_checkbox" type="checkbox" disabled ${check}>${subtasks[i]['title']}</div>`;
+    }
+    render += `</div>`;
+    return render
+}
+
+function getPrioBoardEditTask(prio) {
     let render = '';
-    if(prio == 0) {
+    if (prio == 0) {
         render += `<div class="bd_priority_inner_low">Low <div class="add_task_prio_low_img_white"></div></div>`;
     }
     else if (prio == 1) {
@@ -311,7 +333,7 @@ function allowDrop(ev) {
 }
 
 async function moveTo(category) {
-    todos[currentDraggedElement]['bucket'] = category; 
+    todos[currentDraggedElement]['bucket'] = category;
     await setItem('todos', todos);
     updateHTML();
 }

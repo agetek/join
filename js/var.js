@@ -127,7 +127,7 @@ let users =
         'name': 'Anton Mayer',
         'email': 'anton@gmail.com',
         'phone': '+49 1111 111 11 1',
-        'password': '',
+        'password': 'testxyz',
         'color_id': 'rgb(254,122,0)'
     },
     {
@@ -135,7 +135,7 @@ let users =
         'name': 'Anja Schulz',
         'email': 'schulz@hotmail.com',
         'phone': '',
-        'password': '',
+        'password': 'test123',
         'color_id': 'rgb(147,39,255)',
     },
     {
