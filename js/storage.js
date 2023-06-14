@@ -15,8 +15,9 @@ async function getItem(key) {
 }
 
 
-userEmail = document.getElementById('email').value;
-userPassword = document.getElementById('password').value;
+function checkLogin(){
+let userEmail = document.getElementById('email').value;
+let userPassword = document.getElementById('password').value;
 
 for (let i = 0; i < users.length; i++) {
     if (userEmail == users[i]['email'] && userPassword == users[i]['password']){
@@ -25,4 +26,5 @@ for (let i = 0; i < users.length; i++) {
     else{
         element.innerHTML = "Die Daten sind nicht korrekt.";
     }
+}
 }

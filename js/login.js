@@ -74,7 +74,7 @@ function renderLogin() {
           </div>
             
             <div class="login_buttons">
-                    <button class="login_button" >Log in</button>
+                    <button onclick= "checkLogin()" class="login_button" >Log in</button>
                     <button class="guest_login_button" >Guest Log in</button>
             </div>        
             </form>
