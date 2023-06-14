@@ -19,7 +19,7 @@ function renderSign() {
             <form action="javascript:register()">
                     <input type="text" class="input_name_l" id="username" placeholder="Name"  required>
                     <input type="email" class="input_email_l" id ="email" placeholder="Email" required>
-                    <input type="text" class="input_phone_l" id ="password" placeholder="Password" required>
+                    <input type="text" class="input_password_l" id ="password" placeholder="Password" required>
                     <button type="submit" class="signup_button" id="registerBtn">Sign up</button>
             </form>
         </div>
@@ -30,9 +30,8 @@ function renderSign() {
 function initAnimation() {
 
   let animationBg = document.getElementById('animation_background');
-  setTimeout(function() {
-     
-      animationBg.style.display = 'none';
+      setTimeout(function() {
+     animationBg.style.display = 'none';
   }, 2222);
 }
 
@@ -62,11 +61,11 @@ function renderLogin() {
           </div>
 
             <form action="javascript:login()">
-           
-                    <input type="text" class="input_name_l" id="name" placeholder="Name" pattern="[A-Za-z]{2, 8}[\\s]{1}[A-Za-z]{2, 8}" required>
+  
                     <input type="email" class="input_email_l" id ="email" placeholder="Email" required>
+                    <input type="text" class="input_password_l" id ="password" placeholder="Password" required>
             
-            <div class="forgot">
+                    <div class="forgot">
             <div class="remember-passwort">
             <input type="checkbox" id="checkbox"></input>
             <label class="not-markable" for="checkbox">Remember Me</label>

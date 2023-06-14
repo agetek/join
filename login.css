@@ -351,6 +351,7 @@ form {
   padding-left: 21px;
   padding-right: 21px;
   color: black;
+  background: url(img/icon_lock.svg);
   background-repeat: no-repeat;
   background-position-x: 380px;
   padding-right: 45px;
@@ -381,6 +382,7 @@ form {
 
 .text-forgot-password {
   color: #29abe2;
+  cursor: pointer;
 }
 
 .img_forgot_password {
@@ -447,86 +449,3 @@ form {
   }
 }
 
-@media(max-width:600px) {
-    
-  .sign_up_container {
-      width: 80%;
-  }
-
-  .not_user{
-      justify-content: center;
-      width: 100%;
-      right: unset;
-      top: 775px;
-      padding-bottom: 20px;
-  }
-}
-
-@media(max-width:450px) {
-
-  .remember-password{
-      flex-direction: column-reverse;
-      gap: 30px;
-      margin-top: -30px;
-      width: 80%;
-  }
-
-  .start_container{
-      position: absolute;
-      top: 150px;
-  }
-
-  .not_user{
-      display: flex;
-      gap: 20px;
-  }
-
-  .login_button{
-      width: 180px;
-      font-size: 16px;
-  }
-
-  .login_buttons{
-      flex-direction: column;
-      height: auto;
-      gap: 35px;
-      width: unset;
-  }
-
-  .signup_button_short{
-      padding: unset;
-      width: 180px;
-      font-size: 16px;
-  }
-
-  .move_logo{
-      width: 64px !important;
-      height: 78px !important;
-      left: 37px !important;
-      top: 38px !important; 
-  }
-
-  .input_name_l, .input_email_l, .input_phone_l{
-      width: 80%;
-  }
-
-
-  .not_user{
-      font-size: 16px;
-  }
-
-  .blue_arrow_back{
-      filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(152deg) brightness(0%) contrast(100%);
-      width: 20px;
-      height: 20px;
-      left: 20px;
-      top: 20px;
-  }
-}
-
-@media(max-width:330px){
-
-  .not_user{
-      gap: 5px;
-  }
-}

@@ -14,11 +14,15 @@ async function getItem(key) {
     });
 }
 
-/*
+
 userEmail = document.getElementById('email').value;
 userPassword = document.getElementById('password').value;
 
 for (let i = 0; i < users.length; i++) {
-    if (userEmail == users)
+    if (userEmail == users[i]['email'] && userPassword == users[i]['password']){
+        renderLogin();
+    }
+    else{
+        element.innerHTML = "Die Daten sind nicht korrekt.";
+    }
 }
-*/
