@@ -1,7 +1,12 @@
 function renderAddContact() {
     let render = `
     <div class="add_contact" onclick="event.stopPropagation()" id="popup_content">
-        <div class="contact_design"><div class="add_contact_img"></div></div>
+        <div class="contact_design">
+            <img src="img/cross_add_contact.svg" onclick="closeEdit()" style="display:none" class="close_add_contact">
+            <span style="display:none" class="add_contact_span">Add Contact</span>
+            <span style="display:none" class="add_contact_description">Tasks are better with a team!</span>
+            <div style="display:none" class="divider_add_contact"></div>
+        <div class="add_contact_img"></div></div>
         <div class="contact_input">
             <div class="avatar_add"></div>
                 <form action="javascript:addContact()">
