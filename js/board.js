@@ -216,9 +216,21 @@ function renderEditTask(id) {
     return render
 }
 
-function getAssignedEditTask() {
+function getAssignedEditTask(userIds) {
     let render = `<div class="bd_assigned_above">Assigned To:</div>`;
     render += `<div class="bd_assigned_below">`;
+
+    for (let i = 0; i < userIds.length; i++) {
+        let filteredUsers = users.filter(user => user.id == userIds[i]);
+        render += `<div class="bd_assigned_item">`
+        render += `<div class="bd_initials">`;
+        render += renderInitials(filteredUsers[0]);
+        render += `</div>`;
+        render += `<div class="bd_assigned_name">`;
+        render += filteredUsers[0]['name'];
+        render += `</div>`;
+        render += `</div>`;
+    }
     render += `</div>`;
     return render
 }
@@ -228,7 +240,6 @@ function getSubtasksEditTask(subtasks) {
     for (let i = 0; i < subtasks.length; i++) {
         let check = '';
         if (subtasks[i]['checked'] == true) { check = 'checked' } else { check = '' };
-        console.log(check);
         render += `<div class="bd_subtask_task"><input class="bd_task_checkbox" type="checkbox" disabled ${check}>${subtasks[i]['title']}</div>`;
     }
     render += `</div>`;

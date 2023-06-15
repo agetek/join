@@ -89,13 +89,13 @@ function renderOpenTaskCategory() {
 }
 
 async function loadOldCategories() {
-    let category = categoryOld;
+    category = categoryOld;
     await setItem('category', category);
     return category
 }
 
 async function loadOldTodos() {
-    let todos = oldTodos;
+    todos = oldTodos;
     await setItem('todos', todos);
     return todos
 }

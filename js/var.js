@@ -230,7 +230,7 @@ let todos = [
         'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
         'category_id': 2,
         'user_ids': [0, 1, 2],
-        'due_date': 123134346,
+        'due_date': "01-01-2024",
         'prio' : 0,
         'subtasks' : [
             {
@@ -252,7 +252,7 @@ let todos = [
         'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
         'category_id': 2,
         'user_ids': [0, 1, 2],
-        'due_date': 123134346,
+        'due_date': "01-01-2024",
         'prio' : 0,
         'subtasks' : [
             {
@@ -281,7 +281,7 @@ let oldTodos = [
           1,
           2
        ],
-       "due_date":123134346,
+       "due_date":"01-01-2024",
        "prio":0,
        "subtasks":[
           {
@@ -307,7 +307,7 @@ let oldTodos = [
           1,
           2
        ],
-       "due_date":123134346,
+       "due_date":"01-01-2024",
        "prio":0,
        "subtasks":[
           {
@@ -333,7 +333,7 @@ let oldTodos = [
           1,
           2
        ],
-       "due_date":123134346,
+       "due_date":"01-01-2024",
        "prio":0,
        "subtasks":[
           {
