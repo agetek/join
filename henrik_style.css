@@ -419,7 +419,8 @@
 }
 
 #popup_content_task {
-    position: flex;
+    display: flex;
+    position: absolute;
     width: 623px;
     height: 90vh;
     background-color: white;
@@ -499,6 +500,8 @@
     height: 694px;
     background-color: #FFFFFF;
     border-radius: 15px;
+    justify-content: center;
+    padding-top: 20px;
 }
 
 .add_task {
@@ -1072,6 +1075,26 @@
     cursor: pointer;
 }
 
+.add_task_close {
+    display: flex;
+    position: absolute;
+    background-image: url(img/edit_close.svg);
+    background-position: center;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 19px;
+    top: 34px;
+    right: 63px;
+    cursor: pointer;
+}
+
+.add_task_submit_outer_slide_in {
+    display: flex;
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+}
 
 /* Add Task End */
 
@@ -1254,8 +1277,8 @@
 .bd_delete_edit {
     display: flex;
     position: absolute;
-    bottom: 80px;
-    right: 80px;
+    bottom: 50px;
+    right: 50px;
 
 }
 

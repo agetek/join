@@ -4,6 +4,8 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 let firstLetters = [];
 
+let currentDraggedElement = -1;
+
 let oldContent = "";
 
 let activeUserId = -1;
@@ -391,11 +393,6 @@ let oldTodos = [
 // }
 
 // ];
-
-
-
-
-let currentDraggedElement;
 
 let category = [
     {

@@ -1,5 +1,6 @@
 async function openBoard() {
     todos = await getItem('todos');
+    category = await getItem('category');
     let render = renderBoard();
     document.getElementById('container').innerHTML = render;
     document.getElementById('open_board').classList.add('sidebar_point_active');
@@ -63,15 +64,14 @@ function board() {
 
 };
 
-function updateHTML() {
+async function updateHTML() {
+    todos = await getItem('todos');
     let first = todos.filter(t => t['bucket'] == 'window1');
 
     document.getElementById('window1').innerHTML = ``;
 
     for (let index = 0; index < first.length; index++) {
-        const element = first[index];
-        document.getElementById('window1').innerHTML += generateToDoHTML(element);
-
+        document.getElementById('window1').innerHTML += generateToDoHTML(first[index]);
     }
 
     let second = todos.filter(t => t['bucket'] == 'window2');
@@ -79,9 +79,7 @@ function updateHTML() {
     document.getElementById('window2').innerHTML = '';
 
     for (let index = 0; index < second.length; index++) {
-        const element = second[index];
-        document.getElementById('window2').innerHTML += generateToDoHTML(element);
-
+        document.getElementById('window2').innerHTML += generateToDoHTML(second[index]);
     }
 
     let third = todos.filter(t => t['bucket'] == 'window3');
@@ -89,9 +87,7 @@ function updateHTML() {
     document.getElementById('window3').innerHTML = '';
 
     for (let index = 0; index < third.length; index++) {
-        const element = third[index];
-        document.getElementById('window3').innerHTML += generateToDoHTML(element);
-
+        document.getElementById('window3').innerHTML += generateToDoHTML(third[index]);
     }
 
     let forth = todos.filter(t => t['bucket'] == 'window4');
@@ -99,9 +95,7 @@ function updateHTML() {
     document.getElementById('window4').innerHTML = '';
 
     for (let index = 0; index < forth.length; index++) {
-        const element = forth[index];
-        document.getElementById('window4').innerHTML += generateToDoHTML(element);
-
+        document.getElementById('window4').innerHTML += generateToDoHTML(forth[index]);
     }
 }
 
@@ -200,8 +194,9 @@ function OpenShowTask(id) {
 function renderEditTask(id) {
     let filteredTodos = todos.filter(todo => todo.id == id);
     let cat = getCategory(filteredTodos[0]['category_id']);
-    let render = `<div id="popup_content_task" onclick="event.stopPropagation()">`
-    render += `<div class="bd_contain" bd_delete_edit><div class="bd_delete_edit"><div class="bd_delete"></div><div class="bd_edit"></div></div>`;
+    let render = `<div id="popup_content_task" onclick="event.stopPropagation()">`;
+    render += `<div class="add_task_close" onclick="closeTask()">`;
+    render += `</div>`;
     render += `<div class="bd_topic" style="background-color: ${cat[1]}">${cat[0]}</div>`;
     render += `<div class="bd_title">${filteredTodos[0]['title']}</div>`;
     render += `<div class="bd_description">${filteredTodos[0]['description']}</div>`;
@@ -211,10 +206,32 @@ function renderEditTask(id) {
     render += `</div>`;
     render += getSubtasksEditTask(filteredTodos[0]['subtasks']);
     render += getAssignedEditTask(filteredTodos[0]['user_ids']);
-    render += `</div>
-            </div>`;
+    render += `<div class="bd_delete_edit"><div class="bd_delete" onclick="deleteTask(${id})"></div><div class="bd_edit"  onclick="editTask(${id})"></div>`;
+    render += `</div>`;
+    render += `</div>`;
+    console.log(id);
+    console.log(getTaskI(id));
+    console.log(todos);
     return render
 }
+
+async function deleteTask(id) {
+    let d = getTaskI(id);
+    todos.splice(d, 1);
+    await setItem('todos', todos);
+    closeTask();
+}
+
+function getTaskI(idz) {
+    let returni = -1;
+    for (let i = 0; i < todos.length; i++) {
+        if (todos[i]['id'] == idz) {
+            returni = i;
+        }
+    }
+    return returni
+}
+
 
 function getAssignedEditTask(userIds) {
     let render = `<div class="bd_assigned_above">Assigned To:</div>`;
@@ -343,8 +360,9 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-async function moveTo(category) {
-    todos[currentDraggedElement]['bucket'] = category;
+async function moveTo(buck) {
+    let k = getTaskI(currentDraggedElement);
+    todos[k]['bucket'] = buck;
     await setItem('todos', todos);
     updateHTML();
 }
