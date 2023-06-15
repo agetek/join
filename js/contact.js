@@ -253,7 +253,6 @@ async function shiftPopupOut() {
     document.getElementById('popup').style.cssText = 'background-color: rgba(0, 0, 0, 0)';
 }
 
-
 function shiftMessage(message) {
     oldContent = document.getElementById('container').innerHTML;
     let newContent = `<div class="shift_message_outer"><div id="shift_message">${message}</div></div>`;

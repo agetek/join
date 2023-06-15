@@ -1,4 +1,6 @@
-function openBoard() {
+async function openBoard() {
+    todos = await getItem('todos');
+    category = await getItem('category');
     let render = renderBoard();
     document.getElementById('container').innerHTML = render;
     document.getElementById('open_board').classList.add('sidebar_point_active');
@@ -62,15 +64,14 @@ function board() {
 
 };
 
-function updateHTML() {
+async function updateHTML() {
+    todos = await getItem('todos');
     let first = todos.filter(t => t['bucket'] == 'window1');
 
     document.getElementById('window1').innerHTML = ``;
 
     for (let index = 0; index < first.length; index++) {
-        const element = first[index];
-        document.getElementById('window1').innerHTML += generateToDoHTML(element);
-
+        document.getElementById('window1').innerHTML += generateToDoHTML(first[index]);
     }
 
     let second = todos.filter(t => t['bucket'] == 'window2');
@@ -78,9 +79,7 @@ function updateHTML() {
     document.getElementById('window2').innerHTML = '';
 
     for (let index = 0; index < second.length; index++) {
-        const element = second[index];
-        document.getElementById('window2').innerHTML += generateToDoHTML(element);
-
+        document.getElementById('window2').innerHTML += generateToDoHTML(second[index]);
     }
 
     let third = todos.filter(t => t['bucket'] == 'window3');
@@ -88,9 +87,7 @@ function updateHTML() {
     document.getElementById('window3').innerHTML = '';
 
     for (let index = 0; index < third.length; index++) {
-        const element = third[index];
-        document.getElementById('window3').innerHTML += generateToDoHTML(element);
-
+        document.getElementById('window3').innerHTML += generateToDoHTML(third[index]);
     }
 
     let forth = todos.filter(t => t['bucket'] == 'window4');
@@ -98,37 +95,280 @@ function updateHTML() {
     document.getElementById('window4').innerHTML = '';
 
     for (let index = 0; index < forth.length; index++) {
-        const element = forth[index];
-        document.getElementById('window4').innerHTML += generateToDoHTML(element);
-
+        document.getElementById('window4').innerHTML += generateToDoHTML(forth[index]);
     }
 }
 
 function generateToDoHTML(element) {
-    return `
-    <div id="moveable_container" draggable="true" ondragstart="startDragging(${element['id']})" class="todo">
-        <div class="topic">${element['topic']}
+    let cat = getCategory(element['category_id']);
+    let render = `
+    <div id="moveable_container" draggable="true" ondragstart="startDragging(${element['id']})" class="todo" onclick="OpenShowTask(${element['id']})">
+        <div class="topic" style="background-color: ${cat[1]}">${cat[0]}
         </div>
         <div class="title">${element['title']}
         </div>
         <div class="description">${element['description']}
         </div>
-        <div class="task_and_progress">
-            <div class="progress_tasks"></div>
-            <span class="tasks_board">0/3 Done</span>
-        </div>
+        <div class="task_and_progress">`
+    render += getTaskAndProgress(element['subtasks']);
+    render += `</div>
         <div class="user_elements">
-            <div class="user_icons_board" >
-                <div class="board_users">${element['users']}
-                </div>
-                <div id="second_user" class="board_users">${element['users']}
-                </div>
-                <div id="third_user" class="board_users">${element['users']}
-                </div>
-            </div>
-        <img src="img/red_arrows.svg" class="arrows_board">
-    </div>`;
+            <div class="user_icons_board" id="user_icons_board">`
+    render += getUsersBoard(element['user_ids']);
+    render += `</div>`
+    render += getPrioBoard(element['prio']);
+    render += `</div>`;
+    return render
 }
+
+function getTaskAndProgress(subtasks) {
+    let render = '';
+    if (subtasks.length > 0) {
+        let checked = filteredsubtasks = subtasks.filter(subtask => subtask.checked == true);
+        let progress = Math.round((checked.length / subtasks.length) * 100);
+        render += `<div class="progress_tasks"><div class="bd_progress" style="width: ${progress}%"></div></div>`
+        render += `<span class="tasks_board">${checked.length}/${subtasks.length} Done</span>`;
+    }
+    return render
+}
+
+function getPrioBoard(prio) {
+    let render = '';
+    if (prio == 0) {
+        render += `<img src="img/prio_low.svg" alt="Prio Low">`;
+    }
+    else if (prio == 1) {
+        render += `<img src="img/prio_medium.svg" alt="Prio Medium">`;
+    }
+    else if (prio == 2) {
+        render += `<img src="img/prio_urgent.svg" alt="Prio High">`;
+    }
+    return render;
+}
+
+function getCategory(id) {
+    let filteredCategory = category.filter(cat => cat.id == id);
+    let name = filteredCategory[0]['name'];
+    let color = taskColors[filteredCategory[0]['color_id']];
+    return [name, color];
+}
+
+function getUsersBoard(ids) {
+    let render = '';
+    if (ids.length < 4) {
+        render += getUsersBoardBelow(ids);
+    } else {
+        render += getUsersBoardAbove(ids);
+    }
+    return render
+}
+
+function getUsersBoardBelow(ids) {
+    let render = '';
+    for (let i = 0; i < ids.length; i++) {
+        let filteredUsers = users.filter(user => user.id == ids[i]);
+        render += `<div class="bd_task_user">${renderInitials(filteredUsers[0])}</div>`;
+    }
+    return render
+}
+
+function getUsersBoardAbove(ids) {
+    let render = '';
+    for (let i = 0; i < 2; i++) {
+        let filteredUsers = users.filter(user => user.id == ids[i]);
+        render += `<div class="bd_task_user">${renderInitials(filteredUsers[0])}</div>`;
+    }
+    render += `<div class="bd_initials_overflow">+${ids.length - 2}</div>`;
+    return render
+}
+
+function OpenShowTask(id) {
+    oldContent = document.getElementById('container').innerHTML;
+    let newContent = `<div class="popup" id="popup" onclick="closeTask()">`;
+    newContent += renderEditTask(id);
+    newContent += `</div>`;
+    document.getElementById('container').innerHTML = oldContent + newContent;
+    document.getElementById('popup').style.cssText = 'background-color: rgba(0, 0, 0, 0.5)';
+}
+
+function renderEditTask(id) {
+    let filteredTodos = todos.filter(todo => todo.id == id);
+    let cat = getCategory(filteredTodos[0]['category_id']);
+    let render = `<div id="popup_content_task" onclick="event.stopPropagation()">`;
+    render += `<div class="add_task_close" onclick="closeTask()">`;
+    render += `</div>`;
+    render += `<div class="bd_topic" style="background-color: ${cat[1]}">${cat[0]}</div>`;
+    render += `<div class="bd_title">${filteredTodos[0]['title']}</div>`;
+    render += `<div class="bd_description">${filteredTodos[0]['description']}</div>`;
+    render += `<div class="bd_date_outer">Due date:<div class="bd_date_inner">${filteredTodos[0]['due_date']}</div></div>`;
+    render += `<div class="bd_priority_outer">Priority:`;
+    render += getPrioBoardEditTask(filteredTodos[0]['prio']);
+    render += `</div>`;
+    render += getSubtasksEditTask(filteredTodos[0]['subtasks']);
+    render += getAssignedEditTask(filteredTodos[0]['user_ids']);
+    render += `<div class="bd_delete_edit"><div class="bd_delete" onclick="deleteTask(${id})"></div><div class="bd_edit"  onclick="openEditTask(${id})"></div>`;
+    render += `</div>`;
+    render += `</div>`;
+    return render
+}
+
+async function openEditTask(id) {
+    document.getElementById('container').innerHTML = oldContent;
+    category = await getItem('category');
+    let filteredTodos = todos.filter(todo => todo.id == id);
+    categoryOpen = false;
+    contactsOpen = false;
+    categorySelected = filteredTodos[0]['category_id'];
+    activeSubtasks = filteredTodos[0]['subtasks'];
+    let newContent = `<div class="popup_edit" id="popup" onclick="closeTask()">
+                        <div class="edit_task_popup" onclick="event.stopPropagation()">`;
+    newContent += renderEditTaskSlideIn();
+    newContent += `</div>
+                </div>`;
+    document.getElementById('container').innerHTML = oldContent + newContent;
+    document.getElementById('input_title').value = filteredTodos[0]['title'];
+    document.getElementById('input_description').value = filteredTodos[0]['description'];
+    renderSubtasksListing();
+}
+
+function renderEditTaskSlideIn() {
+    let render = `
+    <div class="add_task">
+        <div class="add_task_close" onclick="closeEdit()">
+        </div>
+        <form class="add_task_form">
+        <div class="add_task_body">
+            <div class="add_task_left_column">
+                <label class="add_task_label_title" for="input_title">Title</label>
+                <input type="text" class="input_title" id="input_title" placeholder="Enter a title">
+                <div class="error_message" id="error_message_title"></div>
+                <label class="add_task_label_description" for="input_description">Description</label>
+                <textarea class="add_task_textarea_description" placeholder="Enter a description" id="input_description"></textarea>
+                <div class="error_message" id="error_message_description"></div>
+                <div class="add_task_label_description">Category</div>
+                <div id="update_category" class="update_category">`
+    render += renderAddTaskCategory();
+    render += `</div>
+                <div class="error_message" id="error_message_category"></div>
+                <div class="add_task_label_description">Assigned to</div>
+                <div class="update_assigned" id="update_assigned">`
+    render += renderAddTaskContacts();
+    render += `</div>
+            <div class="error_message" id="error_message_assigned"></div>
+            </div>
+            <div class="add_task_divider"></div>
+            <div class="add_task_right_column">
+            <label class="add_task_label_date" for="input_date">Due date</label>
+            <input type="date" class="input_date" id="input_date" placeholder="dd/mm/yyyy">
+            <div class="error_message" id="error_message_date"></div>
+            <label class="add_task_label_prio">Prio</label>
+            <div class="add_task_prio">
+                <div class="add_task_prio_outer" id="prio_urgent" onclick="setPriority(2)"><div class="add_task_prio_inner">Urgent <div class="add_task_prio_urgent_img"></div></div></div>
+                <div class="add_task_prio_outer" id="prio_medium" onclick="setPriority(1)"><div class="add_task_prio_inner">Medium <div class="add_task_prio_medium_img"></div></div></div>
+                <div class="add_task_prio_outer" id="prio_low" onclick="setPriority(0)"><div class="add_task_prio_inner">Low <div class="add_task_prio_low_img"></div></div></div>
+            </div>
+            <div class="error_message" id="error_message_prio"></div>
+            <label class="add_task_label_subtasks">Subtasks</label>
+            <div class="update_subtasks" id="update_subtasks">`
+    render += renderAddTaskSubtasks();
+    render += `</div>
+        <div class="error_message" id="error_message_subtasks"></div> 
+        </div>
+        </div>
+        <div class="add_task_submit_outer_slide_in">
+            <div class="form_buttons">
+                        <button type="reset" class="add_task_cancel" onclick="resetAddTask()">Clear</button>
+                        <button type="button" class="add_task_submit" onclick="processAddTask()">Create Task</button>
+            </div>
+        </div>
+        
+        </form>
+    </div>
+    `;
+    return render
+}
+
+async function deleteTask(id) {
+    let d = getTaskI(id);
+    todos.splice(d, 1);
+    await setItem('todos', todos);
+    closeTask();
+    updateHTML();
+}
+
+function getTaskI(id) {
+    let returni = -1;
+    for (let i = 0; i < todos.length; i++) {
+        if (todos[i]['id'] == id) {
+            returni = i;
+        }
+    }
+    return returni
+}
+
+
+function getAssignedEditTask(userIds) {
+    let render = `<div class="bd_assigned_above">Assigned To:</div>`;
+    render += `<div class="bd_assigned_below">`;
+
+    for (let i = 0; i < userIds.length; i++) {
+        let filteredUsers = users.filter(user => user.id == userIds[i]);
+        render += `<div class="bd_assigned_item">`
+        render += `<div class="bd_initials">`;
+        render += renderInitials(filteredUsers[0]);
+        render += `</div>`;
+        render += `<div class="bd_assigned_name">`;
+        render += filteredUsers[0]['name'];
+        render += `</div>`;
+        render += `</div>`;
+    }
+    render += `</div>`;
+    return render
+}
+
+function getSubtasksEditTask(subtasks) {
+    let render = '<div class="bd_subtask_title">Subtasks: </div><div class="bd_subtask">';
+    for (let i = 0; i < subtasks.length; i++) {
+        let check = '';
+        if (subtasks[i]['checked'] == true) { check = 'checked' } else { check = '' };
+        render += `<div class="bd_subtask_task"><input class="bd_task_checkbox" type="checkbox" disabled ${check}>${subtasks[i]['title']}</div>`;
+    }
+    render += `</div>`;
+    return render
+}
+
+function getPrioBoardEditTask(prio) {
+    let render = '';
+    if (prio == 0) {
+        render += `<div class="bd_priority_inner_low">Low <div class="add_task_prio_low_img_white"></div></div>`;
+    }
+    else if (prio == 1) {
+        render += `<div class="bd_priority_inner_medium">Medium <div class="add_task_prio_medium_img_white"></div></div>`;
+    }
+    else if (prio == 2) {
+        render += `<div class="bd_priority_inner_urgent">Urgent <div class="add_task_prio_urgent_img_white"></div></div>`;
+    }
+    return render;
+}
+
+function closeTask() {
+    document.getElementById('container').innerHTML = oldContent;
+}
+
+// <div class="progress_tasks"></div>
+// <span class="tasks_board">0/3 Done</span>
+
+// <img src="img/red_arrows.svg" class="arrows_board">
+
+
+// {/* <div class="board_users">${element['users']}
+//                 </div>
+//                 <div id="second_user" class="board_users">${element['users']}
+//                 </div>
+//                 <div id="third_user" class="board_users">${element['users']}
+//                 </div> */}
+
+
 
 // function updateHTML() {
 //     let first = todos.filter(t => t['category'] == 'window1');
@@ -194,8 +434,10 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(category) {
-    todos[currentDraggedElement]['bucket'] = category;
+async function moveTo(buck) {
+    let k = getTaskI(currentDraggedElement);
+    todos[k]['bucket'] = buck;
+    await setItem('todos', todos);
     updateHTML();
 }
 
@@ -212,4 +454,4 @@ function search_container() {
             x[i].style.display = "block";
         }
     }
-} 
+}                                     

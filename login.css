@@ -18,6 +18,7 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #f6f7f8;
+  width: 100%;
   z-index: 1;
 }
 
@@ -29,7 +30,7 @@ body {
 }
 
 .vector_5 {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .cont_sign_up {
@@ -44,6 +45,7 @@ body {
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
   z-index: 2;
+  box-sizing: border-box;
 }
 
 .cont_log_in {
@@ -57,6 +59,7 @@ body {
   background: white;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
+  box-sizing: border-box;
 }
 
 .cont_forgot_pw {
@@ -70,6 +73,7 @@ body {
   background: white;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
+  box-sizing: border-box;
 }
 
 .cont_reset_pw {
@@ -83,6 +87,7 @@ body {
   background: white;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
+  box-sizing: border-box;
 }
 
 .sign_up_title {
@@ -165,7 +170,6 @@ form {
   flex-direction: column;
   width: 422px;
   gap: 49px;
-  padding-top: 30px;
 }
 
 .signup_button {
@@ -351,6 +355,7 @@ form {
   padding-left: 21px;
   padding-right: 21px;
   color: black;
+  background: url(img/icon_lock.svg);
   background-repeat: no-repeat;
   background-position-x: 380px;
   padding-right: 45px;
@@ -381,6 +386,7 @@ form {
 
 .text-forgot-password {
   color: #29abe2;
+  cursor: pointer;
 }
 
 .img_forgot_password {
@@ -446,3 +452,4 @@ form {
     height: 122px;
   }
 }
+

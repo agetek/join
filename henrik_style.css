@@ -412,10 +412,48 @@
     z-index: 3;
 }
 
+.popup_edit {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    max-width: 100%;
+    max-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 3;
+}
+
 #popup_content {
     position: relative;
     transition: all 250ms ease-out;
     right: -100%;
+}
+
+#popup_content_task {
+    display: flex;
+    position: absolute;
+    width: 623px;
+    height: 90vh;
+    background-color: white;
+    border-radius: 15px;
+    flex-direction: column;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+#popup_content_task_edit {
+    display: flex;
+    position: absolute;
+    width: fit-content;
+    height: 90vh;
+    background-color: white;
+    border-radius: 15px;
+    flex-direction: column;
+    padding: 50px;
+    box-sizing: border-box;
 }
 
 .shift_message_outer {
@@ -488,6 +526,19 @@
     height: 694px;
     background-color: #FFFFFF;
     border-radius: 15px;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.edit_task_popup {
+    display: flex;
+    position: absolute;
+    width: 1212px;
+    height: 694px;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    justify-content: center;
+    padding-top: 20px;
 }
 
 .add_task {
@@ -1061,5 +1112,283 @@
     cursor: pointer;
 }
 
+.add_task_close {
+    display: flex;
+    position: absolute;
+    background-image: url(img/edit_close.svg);
+    background-position: center;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 19px;
+    top: 34px;
+    right: 63px;
+    cursor: pointer;
+}
+
+.add_task_submit_outer_slide_in {
+    display: flex;
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+}
 
 /* Add Task End */
+
+.bd_task_user {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    font-weight: normal;
+    font-size: 12px;
+    margin-left: -8px;
+}
+
+.bd_initials_overflow {
+    display: flex;
+    border: 1px solid white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    width: 35px;
+    height: 35px;
+    font-weight: normal;
+    font-size: 12px;
+    margin-left: -8px;
+    background-color: #2A3647;
+}
+
+.bd_progress {
+    display: flex;
+    background-color: #29ABE2;
+    border-radius: 2px;
+    height: 100%;
+}
+
+.bd_topic {
+    display: flex;
+    font-size: 27px;
+    color: white;
+    border-radius: 8px;
+    width: fit-content;
+    padding: 4px 37px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.bd_title {
+    display: flex;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 73px;
+    color: #2A3647;
+    margin-top: 25px;
+}
+
+.bd_description {
+    display: flex;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: #000000;
+    margin-top: 25px;
+}
+
+.bd_date_outer {
+    display: flex;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 25px;
+    color: #000000;
+    margin-top: 25px;
+}
+
+.bd_date_inner {
+    display: flex;
+    font-weight: 400;
+    margin-left: 25px;
+}
+
+.bd_priority_outer {
+    display: flex;
+    font-weight: 700;
+    font-size: 21px;
+    color: #000000;
+    margin-top: 25px;
+    height: 33px;
+    align-items: center;
+}
+
+.bd_priority_inner_low {
+    display: flex;
+    font-weight: 400;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: #7AE229;
+    color: white;
+    margin-left: 25px;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+}
+
+.bd_priority_inner_medium {
+    display: flex;
+    font-weight: 400;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: #FFA800;
+    color: white;
+    margin-left: 25px;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+}
+
+.bd_priority_inner_urgent {
+    display: flex;
+    font-weight: 400;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: #FF3D00;
+    color: white;
+    margin-left: 25px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.bd_subtask {
+    display: flex;
+    flex-direction: column;
+    max-height: 75px;
+    max-width: 80%;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.bd_subtask_title {
+    display: flex;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 25px;
+    color: #000000;
+    margin-top: 25px;
+    box-sizing: border-box;
+}
+
+.bd_subtask_task {
+    display: flex;
+    margin-top: 5px;
+    color: #999;
+    font-weight: 700;
+    align-items: center;
+    margin-left: 15px;
+    box-sizing: border-box;
+}
+
+.bd_task_checkbox {
+    width: 15px;
+    height: 15px;
+    margin-right: 15px;
+    appearance: none;
+    border: 1px solid #999;
+    border-radius: 3px;
+	background-clip: content-box;
+	padding: 2px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.bd_task_checkbox:checked {
+    background-color: #999;
+}
+
+.bd_delete_edit {
+    display: flex;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+
+}
+
+.bd_delete {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    background-image: url(img/bd_trash.svg);
+    cursor: pointer;
+}
+
+.bd_delete:hover {
+    background-image: url(img/bd_trash_hover.svg);
+}
+
+.bd_edit {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    background-image: url(img/bd_edit.svg);
+    cursor: pointer;
+}
+
+.bd_edit:hover {
+    background-image: url(img/bd_edit_hover.svg);
+}
+
+.bd_contain {
+    display: flex;
+    position: relative;
+    max-width: 623px;
+    flex-direction: column;
+    width: 623px;
+    height: 90vh;
+    box-sizing: border-box;
+}
+
+.bd_assigned_above {
+    display: flex;
+    font-weight: 700;
+    font-size: 21px;
+    color: #000000;
+    margin-top: 25px;
+    height: 33px;
+    align-items: center;
+}
+
+.bd_assigned_below {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.bd_initials {
+    display: flex;
+    width: 45px;
+    height: 45px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-right: 25px;
+}
+
+.bd_assigned_name {
+    display: flex;
+    font-size: 21px;
+}
+
+.bd_assigned_item {
+    display: flex;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+/* Board End */

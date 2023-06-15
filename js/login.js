@@ -1,28 +1,3 @@
-async function init() {
-  loadUsers();
-}
-
-async function loadUsers() {
-  users = await getItem("users");
-}
-
-async function register() {
-  registerBtn.disabled = true;
-  users.push({
-    email: email.value,
-    password: password.value,
-  });
-  await setItem("users", JSON.stringify(users));
-  resetForm();
-}
-
-function resetForm() {
-  email.value = "";
-  password.value = "";
-  registerBtn.disabled = false;
-}
-
-
 function renderSign() {
   document.getElementById("not_user").classList.toggle("display-none");
   document.getElementById("start_container").innerHTML = ``;
@@ -32,7 +7,7 @@ function renderSign() {
         <div class="sign_up_head">
         </div>
         <div class="cont_sign_up" id="cont_sign_up">
-        <img onclick="renderLogin()" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="openLoginFromSignup()" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
             <div class="sign_up_title">
                
                 <div class="signup_head">
@@ -42,9 +17,9 @@ function renderSign() {
           </div>
 
             <form action="javascript:register()">
-                    <input type="text" class="input_name_l" id="name" placeholder="Name" pattern="[A-Za-z]{2, 8}[\\s]{1}[A-Za-z]{2, 8}" required>
+                    <input type="text" class="input_name_l" id="username" placeholder="Name"  required>
                     <input type="email" class="input_email_l" id ="email" placeholder="Email" required>
-                    <input type="text" class="input_phone_l" id ="phone" placeholder="Phone" required>
+                    <input type="text" class="input_password_l" id ="password" placeholder="Password" required>
                     <button type="submit" class="signup_button" id="registerBtn">Sign up</button>
             </form>
         </div>
@@ -53,34 +28,43 @@ function renderSign() {
 
 
 function initAnimation() {
-  let animation = document.getElementById('logo_animation');
-  let animationImg = document.getElementById('move_logo');
-  let animateBg = document.getElementById('background');
+
   let animationBg = document.getElementById('animation_background');
-  setTimeout(function() {
-      animation.style.display = 'none';
-      animationImg.style.display = 'none';
-      animateBg.style.display = 'none';
-      animationBg.style.display = 'none';
+      setTimeout(function() {
+     animationBg.style.display = 'none';
   }, 2222);
+}
+
+async function openLogin() {
+  users = await getItem('users');
+  activeUserId = await getItem('activeUserId');
+  try { activeUserId = await getItemLocal('activeUserId'); } catch (e) { activeUserId = -1; }
+  if (activeUserId == null) {
+    document.getElementById("container").innerHTML = renderLogin();
+  } else if (activeUserId == -2 || activeUserId >= 0) {
+    openSummary();
+  } else {
+  document.getElementById("container").innerHTML = renderLogin();
+  // initAnimation();
+  }
+}
+
+function openLoginFromSignup() {
+  document.getElementById("container").innerHTML = renderLogin();
 }
 
 
 function renderLogin() {
-  document.getElementById("login").innerHTML = ` 
+  let render = `
     <div class="start_container" id="start_container">
-    <div class="background animation_background"></div>
-    <img class="logo_animation move_logo" src="./img/join_logo.png">
-
+    <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
         <div class="login_head">
         
         <div class="login_header_right">
        
-        <span class="not_user" id=""not_user">Not a Join user?</span> 
+        <span class="not_user" id="not_user">Not a Join user?</span> 
         <button onclick="renderSign()" class="signup_button_short" id="not_user">Sign up</button>
         </div>
-  
-
     </div>
         <div class="cont_log_in" id="cont_log_in">
             <div class="login_title">
@@ -91,11 +75,11 @@ function renderLogin() {
           </div>
 
             <form action="javascript:login()">
-           
-                    <input type="text" class="input_name_l" id="name" placeholder="Name" pattern="[A-Za-z]{2, 8}[\\s]{1}[A-Za-z]{2, 8}" required>
-                    <input type="email" class="input_email_l" id ="email" placeholder="Email" required>
-            
-            <div class="forgot">
+  
+                    <input type="email" class="input_email_l" id="email" placeholder="Email" required>
+                    <input type="password" class="input_password_l" id="password" placeholder="Password" required>
+            <div class="error_message" id="wrong_login"></div>
+                    <div class="forgot">
             <div class="remember-passwort">
             <input type="checkbox" id="checkbox"></input>
             <label class="not-markable" for="checkbox">Remember Me</label>
@@ -104,14 +88,17 @@ function renderLogin() {
           </div>
             
             <div class="login_buttons">
-                    <button class="login_button" >Log in</button>
-                    <button class="guest_login_button" >Guest Log in</button>
+                    <button onclick="login()" class="login_button">Log in</button>
+                    <button onclick="guestLogin()" class="guest_login_button">Guest Log in</button>
             </div>        
             </form>
         </div>
         `;
- 
+        return render
 }
+
+{/* <div class="background animation_background" id="animation_background"></div>
+    <img class="logo_animation move_logo" src="./img/join_logo.png"> */}
 
 
 function renderForgotPassword() {
@@ -169,8 +156,8 @@ function renderResetPassword() {
             <form class="form" action="javascript:login()">
            <div class="text_reset_pw">Change your account password</div>
                     
-                    <input type="text" class="input_password_l" id ="password" placeholder="New password" required>
-                    <input type="text" class="input_password_l" id ="password" placeholder="Confirm password" required>
+                    <input type="password" class="input_password_l" id ="password" placeholder="New password" required>
+                    <input type="password" class="input_password_l" id ="password" placeholder="Confirm password" required>
             
             
             <div class="login_buttons">

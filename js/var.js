@@ -4,6 +4,8 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 let firstLetters = [];
 
+let currentDraggedElement = -1;
+
 let oldContent = "";
 
 let activeUserId = -1;
@@ -127,7 +129,7 @@ let users =
         'name': 'Anton Mayer',
         'email': 'anton@gmail.com',
         'phone': '+49 1111 111 11 1',
-        'password': '',
+        'password': 'testxyz',
         'color_id': 'rgb(254,122,0)'
     },
     {
@@ -135,7 +137,7 @@ let users =
         'name': 'Anja Schulz',
         'email': 'schulz@hotmail.com',
         'phone': '',
-        'password': '',
+        'password': 'test123',
         'color_id': 'rgb(147,39,255)',
     },
     {
@@ -208,7 +210,7 @@ let todos = [
         'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
         'category_id': 2,
         'user_ids': [0, 1, 2],
-        'due_date': 123134346, // Unix timestamp
+        'due_date': 123134346,
         'prio' : 0,
         'subtasks' : [
             {
@@ -230,7 +232,7 @@ let todos = [
         'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
         'category_id': 2,
         'user_ids': [0, 1, 2],
-        'due_date': 123134346, // Unix timestamp
+        'due_date': "01-01-2024",
         'prio' : 0,
         'subtasks' : [
             {
@@ -252,7 +254,7 @@ let todos = [
         'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
         'category_id': 2,
         'user_ids': [0, 1, 2],
-        'due_date': 123134346, // Unix timestamp
+        'due_date': "01-01-2024",
         'prio' : 0,
         'subtasks' : [
             {
@@ -271,72 +273,84 @@ let todos = [
 
 let oldTodos = [
     {
-        'id': 0,
-        'bucket': 'window1',
-        'title': 'Beispiel Task',
-        'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
-        'category_id': 2,
-        'user_ids': [0, 1, 2],
-        'due_date': 123134346, // Unix timestamp
-        'prio' : 0,
-        'subtasks' : [
-            {
-                'id': 0,
-                'title': 'Lorem ipsum dolor',
-                'checked': true
-            },
-            {
-                'id': 1,
-                'title': 'sit amet consectetur',
-                'checked': false
-            }
-        ]
+       "id":0,
+       "bucket":"window1",
+       "title":"Beispiel Task",
+       "description":"Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+       "category_id":2,
+       "user_ids":[
+          0,
+          1,
+          2
+       ],
+       "due_date":"01-01-2024",
+       "prio":0,
+       "subtasks":[
+          {
+             "id":0,
+             "title":"Lorem ipsum dolor",
+             "checked":true
+          },
+          {
+             "id":1,
+             "title":"sit amet consectetur",
+             "checked":false
+          }
+       ]
     },
     {
-        'id': 1,
-        'bucket': 'window2',
-        'title': 'Beispiel Task',
-        'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
-        'category_id': 2,
-        'user_ids': [0, 1, 2],
-        'due_date': 123134346, // Unix timestamp
-        'prio' : 0,
-        'subtasks' : [
-            {
-                'id': 0,
-                'title': 'Lorem ipsum dolor',
-                'checked': true
-            },
-            {
-                'id': 1,
-                'title': 'sit amet consectetur',
-                'checked': false
-            }
-        ]
+       "id":1,
+       "bucket":"window2",
+       "title":"Beispiel Task",
+       "description":"Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+       "category_id":2,
+       "user_ids":[
+          0,
+          1,
+          2
+       ],
+       "due_date":"01-01-2024",
+       "prio":0,
+       "subtasks":[
+          {
+             "id":0,
+             "title":"Lorem ipsum dolor",
+             "checked":true
+          },
+          {
+             "id":1,
+             "title":"sit amet consectetur",
+             "checked":false
+          }
+       ]
     },
     {
-        'id': 2,
-        'bucket': 'window3',
-        'title': 'Beispiel Task',
-        'description': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
-        'category_id': 2,
-        'user_ids': [0, 1, 2],
-        'due_date': 123134346, // Unix timestamp
-        'prio' : 0,
-        'subtasks' : [
-            {
-                'id': 0,
-                'title': 'Lorem ipsum dolor',
-                'checked': true
-            },
-            {
-                'id': 1,
-                'title': 'sit amet consectetur',
-                'checked': false
-            }
-        ]
+       "id":2,
+       "bucket":"window3",
+       "title":"Beispiel Task",
+       "description":"Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+       "category_id":2,
+       "user_ids":[
+          0,
+          1,
+          2
+       ],
+       "due_date":"01-01-2024",
+       "prio":0,
+       "subtasks":[
+          {
+             "id":0,
+             "title":"Lorem ipsum dolor",
+             "checked":true
+          },
+          {
+             "id":1,
+             "title":"sit amet consectetur",
+             "checked":false
+          }
+       ]
     }
-];
+ ];
 
 
 // let todos = [{
@@ -379,11 +393,6 @@ let oldTodos = [
 // }
 
 // ];
-
-
-
-
-let currentDraggedElement;
 
 let category = [
     {
