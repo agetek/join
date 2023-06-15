@@ -181,3 +181,15 @@ function openHelp() {
     render += `</div>`;
     document.getElementById('container').innerHTML = render;
 }
+
+function openLegalNotice() {
+    let render = renderSidebar();
+    render += `<div class="right">`;
+    render += renderHeader();
+    render += `<div class="middle_column">`;
+    render += renderLegal();
+    render += `</div>`;
+    render += renderFooter();
+    render += `</div>`;
+    document.getElementById('container').innerHTML = render;
+}

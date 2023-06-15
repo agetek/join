@@ -60,9 +60,11 @@
         display: flex;
         justify-content: center;
     }
+
     .contacts_overview {
         height: calc(100vh - 169px);
     }
+
     .divider_add_contact {
         display: flex !important;
         width: 90px;
@@ -239,7 +241,7 @@
     }
 
     .avatar_add {
-       display: none;
+        display: none;
     }
 
     .contact_input {
@@ -280,10 +282,75 @@
     .submit {
         margin-bottom: 90px
     }
+
     .contact_input {
         height: 360px;
     }
+
     .close_add_contact {
         right: -215px;
+    }
+}
+
+
+.container_help {
+    display: flex;
+    flex-direction: column;
+    margin-left: 123px;
+    margin-right: 123px;
+    font-size: 16px;
+}
+
+.small_headlines_help {
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.span_help {
+    font-size: 16px;
+}
+
+#what_is_join {
+    margin-bottom: 10px;
+}
+
+#how_to_use_it {
+    margin-bottom: 35px;
+}
+
+#introduction_join {
+    margin-bottom: 35px;
+}
+
+.arrow_help {
+    height: 24px;
+    width: 24px;
+    margin-top: 80px;
+}
+
+.arrow_right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.h2_help {
+    margin-top: 0px;
+}
+
+@media(max-width: 750px) {
+    .container_help {
+        margin-left: 33px !important;
+        margin-right: 0px !important;
+        padding-right: 33px !important;
+    }
+}
+
+@media(max-width: 1000px) {
+    .container_help {
+        overflow-y: auto;
+        height: calc(100vh - 169px);
+        margin-left: 123px;
+        padding-right: 123px;
+        margin-right: 0;
     }
 }
