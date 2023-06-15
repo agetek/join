@@ -206,12 +206,85 @@ function renderEditTask(id) {
     render += `</div>`;
     render += getSubtasksEditTask(filteredTodos[0]['subtasks']);
     render += getAssignedEditTask(filteredTodos[0]['user_ids']);
-    render += `<div class="bd_delete_edit"><div class="bd_delete" onclick="deleteTask(${id})"></div><div class="bd_edit"  onclick="editTask(${id})"></div>`;
+    render += `<div class="bd_delete_edit"><div class="bd_delete" onclick="deleteTask(${id})"></div><div class="bd_edit"  onclick="openEditTask(${id})"></div>`;
     render += `</div>`;
     render += `</div>`;
-    console.log(id);
-    console.log(getTaskI(id));
-    console.log(todos);
+    return render
+}
+
+async function openEditTask(id) {
+    document.getElementById('container').innerHTML = oldContent;
+    category = await getItem('category');
+    let filteredTodos = todos.filter(todo => todo.id == id);
+    categoryOpen = false;
+    contactsOpen = false;
+    categorySelected = filteredTodos[0]['category_id'];
+    activeSubtasks = filteredTodos[0]['subtasks'];
+    let newContent = `<div class="popup_edit" id="popup" onclick="closeTask()">
+                        <div class="edit_task_popup" onclick="event.stopPropagation()">`;
+    newContent += renderEditTaskSlideIn();
+    newContent += `</div>
+                </div>`;
+    document.getElementById('container').innerHTML = oldContent + newContent;
+    document.getElementById('input_title').value = filteredTodos[0]['title'];
+    document.getElementById('input_description').value = filteredTodos[0]['description'];
+    renderSubtasksListing();
+}
+
+function renderEditTaskSlideIn() {
+    let render = `
+    <div class="add_task">
+        <div class="add_task_close" onclick="closeEdit()">
+        </div>
+        <form class="add_task_form">
+        <div class="add_task_body">
+            <div class="add_task_left_column">
+                <label class="add_task_label_title" for="input_title">Title</label>
+                <input type="text" class="input_title" id="input_title" placeholder="Enter a title">
+                <div class="error_message" id="error_message_title"></div>
+                <label class="add_task_label_description" for="input_description">Description</label>
+                <textarea class="add_task_textarea_description" placeholder="Enter a description" id="input_description"></textarea>
+                <div class="error_message" id="error_message_description"></div>
+                <div class="add_task_label_description">Category</div>
+                <div id="update_category" class="update_category">`
+    render += renderAddTaskCategory();
+    render += `</div>
+                <div class="error_message" id="error_message_category"></div>
+                <div class="add_task_label_description">Assigned to</div>
+                <div class="update_assigned" id="update_assigned">`
+    render += renderAddTaskContacts();
+    render += `</div>
+            <div class="error_message" id="error_message_assigned"></div>
+            </div>
+            <div class="add_task_divider"></div>
+            <div class="add_task_right_column">
+            <label class="add_task_label_date" for="input_date">Due date</label>
+            <input type="date" class="input_date" id="input_date" placeholder="dd/mm/yyyy">
+            <div class="error_message" id="error_message_date"></div>
+            <label class="add_task_label_prio">Prio</label>
+            <div class="add_task_prio">
+                <div class="add_task_prio_outer" id="prio_urgent" onclick="setPriority(2)"><div class="add_task_prio_inner">Urgent <div class="add_task_prio_urgent_img"></div></div></div>
+                <div class="add_task_prio_outer" id="prio_medium" onclick="setPriority(1)"><div class="add_task_prio_inner">Medium <div class="add_task_prio_medium_img"></div></div></div>
+                <div class="add_task_prio_outer" id="prio_low" onclick="setPriority(0)"><div class="add_task_prio_inner">Low <div class="add_task_prio_low_img"></div></div></div>
+            </div>
+            <div class="error_message" id="error_message_prio"></div>
+            <label class="add_task_label_subtasks">Subtasks</label>
+            <div class="update_subtasks" id="update_subtasks">`
+    render += renderAddTaskSubtasks();
+    render += `</div>
+        <div class="error_message" id="error_message_subtasks"></div> 
+        </div>
+        </div>
+        <div class="add_task_submit_outer_slide_in">
+            <div class="form_buttons">
+                        <button type="reset" class="add_task_cancel" onclick="resetAddTask()">Clear</button>
+                        <button type="button" class="add_task_submit" onclick="processAddTask()">Create Task</button>
+            </div>
+        </div>
+        
+        </form>
+    </div>
+    `;
     return render
 }
 
@@ -220,12 +293,13 @@ async function deleteTask(id) {
     todos.splice(d, 1);
     await setItem('todos', todos);
     closeTask();
+    updateHTML();
 }
 
-function getTaskI(idz) {
+function getTaskI(id) {
     let returni = -1;
     for (let i = 0; i < todos.length; i++) {
-        if (todos[i]['id'] == idz) {
+        if (todos[i]['id'] == id) {
             returni = i;
         }
     }
