@@ -13,10 +13,11 @@ function renderContacts() {
     render += `<div class="right">`;
     render += renderHeader();
     render += `<div class="middle_column">`;
-    render += renderContactsOverview();    
+    render += renderContactsOverview();
     render += renderContactsDetails();
     render += `</div>`;
     render += `</div>`;
+    render += renderFooter();
     return render;
 }
 
@@ -34,7 +35,8 @@ function makeLetters() {
 }
 
 function renderContactsOverview() {
-    let render = `<div class="contacts_overview">`;
+    let render = `<div id="newContact_footer" style="display:none" class="contact_details_new_contact"><div class="contact_details_new_contact_icon" onclick="openAddContact()"></div></div>`;
+    render += `<div class="contacts_overview">`;
     for (let i = 0; i < firstLetters.length; i++) {
         render += `<div class="contact_overview_letter">${firstLetters[i]}</div>`;
         render += `<div class="contact_line"></div>`;
@@ -242,13 +244,13 @@ async function loadOldContacts() {
 }
 
 async function shiftPopupIn() {
-        document.getElementById('popup_content').style.cssText = 'right: 0';
-        document.getElementById('popup').style.cssText = 'background-color: rgba(0, 0, 0, 0.5)';
+    document.getElementById('popup_content').style.cssText = 'right: 0';
+    document.getElementById('popup').style.cssText = 'background-color: rgba(0, 0, 0, 0.5)';
 }
 
 async function shiftPopupOut() {
-        document.getElementById('popup_content').style.cssText = 'right: -100%';
-        document.getElementById('popup').style.cssText = 'background-color: rgba(0, 0, 0, 0)';
+    document.getElementById('popup_content').style.cssText = 'right: -100%';
+    document.getElementById('popup').style.cssText = 'background-color: rgba(0, 0, 0, 0)';
 }
 
 function shiftMessage(message) {
