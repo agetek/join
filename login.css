@@ -37,9 +37,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 39px;
   gap: 20px;
-  width: clamp(500px, 40vw, 652px);
+  width: 652px;
   height: 559px;
   background: white;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
@@ -54,7 +53,7 @@ body {
   align-items: center;
   padding: 39px;
   gap: 20px;
-  width: clamp(500px, 40vw, 652px);
+  width: 652px;
   height: 513px;
   background: white;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
@@ -168,15 +167,12 @@ form {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 422px;
   gap: 49px;
 }
 
 .signup_button {
   height: 51px;
   width: 145px;
-  left: 253.5px;
-  top: 473px;
   border-radius: 8px;
   padding: 4px 0px 4px 0px;
   background: #2a3647;
@@ -188,6 +184,7 @@ form {
   border: solid;
   cursor: pointer;
 }
+
 
 .signup_button:hover,
 .login_button:hover,
@@ -203,11 +200,9 @@ form {
 .login_button {
   height: 51px;
   width: 145px;
-  left: 253.5px;
-  top: 473px;
   border-radius: 8px;
-  padding: 4px 0px 4px 0px;
   background: #2a3647;
+  border: 0.8px #2a3647 solid;
   border-radius: 10px;
   color: white;
   font-size: 18px;
@@ -222,7 +217,7 @@ form {
   left: 253.5px;
   top: 473px;
   border-radius: 8px;
-  padding: 4px 0px 4px 0px;
+  
   background: white;
   border: 0.8px #2a3647 solid;
   border-radius: 10px;
@@ -234,7 +229,7 @@ form {
 
 .guest_login_button:hover {
   cursor: pointer;
-  border: 2px solid #29abe2;
+  border: 0.5px solid #29abe2;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   color: #29abe2;
 }
@@ -242,8 +237,6 @@ form {
 .signup_button_short {
   height: 51px;
   width: 120px;
-  left: 253.5px;
-  top: 473px;
   border-radius: 8px;
   padding: 4px 0px 4px 0px;
   background: #2a3647;
@@ -289,11 +282,13 @@ form {
   padding-top: 30px;
 }
 
-.input_name_l {
+
+
+.infield_name {
   padding-top: 13px;
   padding-bottom: 13px;
   padding-left: 21px;
-  padding-right: 21px;
+  
   color: black;
   background: url(img/icon_small_profile.svg);
   background-repeat: no-repeat;
@@ -310,7 +305,7 @@ form {
   box-sizing: border-box;
 }
 
-.input_email_l {
+.infield_email {
   padding-top: 13px;
   padding-bottom: 13px;
   padding-left: 21px;
@@ -326,30 +321,12 @@ form {
   border-color: #d1d1d1;
   border-style: solid;
   font-size: 21px;
+  width: 422px;
   box-sizing: border-box;
 }
 
-.input_phone_l {
-  padding-top: 13px;
-  padding-bottom: 13px;
-  padding-left: 21px;
-  padding-right: 21px;
-  color: black;
-  background: url(img/icon_small_phone.svg);
-  background-repeat: no-repeat;
-  background-position-x: 380px;
-  padding-right: 45px;
-  background-size: 16px;
-  background-position-y: 15px;
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: #d1d1d1;
-  border-style: solid;
-  font-size: 21px;
-  box-sizing: border-box;
-}
 
-.input_password_l {
+.infield_password {
   padding-top: 13px;
   padding-bottom: 13px;
   padding-left: 21px;
@@ -366,7 +343,15 @@ form {
   border-color: #d1d1d1;
   border-style: solid;
   font-size: 21px;
+  width: 422px;
   box-sizing: border-box;
+}
+
+.wrong_message {
+  margin-top: 8px;
+  display: flex;
+  font-size: 12px;
+  color: #FF001F;
 }
 
 .login_buttons {
