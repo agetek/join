@@ -25,6 +25,8 @@
 
     .middle_column {
         background-color: white;
+        height: calc(100vh - 89px);
+        overflow-y: auto;
     }
 
     #newContact_footer {
@@ -154,6 +156,12 @@
 }
 
 @media(max-width: 1000px) {
+    .middle_column {
+        background-color: white;
+        height: calc(100vh - 169px);
+        overflow-y: auto;
+    }
+
     #container {
         flex-direction: column;
     }
@@ -261,8 +269,6 @@
         margin-top: 33px;
     }
 
-    .edit_form {}
-
     .input_name {
         background-position-x: 214px;
         width: 246px;
@@ -353,4 +359,166 @@
         padding-right: 123px;
         margin-right: 0;
     }
+}
+
+/* add task  */
+
+#update_task {
+    background-color: #F5F5F5;
+}
+
+@media(max-width: 1275px) {
+    .add_task_body {
+        flex-direction: column;
+    }
+
+    .add_task {
+        height: calc(100vh - 169px);
+        width: auto;
+        min-width: auto;
+        margin: auto;
+    }
+}
+
+@media(max-width: 1000px) {
+    .add_task_header {
+        margin-top: 19px;
+    }
+
+    /* #add_task_edits {
+        display: none;
+    } */
+    /* #show_button_mobile {
+        display: flex !important;
+        align-items: center;
+    } */
+    .add_task_submit_outer {
+        display: none;
+    }
+
+    #update_subtasks {
+        margin-bottom: 35px;
+    }
+
+    .form_buttons {
+        margin-top: 0px;
+        margin-right: 25px;
+    }
+
+    .add_task_submit {
+        width: 180px;
+        background-position-x: 145px
+    }
+}
+
+@media(max-width: 500px) {
+    .add_task_headline {
+        font-size: 40px;
+    }
+
+    .add_task_left_column {
+        min-width: 275px;
+        max-width: 275px;
+    }
+
+    .add_task_right_column {
+        min-width: 275px;
+        max-width: 275px;
+    }
+
+    .input_date {
+        min-width: 275px;
+        max-width: 275px;
+    }
+
+    .add_task_prio_outer {
+        min-width: 80px;
+    }
+
+    .add_task_prio_urgent_img {
+        background-image: none;
+    }
+
+    .add_task_prio_medium_img {
+        background-image: none;
+    }
+
+    .add_task_prio_low_img {
+        background-image: none;
+
+    }
+
+    .add_task_prio_inner {
+        display: block;
+    }
+}
+
+@media(max-width: 1275px) {
+    .hide_mobile {
+        display: none;
+    }
+    .mobile_header_profile_img {
+        display: none;
+    }
+    #show_button_mobile {
+        display: flex !important;
+        align-items: center;
+        background-position-x: 145px;
+        width: 175px;
+    }
+    .form_buttons {
+        margin-top: 0;
+        margin-right: 60px;
+    }
+}
+
+.mobile_header_profile_img {
+
+    height: 46px;
+    width: 46px;
+    border-radius: 62%;
+    border: solid;
+    border-color: white;
+    margin-left: 22px;
+    margin-right: 36px;
+    outline: solid;
+    outline-color: #2A3647
+}
+
+#info-container {
+    position: relative;
+    top: 105px;
+    right: -108px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Höhere z-Index-Eigenschaft als die ursprüngliche Seite */
+    transition: all 250ms ease-out 0s; margin-left: 65px;
+
+  }
+
+  #info-content {
+    background-color: #2A3647;
+    color: white;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+
+  @media(max-width: 1000px) {
+
+  .hide_mobile_info {
+    display: none;
+  }
+  #info-container {
+    top: 74px;
+  }
 }

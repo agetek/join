@@ -2,7 +2,7 @@ function renderHelp() {
     let render = `
     <div class="container_help">
         <div class="arrow_right">
-            <img onclick="history.back()" class="arrow_help" src="img/black_arrow_back.svg">
+            <img onclick="summary()" class="arrow_help" src="img/black_arrow_back.svg">
         </div>
         <h2 class="h2_help">Help</h2>
         <span id="what_is_join" class="small_headlines_help">What is Join?</span>

@@ -1,6 +1,8 @@
 .summary {
     background-color: #F5F5F5;
     height: calc(100vh - 89px);
+    margin: auto;
+    width: -webkit-fill-available;
 }
 
 

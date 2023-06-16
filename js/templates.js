@@ -74,10 +74,34 @@ function renderHeader() {
             <img class="logo_header" style="display:none" src="img/header_logo.svg">
             <div class="header_text">Kanban Project Management Tool</div>
             <div class="question_and_avatar">
-                <div onclick="openHelp()">
+            <div id="info-container" style="display: none;">
+            <div id="info-content">
+            <span onclick="">Log Out</span>
+            <span class="hide_mobile_info" onclick="openLegalNotice()">Legal notice</span>
+            <span onclick="openHelp()">Open Help</span>
+            </div>
+            </div>
+            <div onclick="openHelp()">
+            <img src="img/question_mark.svg" class="header_help"> 
+            </div>
+            <img onclick="openInfo()" src="img/avatar_profile.png" id="add_task_edits" class="header_profile_img">
+            </div>
+        </div>`;
+    return render;
+}
+
+function renderHeaderAdd_Task() {
+    let render = `<div class="header">
+            <img class="logo_header" style="display:none" src="img/header_logo.svg">
+            <div class="header_text">Kanban Project Management Tool</div>
+            <div class="question_and_avatar">
+            <div class="form_buttons">
+            <button id="show_button_mobile" style="display:none;" type="button" class="add_task_submit" onclick="processAddTask()">Create Task</button>
+            </div>
+                <div class="hide_mobile" onclick="openHelp()">
                 <img src="img/question_mark.svg" class="header_help"> 
                 </div>
-                <img src="img/avatar_profile.png" class="header_profile_img">
+                <img src="img/avatar_profile.png" id="add_task_edits" class="mobile_header_profile_img">
             </div>
         </div>`;
     return render;
@@ -86,22 +110,22 @@ function renderHeader() {
 function renderFooter() {
     let render = `
     <div class="footer_mobile" style="display:none">
-        <div id="footer_summary" class="footer_buttons">
+        <div onclick="openSummary()" id="footer_summary" class="footer_buttons">
             <img class="summary_footer_img"  src="img/summary_icon.svg">
             <div class="summary_footer">Summary
             </div>
         </div>
-        <div id="footer_buttons" class="footer_buttons">
+        <div onclick="openBoard()" id="footer_buttons" class="footer_buttons">
             <img class="summary_footer_img"  src="img/board_icon.svg"> 
             <div class="summary_footer">Board
             </div>
         </div>
-        <div id="footer_add_task" class="footer_buttons">
+        <div onclick="openAddTask()" id="footer_add_task" class="footer_buttons">
             <img class="summary_footer_img"  src="img/add_task_icon.svg">
             <div class="summary_footer">Add Task
             </div>
         </div>
-        <div id="footer_contacts" class="footer_buttons">
+        <div onclick="openContacts()" id="footer_contacts" class="footer_buttons">
             <img class="summary_footer_img" src="img/contacts_icon.svg">
             <div class="summary_footer">Contacts
             </div>
@@ -128,11 +152,12 @@ function addTask() {
     let render = renderSidebar();
     activeSubtasks = [];
     render += `<div class="right">`;
-    render += renderHeader();
+    render += renderHeaderAdd_Task();
     render += `<div class="middle_column" id="update_task">`;
     render += renderAddTask();
     render += `</div>`;
     render += `</div>`;
+    render += renderFooter();
     return render;
 }
 
@@ -157,7 +182,7 @@ async function openAddTask() {
     priority = -1;
     activeSubtasks = [];
 
-    
+
     category = await getItem('category');
     let render = addTask();
     document.getElementById('container').innerHTML = render;

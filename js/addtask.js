@@ -1,6 +1,7 @@
 function renderAddTask() {
     let render = `
     <div class="add_task">
+        <span style="display:none;" class="summary_mobile_headline">Kanban Project Management Tool</span>
         <div class="add_task_header">
             <div class="add_task_headline">Add Task</div>
         </div>
@@ -58,6 +59,7 @@ function renderAddTask() {
 function renderAddTaskSlideIn() {
     let render = `
     <div class="add_task">
+        <span style="display:none;" class="summary_mobile_headline">Kanban Project Management Tool</span>
         <div class="add_task_close" onclick="closeEdit()">
         </div>
         <form class="add_task_form">
