@@ -217,24 +217,28 @@ async function openEditTask(id) {
     category = await getItem('category');
     let filteredTodos = todos.filter(todo => todo.id == id);
     categoryOpen = false;
-    contactsOpen = false;
+    contactsOpen = true;
+    addTaskContactsSelected = filteredTodos[0]['user_ids'];
     categorySelected = filteredTodos[0]['category_id'];
     activeSubtasks = filteredTodos[0]['subtasks'];
     let newContent = `<div class="popup_edit" id="popup" onclick="closeTask()">
                         <div class="edit_task_popup" onclick="event.stopPropagation()">`;
-    newContent += renderEditTaskSlideIn();
+    newContent += renderEditTaskSlideIn(id);
     newContent += `</div>
                 </div>`;
     document.getElementById('container').innerHTML = oldContent + newContent;
     document.getElementById('input_title').value = filteredTodos[0]['title'];
     document.getElementById('input_description').value = filteredTodos[0]['description'];
+    document.getElementById('input_date').value = filteredTodos[0]['due_date'];
     renderSubtasksListing();
+    openTaskContactsDropdown();
+    setPriority(filteredTodos[0]['prio']);
 }
 
-function renderEditTaskSlideIn() {
+function renderEditTaskSlideIn(id) {
     let render = `
     <div class="add_task">
-        <div class="add_task_close" onclick="closeEdit()">
+        <div class="add_task_close" onclick="closeTask()">
         </div>
         <form class="add_task_form">
         <div class="add_task_body">
@@ -277,8 +281,8 @@ function renderEditTaskSlideIn() {
         </div>
         <div class="add_task_submit_outer_slide_in">
             <div class="form_buttons">
-                        <button type="reset" class="add_task_cancel" onclick="resetAddTask()">Clear</button>
-                        <button type="button" class="add_task_submit" onclick="processAddTask()">Create Task</button>
+                        <button type="button" class="add_task_cancel" onclick="resetEditTask(${id})">Clear</button>
+                        <button type="button" class="add_task_submit" onclick="processEditTask(${id})">Save Task</button>
             </div>
         </div>
         
@@ -286,6 +290,41 @@ function renderEditTaskSlideIn() {
     </div>
     `;
     return render
+}
+
+async function resetEditTask(id) {
+    closeTask();
+    todos = await getItem('todos');
+    await openEditTask(id);
+}
+
+async function processEditTask(id) {
+    document.getElementById("error_message_title").innerHTML = '';
+    document.getElementById("error_message_description").innerHTML = '';
+    document.getElementById("error_message_category").innerHTML = '';
+    document.getElementById("error_message_assigned").innerHTML = '';
+    document.getElementById("error_message_date").innerHTML = '';
+    document.getElementById("error_message_prio").innerHTML = '';
+    document.getElementById("error_message_subtasks").innerHTML = '';
+    let check = validateAddTask();
+    if (check) {
+        await saveEditTask(id);
+    }
+}
+
+async function saveEditTask(id) {
+    let i = getTaskI(id);
+    todos[i]['title'] = document.getElementById('input_title').value;
+    todos[i]['description'] = document.getElementById('input_description').value;
+    todos[i]['category_id'] = categorySelected;
+    todos[i]['user_ids'] = addTaskContactsSelected;
+    todos[i]['due_date'] = document.getElementById('input_date').value;
+    todos[i]['prio'] = priority;
+    todos[i]['subtasks'] = activeSubtasks;
+    await setItem('todos', todos); 
+    setTimeout(function() {
+    shiftMessage('Task successfully updated');}, 250);
+    openBoard();
 }
 
 async function deleteTask(id) {
