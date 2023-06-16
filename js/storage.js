@@ -28,9 +28,11 @@ function login() {
         }   
     }
     if (!check) {
-        document.getElementById('wrong_login').innerHTML = "Wrong password";
+        document.getElementById('wrong_login').innerHTML = "incorrect login data";
+    } 
+
     }
-}
+
 
 function guestLogin() {
     activeUserId = -2;

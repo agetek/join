@@ -189,7 +189,9 @@ async function openAddTask() {
     document.getElementById('open_add_task').classList.add('sidebar_point_active');
 }
 
-function openSummary() {
+async function openSummary() {
+    todos = await getItem('todos');
+    activeUserId = await getItemLocal('activeUserId');
     let render = summary();
     document.getElementById('container').innerHTML = render;
     document.getElementById('open_summary').classList.add('sidebar_point_active');

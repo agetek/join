@@ -1,5 +1,5 @@
 function renderSign() {
-  document.getElementById("not_user").classList.toggle("display-none");
+ 
   document.getElementById("start_container").innerHTML = ``;
   document.getElementById("start_container").innerHTML = ` 
     <div class="sign_up_container" id="sign_up_container">
@@ -17,9 +17,9 @@ function renderSign() {
           </div>
 
             <form action="javascript:register()">
-                    <input type="text" class="input_name_l" id="username" placeholder="Name"  required>
-                    <input type="email" class="input_email_l" id ="email" placeholder="Email" required>
-                    <input type="text" class="input_password_l" id ="password" placeholder="Password" required>
+                    <input type="text" class="infield_name" id="username" placeholder="Name"  required>
+                    <input type="email" class="infield_email" id ="email" placeholder="Email" required>
+                    <input type="text" class="infield_password" id ="password" placeholder="Password" required>
                     <button type="submit" class="signup_button" id="registerBtn">Sign up</button>
             </form>
         </div>
@@ -76,9 +76,10 @@ function renderLogin() {
 
             <form action="javascript:login()">
   
-                    <input type="email" class="input_email_l" id="email" placeholder="Email" required>
-                    <input type="password" class="input_password_l" id="password" placeholder="Password" required>
-            <div class="error_message" id="wrong_login"></div>
+                    <input type="email" class="infield_email" id="email" placeholder="Email" required>
+                    <div><input type="password" class="infield_password" id="password" placeholder="Password" required>
+                    <div class="wrong_message" id="wrong_login"></div>
+                    </div>
                     <div class="forgot">
             <div class="remember-passwort">
             <input type="checkbox" id="checkbox"></input>
@@ -103,14 +104,14 @@ function renderLogin() {
 
 function renderForgotPassword() {
   document.getElementById("not_user").classList.toggle("display-none");
-  document.getElementById("login").innerHTML = ``;
-  document.getElementById("login").innerHTML = `  
+  document.getElementById("start_container").innerHTML = ``;
+  document.getElementById("start_container").innerHTML = `    
     <div class="sign_up_container">
         <div class="login_head">
         <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
     </div>
         <div class="cont_forgot_pw" id="cont_forgot_pw">
-        <img onclick="renderResetPassword()" class="forgot_blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="openLogin()" class="forgot_blue_arrow_back" src="./img/arrow_back_blue.svg">
             <div class="login_title">
             
                 <div class="signup_head">
@@ -122,7 +123,7 @@ function renderForgotPassword() {
           </div>
             <form action="javascript:login()">
           
-          <input type="email" class="input_email_l" id ="email" placeholder="Email" required>
+          <input type="email" class="infield_email" id ="email" placeholder="Email" required>
             <div class="login_buttons">
                     <button class="send_email_button" >Send me an email</button>
                    
@@ -135,7 +136,7 @@ function renderForgotPassword() {
 
 
 function renderResetPassword() {
-  document.getElementById("login").innerHTML =` 
+  let render =` 
     <div class="sign_up_container">
         <div class="login_head">
         <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
@@ -156,8 +157,8 @@ function renderResetPassword() {
             <form class="form" action="javascript:login()">
            <div class="text_reset_pw">Change your account password</div>
                     
-                    <input type="password" class="input_password_l" id ="password" placeholder="New password" required>
-                    <input type="password" class="input_password_l" id ="password" placeholder="Confirm password" required>
+                    <input type="password" class="infield_password" id ="password" placeholder="New password" required>
+                    <input type="password" class="infield_password" id ="password" placeholder="Confirm password" required>
             
             
             <div class="login_buttons">
@@ -167,7 +168,7 @@ function renderResetPassword() {
             </form>
         </div>
         `;
-  
+  return render
 }
 
 

@@ -42,7 +42,7 @@
     align-items: center;
     text-align: center;
     border-radius: 30px;
-
+    cursor: pointer;
 }
 
 .overview_numbers {
@@ -63,6 +63,7 @@
     width: 580px;
     height: 150px;
     border-radius: 30px;
+    cursor: pointer;
 }
 
 .grey_seperator_summary {
@@ -100,11 +101,11 @@
 .date_summary {
     font-size: 21px;
     font-weight: 700;
-
 }
 
 
 .date_description_summary {
+    margin-top: 13px;
     font-size: 16px;
 }
 
