@@ -354,6 +354,10 @@ form {
   color: #FF001F;
 }
 
+.d-none {
+  display: none;
+}
+
 .login_buttons {
   display: flex;
   justify-content: center;

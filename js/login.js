@@ -1,5 +1,5 @@
 function renderSign() {
-  document.getElementById("not_user").classList.toggle("display-none");
+ 
   document.getElementById("start_container").innerHTML = ``;
   document.getElementById("start_container").innerHTML = ` 
     <div class="sign_up_container" id="sign_up_container">
@@ -76,8 +76,9 @@ function renderLogin() {
             <form action="javascript:login()">
   
                     <input type="email" class="infield_email" id="email" placeholder="Email" required>
-                    <input type="password" class="infield_password" id="password" placeholder="Password" required>
-           
+                    <div><input type="password" class="infield_password" id="password" placeholder="Password" required>
+                    <div class="wrong_message" id="wrong_login"></div>
+                    </div>
                     <div class="forgot">
             <div class="remember-passwort">
             <input type="checkbox" id="checkbox"></input>
@@ -102,14 +103,14 @@ function renderLogin() {
 
 function renderForgotPassword() {
   document.getElementById("not_user").classList.toggle("display-none");
-  document.getElementById("login").innerHTML = ``;
-  document.getElementById("login").innerHTML = `    
+  document.getElementById("start_container").innerHTML = ``;
+  document.getElementById("start_container").innerHTML = `    
     <div class="sign_up_container">
         <div class="login_head">
         <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
     </div>
         <div class="cont_forgot_pw" id="cont_forgot_pw">
-        <img onclick="renderResetPassword()" class="forgot_blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="openLogin()" class="forgot_blue_arrow_back" src="./img/arrow_back_blue.svg">
             <div class="login_title">
             
                 <div class="signup_head">
