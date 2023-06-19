@@ -104,12 +104,12 @@ function generateToDoHTML(element) {
     let cat = getCategory(element['category_id']);
     let render = `
     <div id="moveable_container" draggable="true" ondragstart="startDragging(${element['id']})" class="todo" onclick="OpenShowTask(${element['id']})">
-        <div>
+        <div class="hide_mobile_class">
             <div class="topic" style="background-color: ${cat[1]}">${cat[0]}</div>
             <div class="drag_drop_mobile" style="display:none">
-            <img src="">
-            <img src="">
-        </div>
+            <img class="arrow_turn" src="img/black_arrow_back.svg">
+            </div>
+            </div>
         <div class="title">${element['title']}
         </div>
         <div class="description">${element['description']}

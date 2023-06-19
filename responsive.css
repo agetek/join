@@ -543,13 +543,14 @@
 
 @media(max-width: 1670px) {
     .board-main-container {
-        flex-direction: column;
+        flex-wrap: wrap;
         padding-left: 0px;
     }
 
     .placeholder_drag_drop {
-        height: 57px;
-
+        height: calc(100% - 89px);
+        box-sizing: border-box;
+        min-height: 100px;
     }
 
     .fixContainers {
@@ -567,7 +568,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        overflow-x: scroll;
+        overflow-y: scroll;
     }
 
     .middle_column {}
@@ -635,3 +636,19 @@
 }
 
 @media(max-width: 1250px) {}
+
+
+@media(max-width: 1000px) {
+    .drag_drop_mobile {
+        display: flex !important;
+    }
+    .hide_mobile_class {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-right: 20px;
+    }
+    .arrow_turn {
+        transform: rotate(180deg);
+    }
+}
