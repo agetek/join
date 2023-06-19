@@ -102,7 +102,6 @@ function renderLogin() {
 
 
 function renderForgotPassword() {
-  document.getElementById("not_user").classList.toggle("display-none");
   document.getElementById("start_container").innerHTML = ``;
   document.getElementById("start_container").innerHTML = `    
     <div class="sign_up_container">
@@ -120,15 +119,16 @@ function renderForgotPassword() {
           <div class="text_forgot_pw">Don't worry! We will send you an email with the instructions to reset your password.</div>
 
           </div>
-            <form action="javascript:renderResetPassword()">
+            <form onsubmit="sendMessageForgot(); return false">
           
           <input type="email" class="infield_email" id ="email" placeholder="Email" required>
             <div class="login_buttons">
-                    <button onclick="renderResetPassword(); sendMessage()" class="send_email_button" >Send me an email</button>
+                    <button class="send_email_button" >Send me an email</button>
                    
             </div>        
             </form>
-  
+            <div id="send_message" class="send_message hide_message">
+            </div>
            
         </div>
         `;
@@ -137,29 +137,21 @@ function renderForgotPassword() {
 
 
 
-function sendMessage() {
-  oldContent = document.getElementById('start_container').innerHTML;
-  let newContent = `<div id="send_message" class="send_message" style="display: none;">
+function sendMessageForgot() {
+  document.getElementById("send_message").classList.remove('hide_message');
+  document.getElementById("send_message").innerHTML = ``;
+  document.getElementById("send_message").innerHTML = `  
   <div class="message_confirmation">
       <div class="send_message_text">
           <img src="./img/send_email.svg">
           An E-Mail has been sent to you.
-      </div>
+      
   </div>
   </div>`;
-  document.getElementById('start_container').innerHTML = oldContent + newContent;
-  setTimeout(()=>{sendMessageHold()}, 250);
+
+  setTimeout(()=>{renderResetPassword()}, 2000);
 }
 
-function sendMessageHold() {
-  document.getElementById('send_message').style.cssText = 'bottom: 200px;';
-  setTimeout(()=>{sendMessageDown()}, 1000);
-}
-
-function sendMessageDown() {
-  document.getElementById('send_message').style.cssText = 'bottom: -50px;';
-  setTimeout(()=>{document.getElementById('start_container').innerHTML = oldContent;}, 250);
-}
 
 
 function renderResetPassword() {
@@ -180,22 +172,40 @@ function renderResetPassword() {
                 </div>
           </div>
 
-            <form onsubmit="javascript:login()">
+            <form onsubmit="sendMessageReset(); return false">
            <div class="text_reset_pw">Change your account password</div>
                     
-                    <input type="password" class="infield_password" id ="" placeholder="New password" required>
-                    <input type="password" class="infield_password" id ="" placeholder="Confirm password" required>
+                    <input type="password" class="infield_password" id="" placeholder="New password" required>
+                    <input type="password" class="infield_password" id="" placeholder="Confirm password" required>
             
             
             <div class="login_buttons">
-                    <button onclick="openLogin()" class="continue_button" >Continue</button>
+                    <button class="continue_button" >Continue</button>
                   
             </div>        
             </form>
+            <div id="send_reset_message" class="send_message hide_message">
+            </div>
         </div>
         `;
   
 }
 
+
+
+function sendMessageReset() {
+  document.getElementById("send_reset_message").classList.remove('hide_message');
+  document.getElementById("send_reset_message").innerHTML = ``;
+  document.getElementById("send_reset_message").innerHTML = `  
+  <div class="message_confirmation">
+      <div class="send_message_text">
+          
+          You reset your password.
+      
+  </div>
+  </div>`;
+
+  setTimeout(()=>{openLogin()}, 2000);
+}
 
 
