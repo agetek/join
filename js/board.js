@@ -11,10 +11,11 @@ function board() {
     let render = `
     <div class="board">
         <div class="board_header">
+            <span class="summary_mobile_headline" style="display:none" >Kanban Project Management Tool</span>
             <h2 id="h2_headline">Board</h2>
             <div>
             <input type="text" onkeyup="search_container()" name="search" id="find_task" placeholder="Find Task"></input>
-            <button id="add_task" onclick="addTaskPopup()">Add task <img id="board_plus" src="img/plus.svg"</button>
+            <button id="add_task" onclick="addTaskPopup()"> <span class="hide_mobile_board">Add task </span> <img id="board_plus" src="img/plus.svg"</button>
             </div>
         </div>
         <div class="board-main-container">
@@ -58,7 +59,7 @@ function board() {
                     Accounting invoices</div>
             </div>
         </div>
-    <div>
+    </div>
     `;
     return render;
 
@@ -103,7 +104,11 @@ function generateToDoHTML(element) {
     let cat = getCategory(element['category_id']);
     let render = `
     <div id="moveable_container" draggable="true" ondragstart="startDragging(${element['id']})" class="todo" onclick="OpenShowTask(${element['id']})">
-        <div class="topic" style="background-color: ${cat[1]}">${cat[0]}
+        <div>
+            <div class="topic" style="background-color: ${cat[1]}">${cat[0]}</div>
+            <div class="drag_drop_mobile" style="display:none">
+            <img src="">
+            <img src="">
         </div>
         <div class="title">${element['title']}
         </div>

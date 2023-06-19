@@ -76,7 +76,7 @@ function renderHeader() {
             <div class="question_and_avatar">
             <div id="info-container" style="display: none;">
             <div id="info-content">
-            <span onclick="">Log Out</span>
+            <span onclick="logOut()">Log Out</span>
             <span class="hide_mobile_info" onclick="openLegalNotice()">Legal notice</span>
             <span onclick="openHelp()">Open Help</span>
             </div>
@@ -144,7 +144,9 @@ function renderBoard() {
     render += board();
     render += `</div>`;
     render += `</div>`;
+    render += `<div class="footer">`;
     render += renderFooter();
+    render += `</div>`;
     return render;
 }
 
@@ -219,4 +221,11 @@ function openLegalNotice() {
     render += renderFooter();
     render += `</div>`;
     document.getElementById('container').innerHTML = render;
+}
+
+function logOut() {
+    activeUserId = -1;
+    localStorage.setItem('activeUserId', activeUserId)
+
+    render = openLogin();
 }

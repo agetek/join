@@ -104,7 +104,7 @@
     }
 
     #popup_content {
-        right: -38%;
+        left: calc(50% - 193px) !important;
     }
 
     .cancel {
@@ -234,7 +234,7 @@
     }
 
     #popup_content {
-        right: -9% !important;
+        left: calc(50% - 130px) !important;
     }
 
 }
@@ -295,6 +295,14 @@
 
     .close_add_contact {
         right: -215px;
+    }
+
+    .edit_form {
+        margin-left: 30px;
+    }
+
+    .submit {
+        margin-left: 27px;
     }
 }
 
@@ -457,15 +465,18 @@
     .hide_mobile {
         display: none;
     }
+
     .mobile_header_profile_img {
         display: none;
     }
+
     #show_button_mobile {
         display: flex !important;
         align-items: center;
         background-position-x: 145px;
         width: 175px;
     }
+
     .form_buttons {
         margin-top: 0;
         margin-right: 60px;
@@ -494,12 +505,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Höhere z-Index-Eigenschaft als die ursprüngliche Seite */
-    transition: all 250ms ease-out 0s; margin-left: 65px;
+    z-index: 9999;
+    /* Höhere z-Index-Eigenschaft als die ursprüngliche Seite */
+    transition: all 250ms ease-out 0s;
+    margin-left: 65px;
 
-  }
+}
 
-  #info-content {
+#info-content {
     background-color: #2A3647;
     color: white;
     border-top-right-radius: 0px;
@@ -510,15 +523,115 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-  }
-
-
-  @media(max-width: 1000px) {
-
-  .hide_mobile_info {
-    display: none;
-  }
-  #info-container {
-    top: 74px;
-  }
 }
+
+
+@media(max-width: 1000px) {
+
+    .hide_mobile_info {
+        display: none;
+    }
+
+    #info-container {
+        top: 74px;
+    }
+
+    #h2_headline {
+        padding-left: 0px;
+    }
+}
+
+@media(max-width: 1670px) {
+    .board-main-container {
+        flex-direction: column;
+        padding-left: 0px;
+    }
+
+    .placeholder_drag_drop {
+        height: 57px;
+
+    }
+
+    .fixContainers {
+        overflow: hidden;
+    }
+
+    .board_header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .board {
+        height: calc(100vh - 89px);
+        padding-right: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: scroll;
+    }
+
+    .middle_column {}
+}
+
+@media(max-width: 500px) {
+    .hide_mobile_board {
+        display: none;
+    }
+
+    #add_task {
+        padding: 14px 14px;
+    }
+
+    #board_plus {
+        padding-left: 0px;
+    }
+
+    .board-main-container {
+        padding-left: 0px;
+        align-items: center;
+    }
+
+    #h2_headline {
+        padding-left: 0px;
+    }
+
+    .board_header {
+        margin-bottom: 25px;
+    }
+
+    .Awaiting_Feedback_container {
+        margin-right: 26px;
+    }
+
+    .done_container {
+        margin-right: 26px;
+
+    }
+
+    .summary_mobile_headline {
+        font-size: 16px;
+    }
+
+    .to_do_container {
+        width: 250px;
+    }
+
+    .in_progress_container {
+        width: 250px;
+    }
+
+    .Awaiting_Feedback_container {
+        width: 250px;
+    }
+
+    .done_container {
+        width: 250px;
+
+    }
+
+    #find_task {
+        margin-right: 5px;
+    }
+}
+
+@media(max-width: 1250px) {}
