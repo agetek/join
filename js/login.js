@@ -1,5 +1,4 @@
 function renderSign() {
- 
   document.getElementById("start_container").innerHTML = ``;
   document.getElementById("start_container").innerHTML = ` 
     <div class="sign_up_container" id="sign_up_container">
@@ -121,31 +120,58 @@ function renderForgotPassword() {
           <div class="text_forgot_pw">Don't worry! We will send you an email with the instructions to reset your password.</div>
 
           </div>
-            <form action="javascript:login()">
+            <form action="javascript:renderResetPassword()">
           
           <input type="email" class="infield_email" id ="email" placeholder="Email" required>
             <div class="login_buttons">
-                    <button class="send_email_button" >Send me an email</button>
+                    <button onclick="renderResetPassword(); sendMessage()" class="send_email_button" >Send me an email</button>
                    
             </div>        
             </form>
+  
+           
         </div>
         `;
  
 }
 
 
+
+function sendMessage() {
+  oldContent = document.getElementById('start_container').innerHTML;
+  let newContent = `<div id="send_message" class="send_message" style="display: none;">
+  <div class="message_confirmation">
+      <div class="send_message_text">
+          <img src="./img/send_email.svg">
+          An E-Mail has been sent to you.
+      </div>
+  </div>
+  </div>`;
+  document.getElementById('start_container').innerHTML = oldContent + newContent;
+  setTimeout(()=>{sendMessageHold()}, 250);
+}
+
+function sendMessageHold() {
+  document.getElementById('send_message').style.cssText = 'bottom: 200px;';
+  setTimeout(()=>{sendMessageDown()}, 1000);
+}
+
+function sendMessageDown() {
+  document.getElementById('send_message').style.cssText = 'bottom: -50px;';
+  setTimeout(()=>{document.getElementById('start_container').innerHTML = oldContent;}, 250);
+}
+
+
 function renderResetPassword() {
-  let render =` 
+  document.getElementById("start_container").innerHTML = ``;
+  document.getElementById("start_container").innerHTML = ` 
     <div class="sign_up_container">
         <div class="login_head">
         <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
        
-  
-
     </div>
         <div class="cont_reset_pw" id="cont_reset_pw">
-        <img onclick="renderLogin()" class="reset_blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="openLogin()" class="reset_blue_arrow_back" src="./img/arrow_back_blue.svg">
             <div class="login_title">
             
                 <div class="signup_head">
@@ -154,21 +180,21 @@ function renderResetPassword() {
                 </div>
           </div>
 
-            <form class="form" action="javascript:login()">
+            <form onsubmit="javascript:login()">
            <div class="text_reset_pw">Change your account password</div>
                     
-                    <input type="password" class="infield_password" id ="password" placeholder="New password" required>
-                    <input type="password" class="infield_password" id ="password" placeholder="Confirm password" required>
+                    <input type="password" class="infield_password" id ="" placeholder="New password" required>
+                    <input type="password" class="infield_password" id ="" placeholder="Confirm password" required>
             
             
             <div class="login_buttons">
-                    <button class="continue_button" >Continue</button>
-                   
+                    <button onclick="openLogin()" class="continue_button" >Continue</button>
+                  
             </div>        
             </form>
         </div>
         `;
-  return render
+  
 }
 
 

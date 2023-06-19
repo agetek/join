@@ -122,7 +122,7 @@ body {
   cursor: pointer;
   position: relative;
   top: 35px;
-  right: 374px;
+  right: 360px;
 }
 
 .forgot_blue_arrow_back {
@@ -380,6 +380,59 @@ form {
 
 .img_forgot_password {
   width: 600px;
+}
+
+.message_confirmation {
+  background-color: transparent;
+  width: 826px;
+  height: 640px;
+  margin-top: 182px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px 0px;
+  width: 826px;
+  height: 537px;
+}
+
+.send_message {
+  font-family: 'Inter';
+  font-size: 21px;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 80px;
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 0;
+  animation: bg 225ms forwards;
+}
+
+/*.send_message {
+  display: none;
+}*/
+
+.send_message_text {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-size: 21px;
+  padding: 0px 20px;
+  width: 424px;
+  height: 74px;
+  background: #2A3647;
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 15%);
+  border-radius: 20px;
+  animation: middle 1000ms forwards;
+  text-align: center;
+  line-height: 170%;
 }
 
 .background {
