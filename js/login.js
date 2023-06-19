@@ -1,38 +1,68 @@
-function renderSign() {
-  document.getElementById("start_container").innerHTML = ``;
-  document.getElementById("start_container").innerHTML = ` 
-    <div class="sign_up_container" id="sign_up_container">
-    <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
-        <div class="sign_up_head">
+
+/*function initAnimation() {
+
+  let animationBg = document.getElementById('animation_background');
+  setTimeout(()=>{renderResetPassword()
+     /*animationBg.style.display = 'none';
+  }, 2222);
+}*/
+
+
+/* <div class="background animation_background" id="animation_background"></div>
+    <img class="logo_animation move_logo" src="./img/join_logo.png"> */
+
+
+
+function renderAnimationLogin() {
+  document.getElementById("container").classList.remove('d-none');
+  document.getElementById("container").innerHTML = ``;
+  document.getElementById("container").innerHTML = `  
+    <div class="start_container" id="animation_background">
+    <div class="background animation_background"></div>
+    <img class="logo_animation move_logo" src="./img/join_logo.png">
+
+        <div class="login_head">
+        <div class="login_header_right">
+       
+        <span class="not_user" id="not_user">Not a Join user?</span> 
+        <button onclick="renderSign()" class="signup_button_short" id="not_user">Sign up</button>
         </div>
-        <div class="cont_sign_up" id="cont_sign_up">
-        <img onclick="openLoginFromSignup()" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
-            <div class="sign_up_title">
-               
+    </div>
+        <div class="cont_log_in" id="cont_log_in">
+            <div class="login_title">
                 <div class="signup_head">
-                    <img class="logo_signup" src="./img/signup.svg">
+                    <img class="logo_signup" src="./img/login.svg">
                     <img class="vector_5" src="./img/vector_5.svg">
                 </div>
           </div>
 
-            <form action="javascript:register()">
-                    <input type="text" class="infield_name" id="username" placeholder="Name"  required>
-                    <input type="email" class="infield_email" id ="email" placeholder="Email" required>
-                    <input type="text" class="infield_password" id ="password" placeholder="Password" required>
-                    <button type="submit" class="signup_button" id="registerBtn">Sign up</button>
+            <form action="javascript:login()">
+  
+                    <input type="email" class="infield_email" id="email" placeholder="Email" required>
+                    <div><input type="password" class="infield_password" id="password" placeholder="Password" required>
+                    <div class="wrong_message" id="wrong_login"></div>
+                    </div>
+                    <div class="forgot">
+            <div class="remember-passwort">
+            <input type="checkbox" id="checkbox"></input>
+            <label class="not-markable" for="checkbox">Remember Me</label>
+        </div>
+        <div onclick="renderForgotPassword()" class="text-forgot-password">Forgot my password</div>
+          </div>
+            
+            <div class="login_buttons">
+                    <button onclick="login()" class="login_button">Log in</button>
+                    <button onclick="guestLogin()" class="guest_login_button">Guest Log in</button>
+            </div>        
             </form>
         </div>
         `;
+        setTimeout(()=>{openLogin()}, 2000);
+
+
 }
 
 
-function initAnimation() {
-
-  let animationBg = document.getElementById('animation_background');
-      setTimeout(function() {
-     animationBg.style.display = 'none';
-  }, 2222);
-}
 
 async function openLogin() {
   users = await getItem('users');
@@ -49,6 +79,10 @@ async function openLogin() {
 }
 
 function openLoginFromSignup() {
+  document.getElementById("container").innerHTML = renderLogin();
+}
+
+function openLoginFromAnimationLogin() {
   document.getElementById("container").innerHTML = renderLogin();
 }
 
@@ -97,8 +131,33 @@ function renderLogin() {
         return render
 }
 
-{/* <div class="background animation_background" id="animation_background"></div>
-    <img class="logo_animation move_logo" src="./img/join_logo.png"> */}
+
+function renderSign() {
+  document.getElementById("start_container").innerHTML = ``;
+  document.getElementById("start_container").innerHTML = ` 
+    <div class="sign_up_container" id="sign_up_container">
+    <img class="capa_sign_up" src="./img/capa.svg" alt="logo">
+        <div class="sign_up_head">
+        </div>
+        <div class="cont_sign_up" id="cont_sign_up">
+        <img onclick="openLoginFromSignup()" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
+            <div class="sign_up_title">
+               
+                <div class="signup_head">
+                    <img class="logo_signup" src="./img/signup.svg">
+                    <img class="vector_5" src="./img/vector_5.svg">
+                </div>
+          </div>
+
+            <form action="javascript:register()">
+                    <input type="text" class="infield_name" id="username" placeholder="Name"  required>
+                    <input type="email" class="infield_email" id ="email" placeholder="Email" required>
+                    <input type="text" class="infield_password" id ="password" placeholder="Password" required>
+                    <button type="submit" class="signup_button" id="registerBtn">Sign up</button>
+            </form>
+        </div>
+        `;
+}
 
 
 function renderForgotPassword() {
