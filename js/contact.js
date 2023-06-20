@@ -140,7 +140,7 @@ function renderActiveContactMobile() {
     render += `</div>`;
     render += `<div class="contact_details_back" onclick="closeContactMobile()"></div>`;
     render += `<div class="contact_details_trash" onclick="deleteContact()"></div>`;
-    render += `<div class="contact_details_edit_mobile" onclick="editContact(${selectedUserId})"></div>`;
+    render += `<div class="contact_details_edit_mobile" onclick="editContactMobile(${selectedUserId})"></div>`;
     return render;
 }
 
@@ -234,6 +234,21 @@ function editContact(id) {
     setTimeout(() => { shiftPopupIn() }, 1);
 }
 
+function editContactMobile(id) {
+    let filteredUsers = users.filter(user => user.id == id);
+    oldContent = document.getElementById('container').innerHTML;
+    let newContent = `<div class="popup_mobile" id="popup_mobile" onclick="closeEditMobile()">`;
+    newContent += renderEditContactMobile(id);
+    newContent += `</div>`;
+    document.getElementById('container').innerHTML = oldContent + newContent;
+    document.getElementById('input_name').value = filteredUsers[0]['name'];
+    document.getElementById('input_email').value = filteredUsers[0]['email'];
+    document.getElementById('input_phone').value = filteredUsers[0]['phone'];
+    let avatar = renderInitials(filteredUsers[0]);
+    document.getElementById('avatar').innerHTML = avatar;
+    setTimeout(() => { shiftPopupInMobile() }, 1);
+}
+
 function openAddContact() {
     oldContent = document.getElementById('container').innerHTML;
     let newContent = `<div class="popup" id="popup" onclick="closeEdit()">`;
@@ -245,6 +260,11 @@ function openAddContact() {
 
 function closeEdit() {
     shiftPopupOut();
+    setTimeout(() => { document.getElementById('container').innerHTML = oldContent; }, 250);
+}
+
+function closeEditMobile() {
+    shiftPopupOutMobile();
     setTimeout(() => { document.getElementById('container').innerHTML = oldContent; }, 250);
 }
 
@@ -298,6 +318,16 @@ async function shiftPopupIn() {
 async function shiftPopupOut() {
     document.getElementById('popup_content').style.cssText = 'right: -100%';
     document.getElementById('popup').style.cssText = 'background-color: rgba(0, 0, 0, 0)';
+}
+
+async function shiftPopupInMobile() {
+    document.getElementById('popup_content_mobile').style.cssText = 'bottom: 0';
+    document.getElementById('popup_mobile').style.cssText = 'background-color: rgba(0, 0, 0, 0.5)';
+}
+
+async function shiftPopupOutMobile() {
+    document.getElementById('popup_content_mobile').style.cssText = 'bottom: -100%';
+    document.getElementById('popup_mobile').style.cssText = 'background-color: rgba(0, 0, 0, 0)';
 }
 
 function shiftMessage(message) {
