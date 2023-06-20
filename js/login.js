@@ -1,18 +1,3 @@
-
-/*function initAnimation() {
-
-  let animationBg = document.getElementById('animation_background');
-  setTimeout(()=>{renderResetPassword()
-     /*animationBg.style.display = 'none';
-  }, 2222);
-}*/
-
-
-/* <div class="background animation_background" id="animation_background"></div>
-    <img class="logo_animation move_logo" src="./img/join_logo.png"> */
-
-
-
 function renderAnimationLogin() {
   document.getElementById("container").classList.remove('d-none');
   document.getElementById("container").innerHTML = ``;
@@ -58,10 +43,7 @@ function renderAnimationLogin() {
         </div>
         `;
         setTimeout(()=>{openLogin()}, 2000);
-
-
 }
-
 
 
 async function openLogin() {
@@ -74,13 +56,14 @@ async function openLogin() {
     openSummary();
   } else {
   document.getElementById("container").innerHTML = renderLogin();
-  // initAnimation();
   }
 }
+
 
 function openLoginFromSignup() {
   document.getElementById("container").innerHTML = renderLogin();
 }
+
 
 function openLoginFromAnimationLogin() {
   document.getElementById("container").innerHTML = renderLogin();
@@ -141,6 +124,7 @@ function renderSign() {
         </div>
         <div class="cont_sign_up" id="cont_sign_up">
         <img onclick="openLoginFromSignup()" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="openLoginFromSignup()" class="black_arrow_back" src="./img/black_arrow_back.svg">
             <div class="sign_up_title">
                
                 <div class="signup_head">

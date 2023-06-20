@@ -52,7 +52,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 39px;
-  gap: 20px;
+  gap: 40px;
   width: 652px;
   height: 513px;
   background: white;
@@ -116,6 +116,16 @@ body {
   right: 274px;
 }
 
+.black_arrow_back {
+  display: none;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  position: relative;
+  top: 42px;
+  right: 274px;
+}
+
 .reset_blue_arrow_back {
   width: 25px;
   height: 25px;
@@ -138,7 +148,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+ 
 }
 
 .login_header_right {
