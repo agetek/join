@@ -124,6 +124,7 @@ function renderSign() {
         </div>
         <div class="cont_sign_up" id="cont_sign_up">
         <img onclick="openLoginFromSignup()" class="blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="openLoginFromSignup()" class="black_arrow_back" src="./img/black_arrow_back.svg">
             <div class="sign_up_title">
                
                 <div class="signup_head">

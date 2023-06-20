@@ -654,6 +654,8 @@
     }
 }
 
+/* responsive login-area */
+
 
 @media(max-width: 1080px) {
     .capa_sign_up {
@@ -664,6 +666,9 @@
     .logo_signup {
         width: 140px;
     }
+    .cont_sign_up {
+        height: 520px;
+      }
 }
 
 @media(max-width: 800px){
@@ -673,12 +678,26 @@
     .signup_button_short {
         height: 45px;
     }
+    .cont_sign_up {
+        width: 600px;
+      }
+      .blue_arrow_back {
+        right: 250px;
+      }
+      .vector_5 {
+        width: 100px;
+        margin-top: 8px;
+    }
 }
 
 
 @media(max-width: 750px) {
     .cont_log_in {
         width: 600px;
+      }
+      .blue_arrow_back {
+        right: 200px;
+        width: 20px;
       }
 }
 
@@ -691,7 +710,7 @@
 }
 
 @media(max-width: 650px) {
-    .cont_log_in {
+    .cont_log_in, .cont_sign_up {
         width: 520px;
       }
       .login_header_right {
@@ -719,12 +738,16 @@
       }
       .login_header_right {
         right: 70px;
+        top: 80px;
       }
-      .infield_email, .infield_password {
+      .infield_email, .infield_password, .infield_name {
         background-position-x: 340px;
         background-position-y: 17px;
         width: 380px;
 
+      }
+      .signup_button_short {
+        margin-left: 20px;
       }
 }
 
@@ -732,13 +755,50 @@
     .forgot {
         font-size: 14px;
     }
-    
+    .signup_button_short {
+        margin-left: 10px;
+      }
+     
 }
+@media(max-width: 520px){
+    .cont_log_in, .cont_sign_up {
+        width: 480px;
+      }
+
+@media(max-width: 510px){
+        
+      .login_header_right {
+        width: 100%;
+        top:720px;
+        left: 20%;
+        padding-bottom: 20px;
+        font-size: 21px;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        z-index: 0;
+      }
+      .signup_button_short {
+        margin-left: 0px;
+      }
+    }
+
+          
+ @media(max-width: 465px){
+    .infield_email, .infield_password, .infield_name {
+        background-position-x: 300px;
+        background-position-y: 17px;
+        width: 340px;
+        }
+        .cont_log_in, .cont_sign_up {
+            width: 440px;
+          }
+ }
 
 
 @media(max-width: 450px) {
 
-    .cont_log_in {
+    .cont_log_in, .cont_sign_up {
         position: absolute;
         top: 150px;
         width: 372px;
@@ -758,16 +818,49 @@
         margin-top: 5px;
     }
 
-      .login_header_right {
-        width: 100%;
-        top:735px;
-        left: 40px;
-        padding-bottom: 20px;
-        font-size: 21px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        z-index: 0;
+      .black_arrow_back {
+        display: inline;
+        width: 18px;
+        right: 140px;
       }
+      .blue_arrow_back {
+        display: none;
+      }
+      .infield_email, .infield_password, .infield_name {
+        background-position-x: 260px;
+        background-position-y: 17px;
+        width: 300px;
 
+      }
 }
+
+
+@media(max-width: 430px) {
+    .login_header_right {
+    left: 15%;
+    gap: 30px;
+    }
+}
+
+
+@media(max-width: 395px) {
+
+    .cont_log_in, .cont_sign_up {
+        position: absolute;
+        top: 150px;
+        width: 320px;
+      }
+    }
+
+    @media(max-width: 380px) {
+        .login_header_right {
+            left: 14%;
+            gap: 25px;
+            }
+
+        .cont_log_in, .cont_sign_up {
+            position: absolute;
+            top: 150px;
+            width: 320px;
+          }
+        }
