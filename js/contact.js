@@ -12,7 +12,7 @@ function renderContacts() {
     let render = renderSidebar();
     render += `<div class="right">`;
     render += renderHeader();
-    render += `<div class="middle_column">`;
+    render += `<div class="middle_column" id="middle_column">`;
     render += renderContactsOverview();
     render += renderContactsDetails();
     render += `</div>`;
@@ -22,7 +22,7 @@ function renderContacts() {
 }
 
 function sortUsersByName() {
-    users.sort((a, b) => { if (a.name < b.name) { return -1; }})
+    users.sort((a, b) => { if (a.name < b.name) { return -1; } })
 }
 
 function makeLetters() {
@@ -85,14 +85,14 @@ function renderContactsDetails() {
                     <div class="contacts_details_better">Better with a team</div>
                 </div>
                 <div class="contacts_details_details" id="render_active_contact">`;
-    if (activeUserId >= 0) { render += renderActiveContact(); }
+    if (selectedUserId >= 0) { render += renderActiveContact(); }
     render += `</div>
             </div>`;
     return render;
 }
 
 function renderActiveContact() {
-    let filteredUsers = users.filter(user => user.id == activeUserId);
+    let filteredUsers = users.filter(user => user.id == selectedUserId);
     let render = `<div class="contacts_details_active" id="render_contact_shift">`;
     render += `<div class="contact_details_heading">`;
     render += `<div class="contact_details_initials">`;
@@ -114,9 +114,42 @@ function renderActiveContact() {
     return render;
 }
 
+function renderActiveContactMobile() {
+    let filteredUsers = users.filter(user => user.id == selectedUserId);
+    let render = `<div class="contacts_details_mobile_active_outer">`;
+    render += `<div class="contacts_details_mobile_active_inner">`;
+    render += `<div class="contacts_details_mobile_kanban">Kanban Project Management Tool</div>`;
+    render += `<div class="contacts_details_mobile_contacts">Contacts</div>`;
+    render += `<div class="contacts_details_mobile_better">Better with a team</div>`;
+    render += `<div class="contacts_details_mobile_line"></div>`;
+    render += `<div class="contact_details_mobile_heading">`;
+    render += `<div class="contact_details_mobile_initials">`;
+    render += renderInitials(filteredUsers[0]);
+    render += `</div>`;
+    render += `<div class="contact_details_mobile_name_add_task">`;
+    render += `<div class="contact_details_mobile_name">${filteredUsers[0]['name']}</div>`;
+    render += `<div class="contact_details_mobile_add_task" onclick="addTask(${filteredUsers[0]['id']})"><div class="contact_details_add_task_icon"></div><div class="contact_details_add_task_name" onclick="addTaskPopup()">Add Task</div></div>`;
+    render += `</div>`;
+    render += `</div>`;
+    render += `<div class="contact_details_mobile_contact_information">Contact Information</div>`;
+    render += `<div class="contact_details_email_text">Email</div>`;
+    render += `<div class="contact_details_email">${filteredUsers[0]['email']}</div>`;
+    render += `<div class="contact_details_phone_text">Phone</div>`;
+    render += `<div class="contact_details_phone">${filteredUsers[0]['phone']}</div>`;
+    render += `</div>`;
+    render += `</div>`;
+    render += `<div class="contact_details_back" onclick="closeContactMobile()"></div>`;
+    render += `<div class="contact_details_trash" onclick="deleteContact()"></div>`;
+    render += `<div class="contact_details_edit_mobile" onclick="editContact(${selectedUserId})"></div>`;
+    return render;
+}
+
+// render += `<div class="contact_details_edit" onclick="editContact(${filteredUsers[0]['id']})"><div class="contact_details_edit_icon"></div><div class="contact_details_edit_contact">Edit Contact</div></div>`;
+// render += `<div class="contact_details_new_contact"><div class="contact_details_new_contact_icon" onclick="openAddContact()"></div></div>`;
+
 async function addContact() {
     shiftPopupOut();
-    setTimeout(async function() {
+    setTimeout(async function () {
         let name = document.getElementById('input_name').value;
         name = formatName(name);
         let email = document.getElementById('input_email').value;
@@ -149,13 +182,13 @@ function formatName(name) {
 }
 
 function getRandomColor() {
-    let color = colors[Math.round(Math.random()*colors.length)];
+    let color = colors[Math.round(Math.random() * colors.length)];
     return color
 }
 
 function getMaxId() {
     let max = null;
-    for (let i=0 ; i<users.length ; i++) {
+    for (let i = 0; i < users.length; i++) {
         if (max == null || users[i]['id'] > max)
             max = users[i]['id'];
     }
@@ -163,13 +196,27 @@ function getMaxId() {
 }
 
 function selectContact(id) {
-    if (activeUserId >= 0) {	document.getElementById('single_contact_' + activeUserId).classList.remove('single_contact_active'); }
-    activeUserId = id;
-    let render = renderActiveContact();
-    document.getElementById('render_active_contact').innerHTML = render;
-    document.getElementById('single_contact_' + activeUserId).classList.add('single_contact_active');
-    document.getElementById('render_contact_shift').style.cssText = 'margin-left: 1000px';
-    setTimeout(()=>{document.getElementById('render_contact_shift').style.cssText = 'transition: all 250ms ease-out; margin-left: 65px';}, 1);
+    let mobile = checkMobile();
+    if (!mobile) {
+        if (selectedUserId >= 0) { document.getElementById('single_contact_' + selectedUserId).classList.remove('single_contact_active'); }
+        selectedUserId = id;
+        let render = renderActiveContact();
+        document.getElementById('render_active_contact').innerHTML = render;
+        document.getElementById('single_contact_' + selectedUserId).classList.add('single_contact_active');
+        document.getElementById('render_contact_shift').style.cssText = 'margin-left: 1000px';
+        setTimeout(() => { document.getElementById('render_contact_shift').style.cssText = 'transition: all 250ms ease-out; margin-left: 65px'; }, 1);
+    }
+    else {
+        selectedUserId = id;
+        oldContentContactOverview = document.getElementById('middle_column').innerHTML;
+        let render = renderActiveContactMobile();
+        document.getElementById('middle_column').innerHTML = render;
+    }
+}
+
+function closeContactMobile() {
+    selectedUserId = -1;
+    document.getElementById('middle_column').innerHTML = oldContentContactOverview;
 }
 
 function editContact(id) {
@@ -184,7 +231,7 @@ function editContact(id) {
     document.getElementById('input_phone').value = filteredUsers[0]['phone'];
     let avatar = renderInitials(filteredUsers[0]);
     document.getElementById('avatar').innerHTML = avatar;
-    setTimeout(() => {shiftPopupIn()}, 1);
+    setTimeout(() => { shiftPopupIn() }, 1);
 }
 
 function openAddContact() {
@@ -193,18 +240,18 @@ function openAddContact() {
     newContent += renderAddContact();
     newContent += `</div>`;
     document.getElementById('container').innerHTML = oldContent + newContent;
-    setTimeout(() => {shiftPopupIn()}, 1);
+    setTimeout(() => { shiftPopupIn() }, 1);
 }
 
 function closeEdit() {
     shiftPopupOut();
-    setTimeout(()=>{document.getElementById('container').innerHTML = oldContent;}, 250);
+    setTimeout(() => { document.getElementById('container').innerHTML = oldContent; }, 250);
 }
 
 function getPosition() {
     let position = -1;
     for (let i = 0; i < users.length; i++) {
-        if (users[i]['id'] == activeUserId) {
+        if (users[i]['id'] == selectedUserId) {
             position = i;
         }
     }
@@ -213,7 +260,7 @@ function getPosition() {
 
 async function updateContact() {
     shiftPopupOut();
-    setTimeout(async function() {
+    setTimeout(async function () {
         let position = getPosition();
         users[position]['name'] = document.getElementById('input_name').value;
         users[position]['email'] = document.getElementById('input_email').value;
@@ -226,11 +273,11 @@ async function updateContact() {
 
 async function deleteContact() {
     shiftPopupOut();
-    setTimeout(async function() {
+    setTimeout(async function () {
         let position = getPosition();
         users.splice(position, 1);
         await setItem('users', users);
-        activeUserId = -1;
+        selectedUserId = -1;
         firstLetters = [];
         await openContacts();
         shiftMessage('Contact deleted');
@@ -257,15 +304,19 @@ function shiftMessage(message) {
     oldContent = document.getElementById('container').innerHTML;
     let newContent = `<div class="shift_message_outer"><div id="shift_message">${message}</div></div>`;
     document.getElementById('container').innerHTML = oldContent + newContent;
-    setTimeout(()=>{shiftMessageHold()}, 250);
+    setTimeout(() => { shiftMessageHold() }, 250);
 }
 
 function shiftMessageHold() {
     document.getElementById('shift_message').style.cssText = 'bottom: 200px;';
-    setTimeout(()=>{shiftMessageDown()}, 1000);
+    setTimeout(() => { shiftMessageDown() }, 1000);
 }
 
 function shiftMessageDown() {
     document.getElementById('shift_message').style.cssText = 'bottom: -50px;';
-    setTimeout(()=>{document.getElementById('container').innerHTML = oldContent;}, 250);
+    setTimeout(() => { document.getElementById('container').innerHTML = oldContent; }, 250);
+}
+
+function checkMobile() {
+    if (window.innerWidth < 1275) { return true } else { return false }
 }

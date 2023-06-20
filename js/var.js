@@ -8,7 +8,11 @@ let currentDraggedElement = -1;
 
 let oldContent = "";
 
+let oldContentContactOverview = "";
+
 let activeUserId = -1;
+
+let selectedUserId = -1;
 
 let categoryOpen = false;
 
