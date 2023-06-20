@@ -1,18 +1,3 @@
-
-/*function initAnimation() {
-
-  let animationBg = document.getElementById('animation_background');
-  setTimeout(()=>{renderResetPassword()
-     /*animationBg.style.display = 'none';
-  }, 2222);
-}*/
-
-
-/* <div class="background animation_background" id="animation_background"></div>
-    <img class="logo_animation move_logo" src="./img/join_logo.png"> */
-
-
-
 function renderAnimationLogin() {
   document.getElementById("container").classList.remove('d-none');
   document.getElementById("container").innerHTML = ``;
@@ -58,10 +43,7 @@ function renderAnimationLogin() {
         </div>
         `;
         setTimeout(()=>{openLogin()}, 2000);
-
-
 }
-
 
 
 async function openLogin() {
@@ -74,13 +56,14 @@ async function openLogin() {
     openSummary();
   } else {
   document.getElementById("container").innerHTML = renderLogin();
-  // initAnimation();
   }
 }
+
 
 function openLoginFromSignup() {
   document.getElementById("container").innerHTML = renderLogin();
 }
+
 
 function openLoginFromAnimationLogin() {
   document.getElementById("container").innerHTML = renderLogin();

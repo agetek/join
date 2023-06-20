@@ -652,3 +652,121 @@
         transform: rotate(180deg);
     }
 }
+
+
+@media(max-width: 1080px) {
+    .capa_sign_up {
+        left: 120px;
+        top: 50px;
+        width: 65px;
+    }
+    .logo_signup {
+        width: 140px;
+    }
+}
+
+@media(max-width: 800px){
+    .not_user {
+        font-size: 18px;
+    }
+    .signup_button_short {
+        height: 45px;
+    }
+}
+
+
+@media(max-width: 750px) {
+    .cont_log_in {
+        width: 600px;
+      }
+}
+
+
+@media(max-width: 700px) {
+    .cont_log_in {
+        width: 560px;
+      }
+
+}
+
+@media(max-width: 650px) {
+    .cont_log_in {
+        width: 520px;
+      }
+      .login_header_right {
+        right: 80px;
+      }
+}
+
+@media(max-width: 610px) {
+    .not_user {
+        font-size: 14px;
+    }
+    .signup_button_short {
+        height: 40px;
+    }
+    .capa_sign_up {
+        left: 90px;
+        top: 50px;
+        width: 60px;
+    }
+}
+
+@media(max-width: 580px){
+    .cont_log_in {
+        width: 480px;
+      }
+      .login_header_right {
+        right: 70px;
+      }
+      .infield_email, .infield_password {
+        background-position-x: 340px;
+        background-position-y: 17px;
+        width: 380px;
+
+      }
+}
+
+@media(max-width: 535px) {
+    .forgot {
+        font-size: 14px;
+    }
+    
+}
+
+
+@media(max-width: 450px) {
+
+    .cont_log_in {
+        position: absolute;
+        top: 150px;
+        width: 372px;
+      }
+      .capa_sign_up {
+        left: 30px;
+        top: 30px;
+        width: 55px;
+    }
+
+    .logo_signup {
+        width: 130px;
+    }
+
+    .vector_5 {
+        width: 100px;
+        margin-top: 5px;
+    }
+
+      .login_header_right {
+        width: 100%;
+        top:735px;
+        left: 40px;
+        padding-bottom: 20px;
+        font-size: 21px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        z-index: 0;
+      }
+
+}
