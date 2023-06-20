@@ -153,10 +153,11 @@ function renderForgotPassword() {
     </div>
         <div class="cont_forgot_pw" id="cont_forgot_pw">
         <img onclick="openLogin()" class="forgot_blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="openLogin()" class="forgot_black_arrow_back" src="./img/black_arrow_back.svg">
             <div class="login_title">
             
                 <div class="signup_head">
-                    <img class="logo_signup img_forgot_password" src="./img/forgot_password.svg">
+                    <img class="img_forgot_password" src="./img/forgot_password.svg">
                     <img class="vector_5" src="./img/vector_5.svg">
                 </div>
           <div class="text_forgot_pw">Don't worry! We will send you an email with the instructions to reset your password.</div>
@@ -207,10 +208,11 @@ function renderResetPassword() {
     </div>
         <div class="cont_reset_pw" id="cont_reset_pw">
         <img onclick="openLogin()" class="reset_blue_arrow_back" src="./img/arrow_back_blue.svg">
+        <img onclick="openLogin()" class="reset_black_arrow_back" src="./img/black_arrow_back.svg">
             <div class="login_title">
             
                 <div class="signup_head">
-                    <img class="logo_signup forgot_password" src="./img/reset_password.svg">
+                    <img class="img_forgot_password" src="./img/reset_password.svg">
                     <img class="vector_5" src="./img/vector_5.svg">
                 </div>
           </div>

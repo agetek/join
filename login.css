@@ -135,7 +135,27 @@ body {
   right: 360px;
 }
 
+.reset_black_arrow_back {
+  display: none;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  position: relative;
+  top: 35px;
+  right: 360px;
+}
+
 .forgot_blue_arrow_back {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  position: relative;
+  top: 42px;
+  right: 374px;
+}
+
+.forgot_black_arrow_back {
+  display: none;
   width: 25px;
   height: 25px;
   cursor: pointer;
@@ -389,7 +409,7 @@ form {
 }
 
 .img_forgot_password {
-  width: 600px;
+  width: 550px;
 }
 
 .send_message, .send_reset_message {

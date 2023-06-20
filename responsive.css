@@ -677,6 +677,41 @@
     .cont_sign_up {
         height: 520px;
       }
+      .cont_forgot_pw, .cont_reset_pw {
+        width: 700px;
+      }
+      .forgot_blue_arrow_back {
+        top: 30px;
+        right:310px;
+        width: 20px;
+      }
+
+      .reset_blue_arrow_back {
+        top: 5px;
+        right: 290px;
+      }
+
+      .img_forgot_password {
+        width: 540px;
+      }
+      .text_forgot_pw {
+        
+        width: 580px;
+        
+    }
+}
+
+@media(max-width: 870px){
+.cont_forgot_pw, .cont_reset_pw {
+    width: 600px;
+  }
+  .img_forgot_password {
+    width: 480px;
+  }
+  .forgot_blue_arrow_back, .reset_blue_arrow_back {
+    top: 10px;
+    right:265px;
+  }
 }
 
 @media(max-width: 800px){
@@ -726,6 +761,7 @@
       }
 }
 
+
 @media(max-width: 610px) {
     .not_user {
         font-size: 14px;
@@ -772,8 +808,28 @@
     .cont_log_in, .cont_sign_up {
         width: 480px;
       }
+      .cont_forgot_pw, .cont_reset_pw {
+        width: 480px;
+      }
+      .img_forgot_password {
+        width: 340px;
+      }
+      
+      .text_forgot_pw {
+        width: 420px;
+      }
+      .forgot_blue_arrow_back {
+        top: 20px;
+        right: 210px;
+      }
+    
+    }
 
 @media(max-width: 510px){
+    .forgot_blue_arrow_back  {
+        top: 5px;
+        right:195px;
+      }
         
       .login_header_right {
         width: 100%;
@@ -788,7 +844,31 @@
       }
       .signup_button_short {
         margin-left: 0px;
+      .text_forgot_pw {
+        width: 380px;
       }
+    
+    }
+    @media(max-width: 500px){
+
+      .cont_forgot_pw, .cont_reset_pw {
+        width: 440px;
+      }
+      .img_forgot_password {
+        width: 300px;
+      }
+      
+      .text_forgot_pw {
+        width: 360px;
+      }
+      
+
+      .forgot_blue_arrow_back {
+        top: 5px;
+        right: 170px;
+
+      }
+      
     }
 
           
@@ -830,15 +910,23 @@
         display: inline;
         width: 18px;
         right: 140px;
-      }
-      .blue_arrow_back {
+      
+
+      .reset_black_arrow_back {
+        display: inline;
+        top: 5px;
+        right: 170px;
         display: none;
+
       }
       .infield_email, .infield_password, .infield_name {
         background-position-x: 260px;
         background-position-y: 17px;
         width: 300px;
 
+      .cont_forgot_pw, .cont_reset_pw {
+        width: 400px;
+      }
       }
 }
 
@@ -848,6 +936,12 @@
     left: 15%;
     gap: 30px;
     }
+}
+
+@media(max-width: 410px) {
+    .cont_forgot_pw, .cont_reset_pw {
+        width: 380px;
+      }
 }
 
 
@@ -871,7 +965,6 @@
             top: 150px;
             width: 320px;
           }
-        }
         @media(max-width: 1275px) {
             .edit_task_popup {
                 width: 475px;
