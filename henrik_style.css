@@ -485,6 +485,7 @@
     background-image: url(img/contact_details_back.svg);
     background-repeat: no-repeat;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .contact_details_trash {
@@ -497,9 +498,10 @@
     background-image: url(img/contact_details_trash.svg);
     background-repeat: no-repeat;
     object-fit: cover;
+    cursor: pointer;
 }
 
-.contact_details_edit {
+.contact_details_edit_mobile {
     display: flex;
     position: absolute;
     width: 50px;
@@ -509,6 +511,7 @@
     background-image: url(img/contact_details_edit.svg);
     background-repeat: no-repeat;
     object-fit: cover;
+    cursor: pointer;
 }
 
 

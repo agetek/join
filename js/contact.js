@@ -140,7 +140,7 @@ function renderActiveContactMobile() {
     render += `</div>`;
     render += `<div class="contact_details_back" onclick="closeContactMobile()"></div>`;
     render += `<div class="contact_details_trash" onclick="deleteContact()"></div>`;
-    render += `<div class="contact_details_edit" onclick="editContact(${selectedUserId})"></div>`;
+    render += `<div class="contact_details_edit_mobile" onclick="editContact(${selectedUserId})"></div>`;
     return render;
 }
 
