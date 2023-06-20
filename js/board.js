@@ -140,13 +140,13 @@ function getTaskAndProgress(subtasks) {
 function getPrioBoard(prio) {
     let render = '';
     if (prio == 0) {
-        render += `<img src="img/prio_low.svg" alt="Prio Low">`;
+        render += `<img class="symbols_board" src="img/prio_low.svg" alt="Prio Low">`;
     }
     else if (prio == 1) {
-        render += `<img src="img/prio_medium.svg" alt="Prio Medium">`;
+        render += `<img class="symbols_board" src="img/prio_medium.svg" alt="Prio Medium">`;
     }
     else if (prio == 2) {
-        render += `<img src="img/prio_urgent.svg" alt="Prio High">`;
+        render += `<img class="symbols_board" src="img/prio_urgent.svg" alt="Prio High">`;
     }
     return render;
 }

@@ -482,6 +482,12 @@
         margin-top: 0;
         margin-right: 60px;
     }
+    .done_container {
+        margin-right: 0 !important;
+    }
+    .Awaiting_Feedback_container {
+        margin-right: 0px
+    }
 }
 
 .mobile_header_profile_img {
@@ -567,12 +573,12 @@
         height: calc(100vh - 89px);
         padding-right: 0px;
         display: flex;
-        justify-content: center;
         align-items: center;
         overflow-y: scroll;
     }
-
-    .middle_column {}
+    .done_container {
+        margin-right: 61px;
+    }
 }
 
 @media(max-width: 500px) {
@@ -634,26 +640,28 @@
     #find_task {
         margin-right: 5px;
     }
+
+    .user_elements {
+        justify-content: space-evenly;
+    }
 }
-
-@media(max-width: 1250px) {}
-
 
 @media(max-width: 1000px) {
     .drag_drop_mobile {
         display: flex !important;
     }
+
     .hide_mobile_class {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         margin-right: 20px;
     }
+
     .arrow_turn {
         transform: rotate(180deg);
     }
 }
-
 /* responsive login-area */
 
 
@@ -754,28 +762,6 @@
 }
 
 
-@media(max-width: 630px){
-    .cont_forgot_pw, .cont_reset_pw {
-        width: 500px;
-      }
-      .img_forgot_password {
-        width: 380px;
-      }
-      
-      .text_forgot_pw {
-        width: 420px;
-      }
-      .forgot_blue_arrow_back {
-        top: 20px;
-        right: 210px;
-      }
-      .reset_blue_arrow_back {
-        top: 5px;
-        right: 210px;
-      }
-    }
-
-    
 @media(max-width: 610px) {
     .not_user {
         font-size: 14px;
@@ -822,7 +808,6 @@
     .cont_log_in, .cont_sign_up {
         width: 480px;
       }
-
       .cont_forgot_pw, .cont_reset_pw {
         width: 480px;
       }
@@ -845,6 +830,7 @@
         top: 5px;
         right:195px;
       }
+        
       .login_header_right {
         width: 100%;
         top:720px;
@@ -858,10 +844,9 @@
       }
       .signup_button_short {
         margin-left: 0px;
-      }
       .text_forgot_pw {
         width: 380px;
-    }
+      }
     
     }
     @media(max-width: 500px){
@@ -885,6 +870,7 @@
       }
       
     }
+
           
  @media(max-width: 465px){
     .infield_email, .infield_password, .infield_name {
@@ -924,23 +910,23 @@
         display: inline;
         width: 18px;
         right: 140px;
-      }
       
 
       .reset_black_arrow_back {
         display: inline;
         top: 5px;
         right: 170px;
-      }
+        display: none;
 
+      }
       .infield_email, .infield_password, .infield_name {
         background-position-x: 260px;
         background-position-y: 17px;
         width: 300px;
 
-      }
       .cont_forgot_pw, .cont_reset_pw {
         width: 400px;
+      }
       }
 }
 
@@ -952,12 +938,12 @@
     }
 }
 
-
 @media(max-width: 410px) {
     .cont_forgot_pw, .cont_reset_pw {
         width: 380px;
       }
 }
+
 
 @media(max-width: 395px) {
 
@@ -979,14 +965,81 @@
             top: 150px;
             width: 320px;
           }
-          .cont_forgot_pw, .cont_reset_pw {
-            width: 372px;
-          }
-          .img_forgot_password {
-            width: 260px;
-          }
-          .reset_black_arrow_back {
-            top: 5px;
-            right: 100px;
-          }
+        @media(max-width: 1275px) {
+            .edit_task_popup {
+                width: 475px;
+                background-color: #F5F5F5;
+                padding-bottom: 45px;
+            }
+        
+            .error_message {
+                margin-bottom: 0;
+            }
+        
+            .add_task_label_description {
+                margin-top: 0px;
+            }
+        
+            .add_task_form {
+                overflow-y: auto;
+            }
+        
+            .form_buttons {
+                margin-right: 0px;
+            }
+         
+            #popup_content_task {
+                background-color: #F5F5F5;
+            }
+        }
+        
+        @media(max-width: 1000px) {
+            #popup_content_task {
+                width: 475px;
+            }
+        
+        }
+        
+        
+        @media(max-width: 500px) {
+            #popup_content_task {
+                width: 315px;
+            }
+        
+            .bd_initials {
+                display: none;
+            }
+        
+            .edit_task_popup {
+                width: 320px;
+            }
+        
+            .form_buttons {
+                margin-right: -21px;
+            }
+        
+            .add_task_cancel {
+                padding: 0px;
+            }
+        
+            .add_task_close {
+                top: 20px;
+            }
+        
+            .bd_delete_edit {
+                right: 25px;
+            }
+        }
+        
+        @media(max-width: 1200px) {
+            .Awaiting_Feedback_container {
+                margin-right: 26px;
+            }
+            .done_container {
+                margin-right: 26px !important;
+        
+            }
+         }
+        
+        
         }
