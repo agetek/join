@@ -13,7 +13,7 @@ function renderAddContact() {
                     <div class="edit_form">
                         <input type="text" class="input_name" id="input_name" placeholder="Name" pattern="[a-zA-Z]{2,}[\\s]{1}[a-zA-Z]{2,}" required>
                         <input type="email" class="input_email" id ="input_email" placeholder="Email" required>
-                        <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
+                        <input type="number" class="input_phone" id ="input_phone" placeholder="Phone" required>
                     </div>
                     <div class="form_buttons">
                         <button type="reset" class="cancel">Cancel</button>
@@ -37,7 +37,7 @@ function renderEditContact() {
                     <div class="edit_form">
                         <input type="text" class="input_name" id="input_name" placeholder="Name" required>
                         <input type="email" class="input_email" id ="input_email" placeholder="Email" required>
-                        <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
+                        <input type="number" class="input_phone" id ="input_phone" placeholder="Phone" required>
                     </div>
                     <div class="form_buttons">
                         <button type="submit" class="delete" formaction="javascript:deleteContact()">Delete</button>
@@ -63,7 +63,7 @@ function renderEditContactMobile() {
                     <div class="edit_form_mobile">
                         <input type="text" class="input_name" id="input_name" placeholder="Name" required>
                         <input type="email" class="input_email" id ="input_email" placeholder="Email" required>
-                        <input type="text" class="input_phone" id ="input_phone" placeholder="Phone" required>
+                        <input type="number" class="input_phone" id ="input_phone" placeholder="Phone" required>
                     </div>
                     <div class="form_buttons_mobile">
                         <button type="submit" class="delete" formaction="javascript:deleteContact()">Delete</button>

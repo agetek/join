@@ -176,6 +176,11 @@ body {
     box-sizing: border-box;
 }
 
+.input_phone::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
 .cancel {
     padding: 15px;
     border-radius: 10px;

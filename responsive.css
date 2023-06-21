@@ -733,7 +733,7 @@
     }
 
     .upcoming_tasks_summary {
-        margin-left: -11px !important; 
+        margin-left: -11px !important;
     }
 }
 
@@ -746,5 +746,20 @@
 @media(max-width: 750px) {
     .upcoming_tasks_summary {
         margin-left: 10px;
+    }
+}
+
+
+@media(max-width: 750px) {
+
+    .bd_title {
+        font-size: 32px !important;
+    }
+}
+
+@media(max-width: 1000px) {
+
+    .bd_title {
+        font-size: 47px;
     }
 }
