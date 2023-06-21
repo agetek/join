@@ -796,9 +796,9 @@
 }
 
 @media(max-width: 535px) {
-    .forgot {
+    /*.forgot {
         font-size: 14px;
-    }
+    }*/
     .signup_button_short {
         margin-left: 10px;
       }
@@ -844,6 +844,8 @@
       }
       .signup_button_short {
         margin-left: 0px;
+      }
+      
       .text_forgot_pw {
         width: 380px;
       }
@@ -912,7 +914,7 @@
         right: 140px;
       
 
-      .reset_black_arrow_back {
+        .reset_black_arrow_back {
         display: inline;
         top: 5px;
         right: 170px;
@@ -923,11 +925,12 @@
         background-position-x: 260px;
         background-position-y: 17px;
         width: 300px;
+      }
 
       .cont_forgot_pw, .cont_reset_pw {
         width: 400px;
       }
-      }
+      
 }
 
 
@@ -952,6 +955,12 @@
         top: 150px;
         width: 320px;
       }
+      .infield_email, .infield_password, .infield_name {
+        background-position-x: 260px;
+        background-position-y: 17px;
+        width: 300px;
+      }
+     
     }
 
     @media(max-width: 380px) {
@@ -965,6 +974,14 @@
             top: 150px;
             width: 320px;
           }
+          
+        }
+
+
+
+/*responsive login end*/
+
+
         @media(max-width: 1275px) {
             .edit_task_popup {
                 width: 475px;
