@@ -102,7 +102,7 @@ function renderAddTaskSlideIn() {
         </div>
         </div>
         <div class="add_task_submit_outer_slide_in">
-            <div class="form_buttons">
+            <div class="form_buttons_add_task">
                         <button type="reset" class="add_task_cancel" onclick="resetAddTask()">Clear</button>
                         <button type="button" class="add_task_submit" onclick="processAddTask()">Create Task</button>
             </div>

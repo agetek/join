@@ -1384,6 +1384,7 @@
     position: absolute;
     bottom: 30px;
     right: 50px;
+
 }
 
 .add_task_submit_mobile {
@@ -1418,6 +1419,11 @@
 .contact_design_subtext_mobile {
     font-size: 21px;
     color: white;
+}
+
+.form_buttons_add_task {
+    display: flex;
+    height: fit-content;
 }
 
 /* Add Task End */
@@ -1750,7 +1756,8 @@
         display: flex;
         position: fixed;
         top: 30px;
-        right: 100px;
+        right: 80px;
+        bottom: unset;
     }
 
     #popup_content_task {
