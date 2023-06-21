@@ -4,8 +4,9 @@ function renderAnimationLogin() {
   document.getElementById("container").innerHTML = `  
     <div class="start_container" id="animation_background">
     <div class="background animation_background"></div>
-    <img class="logo_animation move_logo" src="./img/join_logo.png">
-
+    <img class="logo_animation move_logo " src="./img/join_logo.png">
+    <div class="responsive_bg"></div>
+    <img class="responsive_logo " src="./img/capa_two.svg">
         <div class="login_head">
         <div class="login_header_right">
        
