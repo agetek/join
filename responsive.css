@@ -770,6 +770,17 @@
         width: 560px;
     }
 
+    .cont_forgot_pw,
+    .cont_reset_pw {
+        width: 540px;
+    }
+
+    .forgot_blue_arrow_back,
+    .reset_blue_arrow_back {
+        right: 245px;
+        width: 20px;
+    }
+
 }
 
 @media(max-width: 650px) {
@@ -799,6 +810,10 @@
         top: 50px;
         width: 60px;
     }
+
+    .cont_log_in {
+        width: 420px;
+    }
 }
 
 @media(max-width: 580px) {
@@ -826,10 +841,9 @@
 }
 
 @media(max-width: 535px) {
-    .forgot {
+    /*.forgot {
         font-size: 14px;
-    }
-
+    }*/
     .signup_button_short {
         margin-left: 10px;
     }
@@ -854,9 +868,8 @@
 
     .text_forgot_pw {
         width: 420px;
-    }
-
-    .forgot_blue_arrow_back {
+      }
+      .forgot_blue_arrow_back, .reset_blue_arrow_back {
         top: 20px;
         right: 210px;
     }
@@ -883,36 +896,33 @@
 
     .signup_button_short {
         margin-left: 0px;
-
-        .text_forgot_pw {
-            width: 380px;
-        }
-
+      }
+      
+      .text_forgot_pw {
+        width: 380px;
+      }
+    
     }
 }
 
-@media(max-width: 500px) {
-
-    .cont_forgot_pw,
-    .cont_reset_pw {
-        width: 440px;
-    }
-
-    .img_forgot_password {
+      .cont_forgot_pw, .cont_reset_pw {
+        width: 420px;
+      }
+      .img_forgot_password {
         width: 300px;
     }
 
     .text_forgot_pw {
         width: 360px;
-    }
-
-
-    .forgot_blue_arrow_back {
+      }
+      
+      .forgot_blue_arrow_back, .reset_blue_arrow_back {
         top: 5px;
         right: 170px;
-
+      }
+      
+      
     }
-}
 
 
 @media(max-width: 465px) {
@@ -960,28 +970,32 @@
         display: inline;
         width: 18px;
         right: 140px;
-    }
+      }
 
-    .reset_black_arrow_back {
+      .blue_arrow_back {
+        display: none;
+      }
+
+    .reset_black_arrow_back, .forgot_black_arrow_back {
         display: inline;
         top: 5px;
-        right: 170px;
+        right: 160px;
+        width: 15px;
+      }
+      .reset_blue_arrow_back, .forgot_blue_arrow_back {
         display: none;
+      }
 
-    }
-
-    .infield_email,
-    .infield_password,
-    .infield_name {
+      .infield_email, .infield_password, .infield_name {
         background-position-x: 260px;
         background-position-y: 17px;
         width: 300px;
+      }
 
-        .cont_forgot_pw,
-        .cont_reset_pw {
-            width: 400px;
-        }
-    }
+      .cont_forgot_pw, .cont_reset_pw {
+        width: 390px;
+      }
+      
 }
 
 
@@ -990,16 +1004,17 @@
         left: 15%;
         gap: 30px;
     }
+    .cont_forgot_pw, .cont_reset_pw {
+        width: 360px;
+      }
+      .forgot_black_arrow_back  {
+        top: 5px;
+        right: 150px;
+      }
+      .text_forgot_pw, .text_reset_pw {
+        width: 325px;
+      }
 }
-
-@media(max-width: 410px) {
-
-    .cont_forgot_pw,
-    .cont_reset_pw {
-        width: 380px;
-    }
-}
-
 
 @media(max-width: 395px) {
 
@@ -1008,92 +1023,163 @@
         position: absolute;
         top: 150px;
         width: 320px;
-    }
-}
+      }
+      .text_forgot_pw, .text_reset_pw {
+        font-size: 16px;
+      }
 
-@media(max-width: 380px) {
-    .login_header_right {
-        left: 14%;
-        gap: 25px;
-    }
+      .cont_forgot_pw, .cont_reset_pw {
+        width: 310px;
+      }
+      .forgot_black_arrow_back  {
+        top: 1px;
+        right:140px;
+      }
 
-    .cont_log_in,
-    .cont_sign_up {
-        position: absolute;
-        top: 150px;
-        width: 320px;
-    }
-}
+      .reset_black_arrow_back {
+        right: 135px;
+        width: 15px;
+      }
+      .text_forgot_pw {
+        width: 310px;
+      }
+      }
+    
 
-@media(max-width: 1275px) {
-    .edit_task_popup {
-        width: 475px;
-        background-color: #F5F5F5;
-        padding-bottom: 45px;
-    }
+    @media(max-width: 380px) {
+        .login_header_right {
+            left: 14%;
+            gap: 25px;
+            }
 
-    .error_message {
-        margin-bottom: 0;
-    }
+        .cont_log_in, .cont_sign_up {
+            position: absolute;
+            top: 150px;
+            width: 320px;
+          }
+          .cont_forgot_pw, .cont_reset_pw {
+            width: 290px;
+          }
+          .forgot_black_arrow_back  {
+            top: 1px;
+            right:110px;
+          }
+          .text_forgot_pw {
+            width: 270px;
+          }
+          .img_forgot_password {
+            width: 270px;
+          }
+          .infield_email, .infield_password, .infield_name {
+            width: 270px;
+            font-size: 16px;
+            background-position-x: 235px;
+            background-position-y: 16px;
+          }
+        }
 
-    .add_task_label_description {
-        margin-top: 0px;
-    }
+        @media(max-width: 350px){
+            .cont_forgot_pw, .cont_reset_pw {
+                width: 270px;
+              }
+              .forgot_black_arrow_back  {
+                top: 1px;
+                
+              }
+              .text_forgot_pw {
+                width: 250px;
+              }
+              .img_forgot_password {
+                width: 250px;
+              }
+              .infield_email, .infield_password, .infield_name {
+                background-position-x: 220px;
+                background-position-y: 17px;
+                width: 255px;
+              }
+              .send_email_button {
+                width: 245px;
+              }
+            }
+        
 
-    .form_buttons {
-        margin-right: 0px;
-    }
-
-    #popup_content_task {
-        background-color: #F5F5F5;
-    }
-}
-
-@media(max-width: 1000px) {
-    #popup_content_task {
-        width: 475px;
-    }
-
-}
+/*responsive login-area end*/
 
 
-@media(max-width: 500px) {
-    #popup_content_task {
-        width: 315px;
-    }
-
-    .bd_initials {
-        display: none;
-    }
-
-    .edit_task_popup {
-        width: 320px;
-    }
-
-    .form_buttons {
-        margin-right: -21px;
-    }
-
-    .add_task_cancel {
-        padding: 0px;
-    }
-
-    .add_task_close {
-        top: 20px;
-    }
-
-    .bd_delete_edit {
-        right: 25px;
-    }
-}
-
-@media(max-width: 1200px) {
-    .Awaiting_Feedback_container {
-        margin-right: 26px;
-    }
-
-    .done_container {
-        margin-right: 26px !important;
-
-    }
+        @media(max-width: 1275px) {
+            .edit_task_popup {
+                width: 475px;
+                background-color: #F5F5F5;
+                padding-bottom: 45px;
+            }
+        
+            .error_message {
+                margin-bottom: 0;
+            }
+        
+            .add_task_label_description {
+                margin-top: 0px;
+            }
+        
+            .add_task_form {
+                overflow-y: auto;
+            }
+        
+            .form_buttons {
+                margin-right: 0px;
+            }
+         
+            #popup_content_task {
+                background-color: #F5F5F5;
+            }
+        }
+        
+        @media(max-width: 1000px) {
+            #popup_content_task {
+                width: 475px;
+            }
+        
+        }
+        
+        
+        @media(max-width: 500px) {
+            #popup_content_task {
+                width: 315px;
+            }
+        
+            .bd_initials {
+                display: none;
+            }
+        
+            .edit_task_popup {
+                width: 320px;
+            }
+        
+            .form_buttons {
+                margin-right: -21px;
+            }
+        
+            .add_task_cancel {
+                padding: 0px;
+            }
+        
+            .add_task_close {
+                top: 20px;
+            }
+        
+            .bd_delete_edit {
+                right: 25px;
+            }
+        }
+        
+        @media(max-width: 1200px) {
+            .Awaiting_Feedback_container {
+                margin-right: 26px;
+            }
+            .done_container {
+                margin-right: 26px !important;
+        
+            }
+         }
+        
 }

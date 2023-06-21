@@ -134,7 +134,7 @@ function renderSign() {
           </div>
 
             <form action="javascript:register()">
-                    <input type="text" class="infield_name" id="username" placeholder="Name"  required>
+                    <input type="text" class="infield_name" id="username" placeholder="Firstname Lastname"  required>
                     <input type="email" class="infield_email" id ="email" placeholder="Email" required>
                     <input type="text" class="infield_password" id ="password" placeholder="Password" required>
                     <button type="submit" class="signup_button" id="registerBtn">Sign up</button>
@@ -179,8 +179,6 @@ function renderForgotPassword() {
  
 }
 
-
-
 function sendMessageForgot() {
   document.getElementById("send_message").classList.remove('hide_message');
   document.getElementById("send_message").innerHTML = ``;
@@ -195,8 +193,6 @@ function sendMessageForgot() {
 
   setTimeout(()=>{renderResetPassword()}, 2000);
 }
-
-
 
 function renderResetPassword() {
   document.getElementById("start_container").innerHTML = ``;
@@ -235,8 +231,6 @@ function renderResetPassword() {
         `;
   
 }
-
-
 
 function sendMessageReset() {
   document.getElementById("send_reset_message").classList.remove('hide_message');
