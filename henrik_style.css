@@ -1374,8 +1374,8 @@
     background-repeat: no-repeat;
     width: 18px;
     height: 19px;
-    top: 34px;
-    right: 63px;
+    top: 20px;
+    right: 20px;
     cursor: pointer;
 }
 
@@ -1646,11 +1646,11 @@
 
 .bd_arrow_up {
     display: flex;
-    position: fixed;
-    top: 50px;
-    right: 80px;
-    width: 40px;
-    height: 40px;
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    width: 20px;
+    height: 20px;
     background-image: url(img/arrow_black_up.svg);
     background-position: center;
     background-size: contain;
@@ -1660,11 +1660,11 @@
 
 .bd_arrow_down {
     display: flex;
-    position: fixed;
-    top: 90px;
-    right: 80px;
-    width: 40px;
-    height: 40px;
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    width: 20px;
+    height: 20px;
     background-image: url(img/arrow_black_down.svg);
     background-position: center;
     background-size: contain;
@@ -1717,20 +1717,6 @@
         position: fixed;
         top: 30px;
         right: 100px;
-    }
-
-    .add_task_close {
-        display: flex;
-        position: fixed;
-        background-image: url(img/edit_close.svg);
-        background-position: center;
-        object-fit: cover;
-        background-repeat: no-repeat;
-        width: 18px;
-        height: 19px;
-        top: 50px;
-        right: 50px;
-        cursor: pointer;
     }
 
     #popup_content_task {

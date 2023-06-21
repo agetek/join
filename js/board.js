@@ -200,10 +200,9 @@ function renderEditTask(id) {
     let filteredTodos = todos.filter(todo => todo.id == id);
     let cat = getCategory(filteredTodos[0]['category_id']);
     let render = `<div id="popup_content_task" onclick="event.stopPropagation()">`;
-    render += `<div class="add_task_close" onclick="closeTask()">`;
-    render += `</div>`;
     render += `<div class="bd_topic" style="background-color: ${cat[1]}">${cat[0]}</div>`;
     render += `<div class="bd_arrow_up" onclick="moveTaskUp(${id})"></div><div class="bd_arrow_down" onclick="moveTaskDown(${id})"></div>`;
+    render += `<div class="add_task_close" onclick="closeTask()"></div>`;
     render += `<div class="bd_title">${filteredTodos[0]['title']}</div>`;
     render += `<div class="bd_description">${filteredTodos[0]['description']}</div>`;
     render += `<div class="bd_date_outer">Due date:<div class="bd_date_inner">${filteredTodos[0]['due_date']}</div></div>`;
