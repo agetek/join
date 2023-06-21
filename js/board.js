@@ -203,6 +203,7 @@ function renderEditTask(id) {
     render += `<div class="add_task_close" onclick="closeTask()">`;
     render += `</div>`;
     render += `<div class="bd_topic" style="background-color: ${cat[1]}">${cat[0]}</div>`;
+    render += `<div class="bd_arrow_up" onclick="moveTaskUp(${id})"></div><div class="bd_arrow_down" onclick="moveTaskDown(${id})"></div>`;
     render += `<div class="bd_title">${filteredTodos[0]['title']}</div>`;
     render += `<div class="bd_description">${filteredTodos[0]['description']}</div>`;
     render += `<div class="bd_date_outer">Due date:<div class="bd_date_inner">${filteredTodos[0]['due_date']}</div></div>`;
@@ -215,6 +216,46 @@ function renderEditTask(id) {
     render += `</div>`;
     render += `</div>`;
     return render
+}
+
+function moveTaskDown(id) {
+    let filteredTodos = todos.filter(todo => todo.id == id);
+    let updateBucket = '';
+    if (filteredTodos[0].bucket == 'window1') {
+        updateBucket = 'window2';
+    }
+    else if (filteredTodos[0].bucket == 'window2') {
+        updateBucket = 'window3';
+    }
+    else if (filteredTodos[0].bucket == 'window3') {
+        updateBucket = 'window4';
+    }
+    else if (filteredTodos[0].bucket == 'window4') {
+        updateBucket = 'window4';
+    }
+    todos[id]['bucket'] = updateBucket;
+    setItem('todos', todos);
+    openBoard();
+}
+
+function moveTaskUp(id) {
+    let filteredTodos = todos.filter(todo => todo.id == id);
+    let updateBucket = '';
+    if (filteredTodos[0].bucket == 'window1') {
+        updateBucket = 'window1';
+    }
+    else if (filteredTodos[0].bucket == 'window2') {
+        updateBucket = 'window1';
+    }
+    else if (filteredTodos[0].bucket == 'window3') {
+        updateBucket = 'window2';
+    }
+    else if (filteredTodos[0].bucket == 'window4') {
+        updateBucket = 'window3';
+    }
+    todos[id]['bucket'] = updateBucket;
+    setItem('todos', todos);
+    openBoard();
 }
 
 async function openEditTask(id) {

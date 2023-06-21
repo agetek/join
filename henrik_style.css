@@ -1644,6 +1644,34 @@
     align-items: center;
 }
 
+.bd_arrow_up {
+    display: flex;
+    position: fixed;
+    top: 50px;
+    right: 80px;
+    width: 40px;
+    height: 40px;
+    background-image: url(img/arrow_black_up.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.bd_arrow_down {
+    display: flex;
+    position: fixed;
+    top: 90px;
+    right: 80px;
+    width: 40px;
+    height: 40px;
+    background-image: url(img/arrow_black_down.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
 /* Board End */
 
 /* Responsive Start */
@@ -1704,6 +1732,20 @@
         right: 50px;
         cursor: pointer;
     }
+
+    #popup_content_task {
+        display: flex;
+        position: fixed;
+        width: 623px;
+        height: 90vh;
+        background-color: white;
+        border-radius: 15px;
+        flex-direction: column;
+        padding: 50px;
+        box-sizing: border-box;
+    }
 }
+
+
 
 /* Responsive End */
