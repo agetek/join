@@ -1,3 +1,7 @@
+/**
+ * This function opens the legal information page by returning the HTML code.
+ *
+ */
 function renderLegal() {
     let render = `
     <div class="container_help">

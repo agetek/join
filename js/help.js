@@ -1,3 +1,7 @@
+/**
+ * This function opens the help page by returning the HTML code.
+ *
+ */
 function renderHelp() {
     let render = `
     <div class="container_help">
