@@ -553,7 +553,8 @@
 @media(max-width: 1670px) {
     .board-main-container {
         flex-wrap: wrap;
-        padding-left: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .placeholder_drag_drop {
@@ -1218,5 +1219,39 @@
     .done_container {
         margin-right: 26px !important;
 
+    }
+}
+
+.symbols_board {
+    margin-right: 35px;
+}
+
+@media(max-width: 500px) {
+    .headline_summary {
+        margin-left: 5px
+    }
+
+    .overview_summary {
+        margin-left: 5px
+    }
+
+    .summary_done_container {
+        margin-left: 5px
+    }
+
+    .upcoming_tasks_summary {
+        margin-left: -11px !important; 
+    }
+}
+
+@media(max-width: 1000px) {
+    .upcoming_tasks_summary {
+        margin-left: 0px;
+    }
+}
+
+@media(max-width: 750px) {
+    .upcoming_tasks_summary {
+        margin-left: 10px;
     }
 }
