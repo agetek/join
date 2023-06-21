@@ -22,7 +22,7 @@ function board() {
             <div class="to_do_container">
                 <div class="to_do_headline">
                     <span>To do </span>
-                    <img class="plus" src="img/plus.svg">
+                    <img onclick="addTaskPopup()" class="plus" src="img/plus.svg">
                 </div>
                 <div class="fixContainers">
                     <div id="window1" class="placeholder_drag_drop" ondrop="moveTo('window1')" ondragover="allowDrop(event)">
@@ -32,7 +32,7 @@ function board() {
             <div class="in_progress_container">
                 <div class="in_progress_headline">
                     <span>In progress </span>
-                    <img class="plus" src="img/plus.svg">
+                    <img onclick="addTaskPopup()" class="plus" src="img/plus.svg">
                 </div>
                 <div class="fixContainers">
                     <div id="window2" class="placeholder_drag_drop" ondrop="moveTo('window2')" ondragover="allowDrop(event)">
@@ -42,7 +42,7 @@ function board() {
             <div class="Awaiting_Feedback_container">
                 <div class="Awaiting_Feedback_headline">
                     <span>Awaiting Feedback</span>
-                    <img class="plus" src="img/plus.svg">
+                    <img onclick="addTaskPopup()" class="plus" src="img/plus.svg">
                 </div>
                 <div class="fixContainers">
                     <div id="window3" class="placeholder_drag_drop" ondrop="moveTo('window3')" ondragover="allowDrop(event)">
@@ -52,7 +52,7 @@ function board() {
             <div class="done_container">
                 <div class="done_headline">
                     <span>Done</span>
-                    <img class="plus" src="img/plus.svg">
+                    <img onclick="addTaskPopup()" class="plus" src="img/plus.svg">
                 </div>
                 <div class="fixContainers">
                     <div id="window4" class="placeholder_drag_drop" ondrop="moveTo('window4')" ondragover="allowDrop(event)">

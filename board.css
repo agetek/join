@@ -180,10 +180,6 @@ h2 {
     background-color: #2A3647;
 }
 
-.fixContainers {
-    overflow: auto;
-}
-
 .user_elements {
     display: flex;
     justify-content: space-between;

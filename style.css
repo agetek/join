@@ -274,3 +274,51 @@ body {
     display: flex;
     align-items: center;
 }
+
+.header_profile_img {
+    cursor: pointer;
+}
+
+.header_question {
+    cursor: pointer;
+}
+.sidebar_legal_notice_img {
+    cursor: pointer;
+
+}
+
+.summary_todo_done {
+    cursor: pointer;
+}
+
+.todo_done_part {
+    cursor: pointer;
+}
+
+.hide_mobile_info {
+    cursor: pointer;
+}
+
+.log_out_menu {
+    cursor: pointer;
+}
+
+.open_help_menu {
+    cursor: pointer;
+
+}
+
+
+#add_task {
+    cursor: pointer;
+
+}
+
+.plus {
+    cursor: pointer;
+
+}
+
+.footer_buttons {
+    cursor: pointer;
+}
