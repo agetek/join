@@ -67,7 +67,7 @@ function renderEditContactMobile() {
                     </div>
                     <div class="form_buttons_mobile">
                         <button type="submit" class="delete" formaction="javascript:deleteContact()">Delete</button>
-                        <button type="submit" class="save"  formaction="javascript:updateContact()">Save</button>
+                        <button type="submit" class="save"  formaction="javascript:updateContactMobile()">Save</button>
                     </div>
                 </form>
             </div>
@@ -87,7 +87,7 @@ function renderAddContactMobile() {
         </div></div>
         <div class="contact_input_mobile">
             <div class="avatar_add_mobile" id="avatar"></div>
-                <form class="form_mobile" action="javascript:addContact()">
+                <form class="form_mobile" action="javascript:addContactMobile()">
                     <div class="edit_form_mobile">
                         <input type="text" class="input_name" id="input_name" placeholder="Name" required>
                         <input type="email" class="input_email" id ="input_email" placeholder="Email" required>

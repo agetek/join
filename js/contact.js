@@ -168,6 +168,30 @@ async function addContact() {
     }, 250);
 }
 
+async function addContactMobile() {
+    shiftPopupOutMobile();
+    setTimeout(async function () {
+        let name = document.getElementById('input_name').value;
+        name = formatName(name);
+        let email = document.getElementById('input_email').value;
+        let phone = document.getElementById('input_phone').value;
+        let color = getRandomColor();
+        let id = getMaxId();
+        let user = {
+            'id': id,
+            'name': name,
+            'email': email,
+            'phone': phone,
+            'password': '',
+            'color_id': color
+        };
+        users.push(user);
+        await setItem('users', users);
+        await openContacts();
+        shiftMessage('Contact successfully created');
+    }, 250);
+}
+
 function formatName(name) {
     let nameSplit = name.split(' ');
     let firstLetter = nameSplit[0].charAt(0).toUpperCase();
@@ -286,6 +310,19 @@ function getPosition() {
 
 async function updateContact() {
     shiftPopupOut();
+    setTimeout(async function () {
+        let position = getPosition();
+        users[position]['name'] = document.getElementById('input_name').value;
+        users[position]['email'] = document.getElementById('input_email').value;
+        users[position]['phone'] = document.getElementById('input_phone').value;
+        await setItem('users', users);
+        await openContacts();
+        shiftMessage('Contact successfully updated');
+    }, 250);
+}
+
+async function updateContactMobile() {
+    shiftPopupOutMobile();
     setTimeout(async function () {
         let position = getPosition();
         users[position]['name'] = document.getElementById('input_name').value;
