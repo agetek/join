@@ -104,10 +104,6 @@
         background-image: none;
     }
 
-    #popup_content {
-        left: calc(50% - 193px) !important;
-    }
-
     .cancel {
         display: none;
     }
@@ -143,10 +139,6 @@
         margin-bottom: 48px;
     }
 
-    #popup_content {
-        right: -40% !important;
-    }
-
     .close_add_contact {
         display: flex !important;
         position: relative;
@@ -165,10 +157,6 @@
 
     #container {
         flex-direction: column;
-    }
-
-    #popup_content {
-        right: -30% !important;
     }
 
     .contacts_overview {
@@ -190,22 +178,6 @@
         justify-content: flex-end;
     }
 
-    #popup_content {
-        right: -26%;
-    }
-
-}
-
-@media(max-width: 725px) {
-    #popup_content {
-        right: -20% !important;
-    }
-}
-
-@media(max-width: 725px) {
-    #popup_content {
-        right: -11% !important;
-    }
 }
 
 @media(max-width: 425px) {
@@ -232,10 +204,6 @@
     .contacts_overview {
         padding-left: 3px;
         padding-right: 3px;
-    }
-
-    #popup_content {
-        left: calc(50% - 130px) !important;
     }
 
 }
