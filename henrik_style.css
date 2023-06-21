@@ -744,7 +744,7 @@
 .form_buttons_mobile {
     display: flex;
     margin-top: 55px;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .close_mobile {
@@ -1384,6 +1384,40 @@
     position: absolute;
     bottom: 30px;
     right: 50px;
+}
+
+.add_task_submit_mobile {
+    width: 218px;
+    height: 55px;
+    border-radius: 10px;
+    font-size: 21px;
+    font-weight: 700;
+    font-family: 'Inter';
+    background: url(img/create_contact_icon.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    color: white;
+    background-color: #2A3647;
+    border: 1px;
+    background-position-x: 180px;
+    padding-right: 45px;
+    cursor: pointer;
+}
+
+.avatar_add_mobile {
+    position: absolute;
+    background-image: url(img/icon_profile.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 120px;
+    height: 120px;
+    margin-top: -66px;
+}
+
+.contact_design_subtext_mobile {
+    font-size: 21px;
+    color: white;
 }
 
 /* Add Task End */

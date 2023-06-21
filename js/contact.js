@@ -35,7 +35,7 @@ function makeLetters() {
 }
 
 function renderContactsOverview() {
-    let render = `<div id="newContact_footer" style="display:none" class="contact_details_new_contact"><div class="contact_details_new_contact_icon" onclick="openAddContact()"></div></div>`;
+    let render = `<div id="newContact_footer" style="display:none" class="contact_details_new_contact"><div class="contact_details_new_contact_icon" onclick="openAddContactMobile()"></div></div>`;
     render += `<div class="contacts_overview">`;
     for (let i = 0; i < firstLetters.length; i++) {
         render += `<div class="contact_overview_letter">${firstLetters[i]}</div>`;
@@ -143,9 +143,6 @@ function renderActiveContactMobile() {
     render += `<div class="contact_details_edit_mobile" onclick="editContactMobile(${selectedUserId})"></div>`;
     return render;
 }
-
-// render += `<div class="contact_details_edit" onclick="editContact(${filteredUsers[0]['id']})"><div class="contact_details_edit_icon"></div><div class="contact_details_edit_contact">Edit Contact</div></div>`;
-// render += `<div class="contact_details_new_contact"><div class="contact_details_new_contact_icon" onclick="openAddContact()"></div></div>`;
 
 async function addContact() {
     shiftPopupOut();
@@ -256,6 +253,15 @@ function openAddContact() {
     newContent += `</div>`;
     document.getElementById('container').innerHTML = oldContent + newContent;
     setTimeout(() => { shiftPopupIn() }, 1);
+}
+
+function openAddContactMobile() {
+    oldContent = document.getElementById('container').innerHTML;
+    let newContent = `<div class="popup_mobile" id="popup_mobile" onclick="closeEditMobile()">`;
+    newContent += renderAddContactMobile();
+    newContent += `</div>`;
+    document.getElementById('container').innerHTML = oldContent + newContent;
+    setTimeout(() => { shiftPopupInMobile() }, 1);
 }
 
 function closeEdit() {

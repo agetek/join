@@ -76,7 +76,32 @@ function renderEditContactMobile() {
     return render;
 }
 
-
+function renderAddContactMobile() {
+    let render = `
+    <div class="edit_contact_mobile" onclick="event.stopPropagation()" id="popup_content_mobile">  
+        <div class="contact_design_mobile"><div class="close_mobile" onclick="closeEditMobile()"></div>
+        <div class="contact_design_logo_mobile">
+        <div class="contact_design_edit_mobile">Add contact</div>
+        <div class="contact_design_subtext_mobile">Tasks are better with a team!</div>
+        <div class="contact_design_line_mobile"></div>
+        </div></div>
+        <div class="contact_input_mobile">
+            <div class="avatar_add_mobile" id="avatar"></div>
+                <form class="form_mobile" action="javascript:addContact()">
+                    <div class="edit_form_mobile">
+                        <input type="text" class="input_name" id="input_name" placeholder="Name" required>
+                        <input type="email" class="input_email" id ="input_email" placeholder="Email" required>
+                        <input type="number" class="input_phone" id ="input_phone" placeholder="Phone" required>
+                    </div>
+                    <div class="form_buttons_mobile">
+                        <button type="submit" class="add_task_submit_mobile">Create contact</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>`;
+    return render;
+}
 
 function renderSidebar() {
     let render = `<div class="sidebar">
