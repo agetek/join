@@ -101,13 +101,13 @@ function renderHeader() {
             <div class="question_and_avatar">
             <div id="info-container" style="display: none;">
             <div id="info-content">
-            <span onclick="logOut()">Log Out</span>
+            <span class="log_out_menu" onclick="logOut()">Log Out</span>
             <span class="hide_mobile_info" onclick="openLegalNotice()">Legal notice</span>
-            <span onclick="openHelp()">Open Help</span>
+            <span class="open_help_menu" onclick="openHelp()">Open Help</span>
             </div>
             </div>
             <div onclick="openHelp()">
-            <img src="img/question_mark.svg" class="header_help"> 
+            <img class="header_question" src="img/question_mark.svg" class="header_help"> 
             </div>
             <img onclick="openInfo()" src="img/avatar_profile.png" id="add_task_edits" class="header_profile_img">
             </div>
