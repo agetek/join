@@ -266,7 +266,7 @@ async function openEditTask(id) {
     categorySelected = filteredTodos[0]['category_id'];
     activeSubtasks = filteredTodos[0]['subtasks'];
     let newContent = `<div class="popup_edit" id="popup" onclick="closeTask()">
-                        <div class="add_task_popup" onclick="event.stopPropagation()">`;
+                        <div class="add_task_popup" id="popup_content_edit_task" onclick="event.stopPropagation()">`;
     newContent += renderEditTaskSlideIn(id);
     newContent += `</div>
                 </div>`;
@@ -324,7 +324,7 @@ function renderEditTaskSlideIn(id) {
         </div>
         </div>
         <div class="add_task_submit_outer_slide_in">
-            <div class="form_buttons">
+            <div class="form_buttons_add_task">
                         <button type="button" class="add_task_cancel" onclick="resetEditTask(${id})">Clear</button>
                         <button type="button" class="add_task_submit" onclick="processEditTask(${id})">Save Task</button>
             </div>
@@ -337,9 +337,17 @@ function renderEditTaskSlideIn(id) {
 }
 
 async function resetEditTask(id) {
-    closeTask();
-    todos = await getItem('todos');
-    await openEditTask(id);
+    categoryOpen = true;
+    contactsOpen = true;
+    addTaskContactsSelected = [];
+    activeSubtasks = [];
+    document.getElementById('input_title').value = '';
+    document.getElementById('input_description').value = '';
+    document.getElementById('input_date').value = '';
+    renderSubtasksListing();
+    openTaskContactsDropdown();
+    setPriority(-1);
+    exitNewCategory();
 }
 
 async function processEditTask(id) {

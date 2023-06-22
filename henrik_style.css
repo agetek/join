@@ -555,6 +555,10 @@
     right: -100%;
 }
 
+#popup_content_edit_task {
+    position: relative;
+}
+
 #popup_content_mobile {
     position: absolute;
     transition: all 250ms ease-out;
@@ -1770,6 +1774,12 @@
         flex-direction: column;
         padding: 50px;
         box-sizing: border-box;
+    }
+
+    @media(max-width: 530px) {
+        .add_task_cancel {
+            display: none;
+        }
     }
 }
 
