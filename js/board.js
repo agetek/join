@@ -266,7 +266,7 @@ async function openEditTask(id) {
     categorySelected = filteredTodos[0]['category_id'];
     activeSubtasks = filteredTodos[0]['subtasks'];
     let newContent = `<div class="popup_edit" id="popup" onclick="closeTask()">
-                        <div class="edit_task_popup" onclick="event.stopPropagation()">`;
+                        <div class="add_task_popup" onclick="event.stopPropagation()">`;
     newContent += renderEditTaskSlideIn(id);
     newContent += `</div>
                 </div>`;

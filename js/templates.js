@@ -235,8 +235,6 @@ async function openAddTask() {
     addTaskContactsSelected = [];
     priority = -1;
     activeSubtasks = [];
-
-
     category = await getItem('category');
     let render = addTask();
     document.getElementById('container').innerHTML = render;
