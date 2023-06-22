@@ -272,10 +272,10 @@ function renderAddTaskContacts() {
 function renderOpenTaskContacts() {
     let render = '';
     if (contactsOpen) {
-        let check = getCheck(userSelfId);
-        render += `<div class="add_task_contact_outer" onclick="toggleContactId(${userSelfId})">
+        let check = getCheck(activeUserId);
+        render += `<div class="add_task_contact_outer" onclick="toggleContactId(${activeUserId})">
                     <div class="add_task_contact_text">You</div>
-                    <input class="add_task_contacts_checkbox" type="checkbox" id="addtask_contact_${userSelfId}"${check}>
+                    <input class="add_task_contacts_checkbox" type="checkbox" id="addtask_contact_${activeUserId}"${check}>
                 </div>`;
         render += renderContactsLoop();
         render += `<div class="add_task_contact_outer">
@@ -290,7 +290,7 @@ function renderContactsLoop() {
     sortUsersByName();
     let render = '';
     for (let i = 0; i < users.length; i++) {
-        if (!(users[i]['id'] == userSelfId)) {
+        if (!(users[i]['id'] == activeUserId)) {
             let check = getCheck(users[i]['id']);
             render += `
                     <div class="add_task_contact_outer">

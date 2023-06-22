@@ -10,17 +10,15 @@ let oldContent = "";
 
 let oldContentContactOverview = "";
 
-let activeUserId = -1;
+let activeUserId = -2;
 
-let selectedUserId = -1;
+let selectedUserId = -2;
 
 let categoryOpen = false;
 
 let contactsOpen = false;
 
 let categorySelected = -1;
-
-let userSelfId = 0;
 
 let addTaskContactsSelected = [];
 

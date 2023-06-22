@@ -1,10 +1,10 @@
 async function openBoard() {
     todos = await getItem('todos');
     category = await getItem('category');
-    let render = renderBoard();
+    let render = await renderBoard();
     document.getElementById('container').innerHTML = render;
     document.getElementById('open_board').classList.add('sidebar_point_active');
-    updateHTML();
+    await updateHTML();
 }
 
 function board() {
@@ -62,7 +62,6 @@ function board() {
     </div>
     `;
     return render;
-
 };
 
 async function updateHTML() {
