@@ -1,4 +1,6 @@
-const STORAGE_TOKEN = 'MUN5KNFTRVLKWHRYHI4AWBPGV0QPFN644A67VODV';
+// const STORAGE_TOKEN = 'MUN5KNFTRVLKWHRYHI4AWBPGV0QPFN644A67VODV';
+
+const STORAGE_TOKEN = 'P6QIQBYW3W5XEWNOQPX1NC1Z8HGQANI76LZ7QE2R';
 
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
@@ -55,55 +57,55 @@ let users =
         'name': 'Anton Mayer',
         'email': 'anton@gmail.com',
         'phone': '+49 1111 111 11 1',
-        'password': '',
+        'password': 'test123',
         'color_id': 'rgb(254,122,0)'
     },
     {
         'id': 1,
         'name': 'Anja Schulz',
         'email': 'schulz@hotmail.com',
-        'phone': '',
-        'password': '',
+        'phone': '0123456',
+        'password': 'test123',
         'color_id': 'rgb(147,39,255)',
     },
     {
         'id': 2,
         'name': 'Benedikt Ziegler',
         'email': 'benedikt@gmail.com',
-        'phone': '',
-        'password': '',
+        'phone': '012345',
+        'password': 'test123',
         'color_id': 'rgb(41,171,226)',
     },
     {
         'id': 3,
         'name': 'David Eisenberg',
         'email': 'davidberg@gmail.com',
-        'phone': '',
-        'password': '',
+        'phone': '01234567',
+        'password': 'test123',
         'color_id': 'rgb(252,113,255)',
     },
     {
         'id': 4,
         'name': 'Eva Fischer',
         'email': 'eva@gmail.com',
-        'phone': '',
-        'password': '',
+        'phone': '01234567',
+        'password': 'test123',
         'color_id': 'rgb(25,207,48)',
     },
     {
         'id': 5,
         'name': 'Emmanuel Mauer',
         'email': 'emmanuelMa@gmail.com',
-        'phone': '',
-        'password': '',
+        'phone': '01234567',
+        'password': 'test123',
         'color_id': 'rgb(175,22,22)',
     },
     {
         'id': 6,
         'name': 'Marcel Bauer',
         'email': 'bauer@gmail.com',
-        'phone': '',
-        'password': '',
+        'phone': '01234567',
+        'password': 'test123',
         'color_id': 'rgb(70,47,138)',
     },
     {
@@ -111,15 +113,15 @@ let users =
         'name': 'Tatjana Wolf',
         'email': 'wolf@gmail.com',
         'phone': '+49 2222 222 22 2',
-        'password': '',
+        'password': 'test123',
         'color_id': 'rgb(147,39,255)',
     },
     {
         'id': 8,
         'name': 'Stefanie Farber',
-        'email': '',
-        'phone': '',
-        'password': '',
+        'email': 'stefanie@farber.com',
+        'phone': '0123456',
+        'password': 'test123',
         'color_id': 'rgb(203,27,207)',
     }
     ];
@@ -131,14 +133,14 @@ let users =
         'name': 'Anton Mayer',
         'email': 'anton@gmail.com',
         'phone': '+49 1111 111 11 1',
-        'password': 'testxyz',
+        'password': 'test123',
         'color_id': 'rgb(254,122,0)'
     },
     {
         'id': 1,
         'name': 'Anja Schulz',
         'email': 'schulz@hotmail.com',
-        'phone': '',
+        'phone': '0123456',
         'password': 'test123',
         'color_id': 'rgb(147,39,255)',
     },
@@ -146,40 +148,40 @@ let users =
         'id': 2,
         'name': 'Benedikt Ziegler',
         'email': 'benedikt@gmail.com',
-        'phone': '',
-        'password': '',
+        'phone': '012345',
+        'password': 'test123',
         'color_id': 'rgb(41,171,226)',
     },
     {
         'id': 3,
         'name': 'David Eisenberg',
         'email': 'davidberg@gmail.com',
-        'phone': '',
-        'password': '',
+        'phone': '01234567',
+        'password': 'test123',
         'color_id': 'rgb(252,113,255)',
     },
     {
         'id': 4,
         'name': 'Eva Fischer',
         'email': 'eva@gmail.com',
-        'phone': '',
-        'password': '',
+        'phone': '01234567',
+        'password': 'test123',
         'color_id': 'rgb(25,207,48)',
     },
     {
         'id': 5,
         'name': 'Emmanuel Mauer',
         'email': 'emmanuelMa@gmail.com',
-        'phone': '',
-        'password': '',
+        'phone': '01234567',
+        'password': 'test123',
         'color_id': 'rgb(175,22,22)',
     },
     {
         'id': 6,
         'name': 'Marcel Bauer',
         'email': 'bauer@gmail.com',
-        'phone': '',
-        'password': '',
+        'phone': '01234567',
+        'password': 'test123',
         'color_id': 'rgb(70,47,138)',
     },
     {
@@ -187,18 +189,17 @@ let users =
         'name': 'Tatjana Wolf',
         'email': 'wolf@gmail.com',
         'phone': '+49 2222 222 22 2',
-        'password': '',
+        'password': 'test123',
         'color_id': 'rgb(147,39,255)',
     },
     {
         'id': 8,
         'name': 'Stefanie Farber',
-        'email': '',
-        'phone': '',
-        'password': '',
+        'email': 'stefanie@farber.com',
+        'phone': '0123456',
+        'password': 'test123',
         'color_id': 'rgb(203,27,207)',
     }
-    
     ];
 
 
@@ -277,8 +278,8 @@ let oldTodos = [
     {
        "id":0,
        "bucket":"window1",
-       "title":"Beispiel Task",
-       "description":"Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+       "title":"Büro einrichten",
+       "description":"Neue Stühle für das Büro bestellen.",
        "category_id":2,
        "user_ids":[
           0,
@@ -290,12 +291,12 @@ let oldTodos = [
        "subtasks":[
           {
              "id":0,
-             "title":"Lorem ipsum dolor",
+             "title":"Stühle bestellen",
              "checked":true
           },
           {
              "id":1,
-             "title":"sit amet consectetur",
+             "title":"Stühle aufbauen",
              "checked":false
           }
        ]
@@ -303,9 +304,9 @@ let oldTodos = [
     {
        "id":1,
        "bucket":"window2",
-       "title":"Beispiel Task",
-       "description":"Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-       "category_id":2,
+       "title":"Webseite gestalten",
+       "description":"Neues Design für die Webseite festlegen.",
+       "category_id":0,
        "user_ids":[
           0,
           1,
@@ -316,12 +317,12 @@ let oldTodos = [
        "subtasks":[
           {
              "id":0,
-             "title":"Lorem ipsum dolor",
+             "title":"Entwürfe erstellen",
              "checked":true
           },
           {
              "id":1,
-             "title":"sit amet consectetur",
+             "title":"Finalen Entwurf aussuchen",
              "checked":false
           }
        ]
@@ -329,9 +330,9 @@ let oldTodos = [
     {
        "id":2,
        "bucket":"window3",
-       "title":"Beispiel Task",
-       "description":"Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-       "category_id":2,
+       "title":"Kundenbesuch",
+       "description":"Kundenbesuch bei Firma A zum Verkaufsgespräch",
+       "category_id":1,
        "user_ids":[
           0,
           1,
@@ -342,12 +343,12 @@ let oldTodos = [
        "subtasks":[
           {
              "id":0,
-             "title":"Lorem ipsum dolor",
+             "title":"Termin festlegen",
              "checked":true
           },
           {
              "id":1,
-             "title":"sit amet consectetur",
+             "title":"Kundenbesuch vorbereiten",
              "checked":false
           }
        ]

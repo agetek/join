@@ -13,7 +13,7 @@ async function setItem(key, value) {
 
 async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-    let result = await fetch(url).then(res => res.json());
+    let result = await fetch(url).then(res => res.json());  
     let resultReturn = result['data']['value'];
     resultReturn = resultReturn.replaceAll("'", '"');
     resultReturn = resultReturn.replaceAll('True', 'true');

@@ -49,7 +49,7 @@ function renderAnimationLogin() {
 
 async function openLogin() {
   users = await getItem('users');
-  activeUserId = await getItem('activeUserId');
+  // activeUserId = await getItem('activeUserId');
   try { activeUserId = await getItemLocal('activeUserId'); } catch (e) { activeUserId = -1; }
   if (activeUserId == null) {
     document.getElementById("container").innerHTML = renderLogin();
