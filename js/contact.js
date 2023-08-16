@@ -28,7 +28,7 @@ function sortUsersByName() {
 function makeLetters() {
     for (let i = 0; i < users.length; i++) {
         let firstLetter = users[i]['name'].charAt(0).toUpperCase();
-        if (!firstLetters.includes(firstLetter)) {
+        if (!firstLetters.includes(firstLetter) && users[i].id != -2) {
             firstLetters.push(firstLetter);
         }
     }
@@ -72,7 +72,7 @@ function renderInitials(user) {
 }
 
 function renderLetter(i) {
-    let filteredUsers = users.filter(user => user.name.charAt(0) == firstLetters[i]);
+    let filteredUsers = users.filter(user => (user.name.charAt(0) == firstLetters[i] && user.id != -2));
     let render = renderUser(filteredUsers);
     return render;
 }

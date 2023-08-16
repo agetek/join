@@ -88,6 +88,7 @@
     justify-content: center;
     height: 46px;
     margin-bottom: 112px;
+    cursor: pointer;
 }
 
 .sidebar_menu_logo_img {
@@ -102,12 +103,14 @@
     flex-direction: column;
     flex: 1;
     background-color: #F5F5F5;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .middle_column {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    overflow: hidden;
 }
 
 /* header start */
@@ -245,8 +248,8 @@
 .contacts_details_details {
     display: flex;
     flex: 1;
-    max-width: calc(100vb + 400px);
-    overflow-x: hidden;
+    max-width: calc(100vw - 630px);
+    overflow: hidden;
 }
 
 .contacts_details_active {
@@ -783,6 +786,7 @@
     border-radius: 15px;
     justify-content: center;
     padding-top: 20px;
+    overflow: hidden;
 }
 
 .edit_task_popup {
@@ -795,6 +799,7 @@
     justify-content: center;
     padding-top: 20px;
     align-items: center;
+    overflow: hidden;
 }
 
 .add_task {
@@ -808,7 +813,7 @@
 
 .add_task_header {
     display: flex;
-    margin-top: 82px;
+    margin-top: 20px;
 }
 
 .add_task_left_column {
@@ -1089,6 +1094,7 @@
     padding-left: 21px;
     padding-right: 21px;
     background-color: white;
+    cursor: pointer;
 }
 
 .add_task_contact_outer:hover {

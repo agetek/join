@@ -65,21 +65,21 @@ h2 {
 
 .to_do_container {
     margin-right: 26px;
-    width: 300px;
+    width: 22v 0px;
 }
 
 .in_progress_container {
     margin-right: 26px;
-    width: 300px;
+    width: 220px;
 }
 
 .Awaiting_Feedback_container {
-    margin-right: 60px;
-    width: 300px;
+    margin-right: 26px;
+    width: 220px;
 }
 
 .done_container {
-    width: 300px;
+    width: 220px;
 }
 
 .placeholder_drag_drop {
