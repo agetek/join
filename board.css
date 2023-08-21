@@ -18,7 +18,7 @@
 
 .board-main-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     padding-left: 70px;
 }
 
@@ -65,29 +65,27 @@ h2 {
 
 .to_do_container {
     margin-right: 26px;
-    width: 22v 0px;
+    width: 25%;
 }
 
 .in_progress_container {
     margin-right: 26px;
-    width: 220px;
+    width: 25%;
 }
 
 .Awaiting_Feedback_container {
     margin-right: 26px;
-    width: 220px;
+    width: 25%;
 }
 
 .done_container {
-    width: 220px;
+    width: 25%;
 }
 
 .placeholder_drag_drop {
     height: 500px;
     border-radius: 30px;
     margin-top: 37px;
-    width: 250px;
-
 }
 
 #h2_headline {
@@ -100,7 +98,7 @@ h2 {
     border-radius: 30px;
     padding-top: 1px;
     margin-bottom: 35px;
-    width: 250px;
+    width: 100%;
 }
 
 .topic {
